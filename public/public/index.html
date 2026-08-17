@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Property Research Tool</title>
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif; background:#f5f5f5; color:#1a1a1a; padding:24px; }
+.wrap { max-width:1100px; margin:0 auto; }
+h1 { font-size:26px; margin-bottom:4px; }
+.sub { color:#666; font-size:14px; margin-bottom:24px; }
+.searchbox { background:#fff; padding:20px; border-radius:12px; border:1px solid #e0e0e0; margin-bottom:20px; display:flex; gap:10px; }
+.searchbox input { flex:1; padding:12px 14px; border:1px solid #ddd; border-radius:8px; font-size:15px; }
+.searchbox input:focus { outline:none; border-color:#2f6fed; }
+.searchbox button { padding:12px 26px; background:#2f6fed; color:#fff; border:none; border-radius:8px; font-size:15px; font-weight:600; cursor:pointer; }
+.searchbox button:disabled { opacity:.6; cursor:default; }
+.err { background:#fdecec; border:1px solid #f3b5b5; color:#b32020; padding:12px 14px; border-radius:8px; margin-bottom:16px; font-size:14px; }
+.grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:14px; }
+.card { background:#fff; border:1px solid #e0e0e0; border-radius:12px; padding:18px; }
+.card h3 { font-size:11px; letter-spacing:.6px; text-transform:uppercase; color:#888; margin-bottom:10px; }
+.lbl { font-size:12px; color:#999; margin-top:8px; }
+.val { font-size:15px; font-weight:500; margin:3px 0 6px; word-break:break-word; }
+.pill { display:inline-block; padding:5px 11px; border-radius:6px; font-size:12px; font-weight:600; margin-top:6px; }
+.hi { background:#fdecec; color:#b32020; }
+.lo { background:#e6f5ec; color:#126b45; }
+.unk { background:#fdf2dd; color:#8a5a08; }
+.card a { color:#2f6fed; font-size:14px; text-decoration:none; display:inline-block; margin-top:10px; }
+.card a:hover { text-decoration:underline; }
+.card button { margin-top:10px; padding:7px 12px; font-size:13px; background:#f2f2f2; border:1px solid #ddd; border-radius:6px; color:#2f6fed; cursor:pointer; }
+.pts div { font-size:14px; color:#555; margin:7px 0; }
+.note { margin-top:20px; background:#fff; border:1px solid #e0e0e0; border-radius:12px; padding:16px; font-size:14px; color:#555; }
+.empty { text-align:center; padding:50px 20px; color:#999; background:#fff; border-radius:12px; border:1px solid #e0e0e0; }
+</style>
+</head>
+<body>
+<div class="wrap">
+<h1>Property research tool</h1>
+<div class="sub">Pre-qualification research before the call</div>
+
+<div class="searchbox">
+<input type="text" id="addr" placeholder="123 Main St, Terrell, TX" />
+<button id="btn" onclick="run()">Research</button>
+</div>
+
+<div id="err"></div>
+<div id="out"><div class="empty">Enter an address to start</div></div>
+</div>
+
+<script>
+async function run() {
+  var addr = document.getElementById('addr').value.trim();
+  var err = document.getElementById('err');
+  var out = document.getElementById('out');
+  var btn = document.getElementById('btn');
+
+  err.innerHTML = '';
+  if (!addr) { err.innerHTML = '<div class="err">Enter a property address</div>'; return; }
+
+  btn.disabled = true;
+  btn.textContent = 'Researching...';
+  out.innerHTML = '<div class="empty">Looking up property...</div>';
+
+  try {
+    var r = await fetch('/api/research', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ address: addr })
+    });
+    var j = await r.json();
+
+    if (!r.ok) {
+      err.innerHTML = '<div class="err">' + j.error + '</div>';
+      out.innerHTML = '<div class="empty">Enter an address to start</div>';
+      return;
+    }
+
+    var d = j.data;
+    var fc = d.floodRisk === 'high' ? 'hi' : (d.floodRisk === 'low' ? 'lo' : 'unk');
+    var ft = d.floodRisk === 'high' ? 'High risk' : (d.floodRisk === 'low' ? 'Low risk' : 'Unverified');
+
+    var countyCard = d.countyDetected
+      ? '<div class="val">' + d.county + '</div>'
+        + '<a href="' + d.taxUrl + '" target="_blank">Open tax records</a><br>'
+        + '<a href="' + d.cadUrl + '" target="_blank">Open property search</a>'
+      : '<div class="val">Not detected - check manually</div>';
+
+    out.innerHTML =
+      '<div class="grid">'
+      + '<div class="card"><h3>Location</h3>'
+      + '<div class="lbl">Matched address</div><div class="val">' + d.address + '</div>'
+      + '<div class="lbl">Coordinates</div><div class="val">' + d.coordinates + '</div>'
+      + '<button onclick="cp(\'' + d.coordinates + '\')">Copy coords</button><br>'
+      + '<a href="' + d.mapsLink + '" target="_blank">Open in Google Maps</a></div>'
+
+      + '<div class="card"><h3>Flood zone</h3>'
+      + '<div class="lbl">FEMA zone</div><div class="val">' + d.floodZone + '</div>'
+      + '<span class="pill ' + fc + '">' + ft + '</span><br>'
+      + '<a href="https://msc.fema.gov/portal/search" target="_blank">Verify on FEMA map</a></div>'
+
+      + '<div class="card"><h3>County records</h3>' + countyCard + '</div>'
+
+      + '<div class="card"><h3>Leverage points</h3><div class="pts">'
+      + d.leveragePoints.map(function(p){ return '<div>- ' + p + '</div>'; }).join('')
+      + '</div></div>'
+      + '
