@@ -119,22 +119,64 @@ async function getCoordinates(address) {
 
 async function checkFloodZone(lat, lon) {
   try {
-    const url = 'https://hazards.fema.gov/gis/nfhl/rest/services/public/NFHL/MapServer/28/query?geometry=' + lon + ',' + lat + '&geometryType=esriGeometryPoint&inSR=4326&spatialRel=esriSpatialRelIntersects&outFields=FLD_ZONE,ZONE_SUBTY&returnGeometry=false&f=json';
+    const base = 'https://hazards.fema.gov/gis/nfhl/rest/services/public/NFHL/MapServer/28/query';
+    const url = base
+      + '?geometry=' + lon + ',' + lat
+      + '&geometryType=esriGeometryPoint&inSR=4326'
+      + '&spatialRel=esriSpatialRelIntersects'
+      + '&outFields=FLD_ZONE,ZONE_SUBTY,STATIC_BFE,DEPTH,SFHA_TF'
+      + '&returnGeometry=false&f=json';
+
     const response = await fetch(url);
     const data = await response.json();
 
-    if (data.features && data.features.length > 0) {
-      const zone = data.features[0].attributes.FLD_ZONE || 'Unknown';
-      const highRisk = /^(A|V)/.test(zone);
+    if (!data.features || data.features.length === 0) {
       return {
-        floodZone: zone,
-        floodRisk: highRisk ? 'high' : 'low'
+        floodZone: 'No FEMA zone mapped at this point',
+        floodSubtype: null,
+        bfe: null,
+        inSFHA: null,
+        floodRisk: 'unknown'
       };
     }
-    return { floodZone: 'No FEMA zone mapped', floodRisk: 'unknown' };
+
+    const a = data.features[0].attributes;
+    const zone = a.FLD_ZONE || 'Unknown';
+    const subtype = a.ZONE_SUBTY || null;
+    const sfha = a.SFHA_TF === 'T';
+
+    let bfe = null;
+    if (a.STATIC_BFE && a.STATIC_BFE > -9999) {
+      bfe = Math.round(a.STATIC_BFE) + ' ft';
+    } else if (a.DEPTH && a.DEPTH > -9999) {
+      bfe = a.DEPTH + ' ft depth';
+    }
+
+    let risk = 'low';
+    if (/^(A|V)/.test(zone)) {
+      risk = 'high';
+    } else if (subtype && /floodway/i.test(subtype)) {
+      risk = 'high';
+    } else if (zone === 'X' && subtype && /0\.2|shaded/i.test(subtype)) {
+      risk = 'moderate';
+    }
+
+    return {
+      floodZone: zone,
+      floodSubtype: subtype,
+      bfe: bfe,
+      inSFHA: sfha,
+      floodRisk: risk
+    };
   } catch (error) {
     console.error('Flood zone error:', error);
-    return { floodZone: 'Unable to verify', floodRisk: 'unknown' };
+    return {
+      floodZone: 'Unable to verify',
+      floodSubtype: null,
+      bfe: null,
+      inSFHA: null,
+      floodRisk: 'unknown'
+    };
   }
 }
 
@@ -194,6 +236,9 @@ app.post('/api/research', async (req, res) => {
         taxUrl: countyConfig ? countyConfig.taxUrl : null,
         cadUrl: countyConfig ? countyConfig.cadUrl : null,
         floodZone: floodData.floodZone,
+        floodSubtype: floodData.floodSubtype,
+        bfe: floodData.bfe,
+        inSFHA: floodData.inSFHA,
         floodRisk: floodData.floodRisk,
         leveragePoints: generateLeveragePoints(floodData.floodRisk)
       }
