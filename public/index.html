@@ -86,11 +86,12 @@ async function run() {
     if (d.bfe) { floodDetail += '<div class="lbl">Base flood elevation</div><div class="val">' + d.bfe + '</div>'; }
     if (d.inSFHA === true) { floodDetail += '<div class="lbl">Special flood hazard area</div><div class="val">Yes - insurance likely required</div>'; }
 
-    var countyCard = d.countyDetected
-      ? '<div class="val">' + d.county + '</div>'
-        + '<a href="' + d.taxUrl + '" target="_blank">Open tax records</a><br>'
-        + '<a href="' + d.cadUrl + '" target="_blank">Open property search</a>'
-      : '<div class="val">Not detected - check manually</div>';
+    var links = '';
+    if (d.appraisalUrl) { links += '<a href="' + d.appraisalUrl + '" target="_blank">Appraisal district - lot size, sqft, year built</a><br>'; }
+    if (d.taxUrl) { links += '<a href="' + d.taxUrl + '" target="_blank">Tax collector - delinquencies and amount owed</a><br>'; }
+    if (d.deedsUrl) { links += '<a href="' + d.deedsUrl + '" target="_blank">County clerk - deeds and liens</a><br>'; }
+    if (d.netrUrl) { links += '<a href="' + d.netrUrl + '" target="_blank">All county records (NETR)</a>'; }
+    var countyCard = '<div class="val">' + d.county + '</div>' + (links || '<div class="lbl">No links configured</div>');
 
     out.innerHTML =
       '<div class="grid">'
