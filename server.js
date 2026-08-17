@@ -45,18 +45,72 @@ const COUNTY_CONFIG = {
   }
 };
 
+function cleanAddress(raw) {
+  return raw
+    .replace(/\([^)]*\)/g, '')
+    .replace(/\b(lot|tract|parcel)\s*#?\s*\d+[a-z]?\b/gi, '')
+    .replace(/#\s*\d+[a-z]?\b/g, '')
+    .replace(/\s{2,}/g, ' ')
+    .trim()
+    .replace(/^[,\s]+|[,\s]+$/g, '');
+}
+
+async function geocodeOnce(q) {
+  const url = 'https://nominatim.openstreetmap.org/search?q=' + encodeURIComponent(q) + '&format=json&addressdetails=1&limit=1';
+  const response = await fetch(url, { headers: { 'User-Agent': 'PropertyResearchTool/1.0' } });
+  const data = await response.json();
+  if (!data || data.length === 0) return null;
+  return {
+    lat: parseFloat(data[0].lat),
+    lon: parseFloat(data[0].lon),
+    displayName: data[0].display_name,
+    details: data[0].address || {}
+  };
+}
+
 async function getCoordinates(address) {
   try {
-    const url = 'https://nominatim.openstreetmap.org/search?q=' + encodeURIComponent(address) + '&format=json&addressdetails=1&limit=1';
-    const response = await fetch(url, { headers: { 'User-Agent': 'PropertyResearchTool/1.0' } });
-    const data = await response.json();
-    if (!data || data.length === 0) return null;
-    return {
-      lat: parseFloat(data[0].lat),
-      lon: parseFloat(data[0].lon),
-      displayName: data[0].display_name,
-      details: data[0].address || {}
-    };
+    const coordMatch = address.match(/^\s*(-?\d+\.\d+)\s*,\s*(-?\d+\.\d+)\s*$/);
+    if (coordMatch) {
+      const lat = parseFloat(coordMatch[1]);
+      const lon = parseFloat(coordMatch[2]);
+      const url = 'https://nominatim.openstreetmap.org/reverse?lat=' + lat + '&lon=' + lon + '&format=json&addressdetails=1';
+      const response = await fetch(url, { headers: { 'User-Agent': 'PropertyResearchTool/1.0' } });
+      const data = await response.json();
+      return {
+        lat: lat,
+        lon: lon,
+        displayName: (data && data.display_name) ? data.display_name : lat + ', ' + lon,
+        details: (data && data.address) ? data.address : {},
+        approximate: false
+      };
+    }
+
+    const cleaned = cleanAddress(address);
+
+    let hit = await geocodeOnce(cleaned);
+    if (hit) { hit.approximate = false; return hit; }
+
+    const noNumber = cleaned.replace(/^\s*\d+\s+/, '');
+    if (noNumber !== cleaned) {
+      hit = await geocodeOnce(noNumber);
+      if (hit) { hit.approximate = true; return hit; }
+    }
+
+    const parts = cleaned.split(',').map(function(s){ return s.trim(); }).filter(Boolean);
+    if (parts.length >= 2) {
+      const cityState = parts.slice(-2).join(', ');
+      hit = await geocodeOnce(cityState);
+      if (hit) { hit.approximate = true; return hit; }
+    }
+
+    const zip = cleaned.match(/\b\d{5}\b/);
+    if (zip) {
+      hit = await geocodeOnce(zip[0] + ', TX');
+      if (hit) { hit.approximate = true; return hit; }
+    }
+
+    return null;
   } catch (error) {
     console.error('Geocoding error:', error);
     return null;
@@ -133,6 +187,7 @@ app.post('/api/research', async (req, res) => {
       data: {
         address: coords.displayName,
         coordinates: coords.lat.toFixed(5) + ', ' + coords.lon.toFixed(5),
+        approximate: coords.approximate,
         mapsLink: 'https://maps.google.com/?q=' + coords.lat + ',' + coords.lon,
         county: countyConfig ? countyConfig.name : 'County not detected',
         countyDetected: Boolean(countyConfig),
