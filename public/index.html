@@ -77,7 +77,14 @@ async function run() {
 
     var d = j.data;
     var fc = d.floodRisk === 'high' ? 'hi' : (d.floodRisk === 'low' ? 'lo' : 'unk');
-    var ft = d.floodRisk === 'high' ? 'High risk' : (d.floodRisk === 'low' ? 'Low risk' : 'Unverified');
+    var ft = d.floodRisk === 'high' ? 'High risk' : (d.floodRisk === 'low' ? 'Low risk' : (d.floodRisk === 'moderate' ? 'Moderate risk' : 'Unverified'));
+    var approxWarn = d.approximate
+      ? '<div class="pill unk" style="display:block;margin-top:8px;line-height:1.4">Approximate location - this is the nearest street or town, not the parcel. Verify the zone in the CAD map before using it on the call.</div>'
+      : '';
+    var floodDetail = '';
+    if (d.floodSubtype) { floodDetail += '<div class="lbl">Subtype</div><div class="val">' + d.floodSubtype + '</div>'; }
+    if (d.bfe) { floodDetail += '<div class="lbl">Base flood elevation</div><div class="val">' + d.bfe + '</div>'; }
+    if (d.inSFHA === true) { floodDetail += '<div class="lbl">Special flood hazard area</div><div class="val">Yes - insurance likely required</div>'; }
 
     var countyCard = d.countyDetected
       ? '<div class="val">' + d.county + '</div>'
@@ -95,8 +102,10 @@ async function run() {
 
       + '<div class="card"><h3>Flood zone</h3>'
       + '<div class="lbl">FEMA zone</div><div class="val">' + d.floodZone + '</div>'
-      + '<span class="pill ' + fc + '">' + ft + '</span><br>'
-      + '<a href="https://msc.fema.gov/portal/search" target="_blank">Verify on FEMA map</a></div>'
+      + floodDetail
+      + '<span class="pill ' + fc + '">' + ft + '</span>'
+      + approxWarn
+      + '<br><a href="https://msc.fema.gov/portal/search" target="_blank">Verify on FEMA map</a></div>'
 
       + '<div class="card"><h3>County records</h3>' + countyCard + '</div>'
 
