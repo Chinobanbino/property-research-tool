@@ -103,4 +103,24 @@ async function run() {
       + '<div class="card"><h3>Leverage points</h3><div class="pts">'
       + d.leveragePoints.map(function(p){ return '<div>- ' + p + '</div>'; }).join('')
       + '</div></div>'
-      + '
+      + '<div class="note">Next: call the seller, confirm lot details, then log it in Podio once numbers are final.</div>';
+  } catch (e) {
+    err.innerHTML = '<div class="err">Something went wrong. Try again.</div>';
+    out.innerHTML = '<div class="empty">Enter an address to start</div>';
+  } finally {
+    btn.disabled = false;
+    btn.textContent = 'Research';
+  }
+}
+
+function cp(t) {
+  navigator.clipboard.writeText(t);
+}
+
+document.getElementById('addr').addEventListener('keypress', function(e) {
+  if (e.key === 'Enter') run();
+});
+</script>
+</body>
+</html>
+      
