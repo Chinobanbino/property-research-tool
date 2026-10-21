@@ -1,6 +1,7 @@
 const express = require('express');
 const cors = require('cors');
 const fetch = require('node-fetch');
+const taxroll = require('./taxroll');
 
 const app = express();
 app.use(cors());
@@ -192,7 +193,7 @@ function detectCounty(coords) {
   return null;
 }
 
-function generateLeveragePoints(floodRisk) {
+function generateLeveragePoints(floodRisk, taxStatus) {
   const points = [];
   if (floodRisk === 'high') {
     points.push('HIGH FLOOD RISK - major negotiation leverage');
@@ -203,7 +204,17 @@ function generateLeveragePoints(floodRisk) {
   }
   points.push('Verify lot shape and topography in GIS');
   points.push('Confirm road access - check for landlocked');
-  points.push('Pull tax record for delinquencies');
+  if (taxStatus && taxStatus.delinquent) {
+    const r = taxStatus.record;
+    points.push('TAX DELINQUENT - $' + r.totalOwed.toLocaleString('en-US') + ' owed across ' + r.yearsOwed + ' year' + (r.yearsOwed === 1 ? '' : 's'));
+    if (r.deferral) points.push('Taxes deferred (over-65/disabled) - county cannot collect yet; balance is due at sale or death');
+    if (r.taxSuit) points.push('Tax suit on file with the county - foreclosure risk');
+    if (r.outOfStateOwner) points.push('Out-of-state owner (mails to ' + r.mailState + ') - likely absentee');
+  } else if (taxStatus && taxStatus.matchAttempted) {
+    points.push('Not on county delinquent tax list');
+  } else {
+    points.push('Pull tax record for delinquencies');
+  }
   return points;
 }
 
@@ -223,6 +234,10 @@ app.post('/api/research', async (req, res) => {
     const countyKey = detectCounty(coords);
     const countyConfig = countyKey ? COUNTY_CONFIG[countyKey] : null;
     const floodData = await checkFloodZone(coords.lat, coords.lon);
+    // An approximate geocode is a street or town, not the parcel, so don't claim a tax match.
+    const taxStatus = countyKey && taxroll.isSupported(countyKey) && !coords.approximate
+      ? taxroll.lookup(countyKey, coords.details.house_number, coords.details.road)
+      : null;
 
     res.json({
       success: true,
@@ -240,7 +255,8 @@ app.post('/api/research', async (req, res) => {
         bfe: floodData.bfe,
         inSFHA: floodData.inSFHA,
         floodRisk: floodData.floodRisk,
-        leveragePoints: generateLeveragePoints(floodData.floodRisk)
+        taxStatus: taxStatus,
+        leveragePoints: generateLeveragePoints(floodData.floodRisk, taxStatus)
       }
     });
   } catch (error) {
@@ -248,6 +264,39 @@ app.post('/api/research', async (req, res) => {
     res.status(500).json({ error: 'Error researching property. Try again.' });
   }
 });
+
+function csvCell(v) {
+  const s = v === null || v === undefined ? '' : String(v);
+  return /[",\n]/.test(s) ? '"' + s.replace(/"/g, '""') + '"' : s;
+}
+
+app.get('/api/delinquent.csv', (req, res) => {
+  const county = String(req.query.county || '').toLowerCase();
+  if (!taxroll.isSupported(county)) {
+    return res.status(400).json({ error: 'Bulk tax data is only available for dallas and tarrant' });
+  }
+  const leads = taxroll.filterLeads(county, {
+    minOwed: parseFloat(req.query.minOwed) || 0,
+    minYears: parseInt(req.query.minYears, 10) || 0,
+    zip: (req.query.zip || '').trim()
+  });
+  const header = ['Account', 'Owner', 'Property Address', 'Mailing Address', 'Mailing City', 'Mailing State', 'Mailing Zip', 'Total Owed', 'Years Owed', 'Tax Years', 'Tax Suit', 'Deferral', 'Out of State Owner', 'County'];
+  const countyName = taxroll.COUNTIES[county].name;
+  res.setHeader('Content-Type', 'text/csv');
+  res.setHeader('Content-Disposition', 'attachment; filename="delinquent-' + county + '.csv"');
+  res.write(header.join(',') + '\n');
+  for (const r of leads) {
+    res.write([r.account, r.owner, r.propertyAddress, r.mailingAddress, r.mailCity, r.mailState, r.mailZip,
+      r.totalOwed.toFixed(2), r.yearsOwed, r.years.join(' '), r.taxSuit ? 'Yes' : 'No', r.deferral ? 'Yes' : 'No', r.outOfStateOwner ? 'Yes' : 'No', countyName].map(csvCell).join(',') + '\n');
+  }
+  res.end();
+});
+
+app.get('/api/taxroll/status', (req, res) => {
+  res.json(taxroll.status());
+});
+
+taxroll.start();
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
