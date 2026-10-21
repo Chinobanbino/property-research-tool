@@ -207,6 +207,8 @@ function generateLeveragePoints(floodRisk, taxStatus) {
   if (taxStatus && taxStatus.delinquent) {
     const r = taxStatus.record;
     points.push('TAX DELINQUENT - $' + r.totalOwed.toLocaleString('en-US') + ' owed across ' + r.yearsOwed + ' year' + (r.yearsOwed === 1 ? '' : 's'));
+    if (r.deferral) points.push('Taxes deferred (over-65/disabled) - county cannot collect yet; balance is due at sale or death');
+    if (r.taxSuit) points.push('Tax suit on file with the county - foreclosure risk');
     if (r.outOfStateOwner) points.push('Out-of-state owner (mails to ' + r.mailState + ') - likely absentee');
   } else if (taxStatus && taxStatus.matchAttempted) {
     points.push('Not on county delinquent tax list');
@@ -278,14 +280,14 @@ app.get('/api/delinquent.csv', (req, res) => {
     minYears: parseInt(req.query.minYears, 10) || 0,
     zip: (req.query.zip || '').trim()
   });
-  const header = ['Account', 'Owner', 'Property Address', 'Property Zip', 'Mailing Address', 'Mailing City', 'Mailing State', 'Mailing Zip', 'Total Owed', 'Years Owed', 'Tax Years', 'Out of State Owner', 'County'];
+  const header = ['Account', 'Owner', 'Property Address', 'Mailing Address', 'Mailing City', 'Mailing State', 'Mailing Zip', 'Total Owed', 'Years Owed', 'Tax Years', 'Tax Suit', 'Deferral', 'Out of State Owner', 'County'];
   const countyName = taxroll.COUNTIES[county].name;
   res.setHeader('Content-Type', 'text/csv');
   res.setHeader('Content-Disposition', 'attachment; filename="delinquent-' + county + '.csv"');
   res.write(header.join(',') + '\n');
   for (const r of leads) {
-    res.write([r.account, r.owner, r.propertyAddress, r.propertyZip, r.mailingAddress, r.mailCity, r.mailState, r.mailZip,
-      r.totalOwed.toFixed(2), r.yearsOwed, r.years.join(' '), r.outOfStateOwner ? 'Yes' : 'No', countyName].map(csvCell).join(',') + '\n');
+    res.write([r.account, r.owner, r.propertyAddress, r.mailingAddress, r.mailCity, r.mailState, r.mailZip,
+      r.totalOwed.toFixed(2), r.yearsOwed, r.years.join(' '), r.taxSuit ? 'Yes' : 'No', r.deferral ? 'Yes' : 'No', r.outOfStateOwner ? 'Yes' : 'No', countyName].map(csvCell).join(',') + '\n');
   }
   res.end();
 });

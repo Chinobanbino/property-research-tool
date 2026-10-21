@@ -56,7 +56,7 @@ h1 { font-size:26px; margin-bottom:4px; }
 <select id="lcounty"><option value="dallas">Dallas</option><option value="tarrant">Tarrant</option></select>
 <input type="number" id="lowed" placeholder="Min owed $" min="0" />
 <input type="number" id="lyears" placeholder="Min years" min="0" />
-<input type="text" id="lzip" placeholder="Zip (optional)" />
+<input type="text" id="lzip" placeholder="Owner mailing zip" />
 <button onclick="downloadLeads()">Download CSV</button>
 <div class="lbl" id="lstatus"></div>
 </div>
@@ -122,7 +122,10 @@ async function run() {
       taxCard = '<span class="pill hi">Delinquent - $' + rec.totalOwed.toLocaleString('en-US') + ' / ' + rec.yearsOwed + ' yr' + (rec.yearsOwed === 1 ? '' : 's') + '</span>'
         + '<div class="lbl">Owner</div><div class="val">' + rec.owner + '</div>'
         + '<div class="lbl">Mailing address</div><div class="val">' + rec.mailingAddress + ' ' + rec.mailCity + ' ' + rec.mailState + ' ' + rec.mailZip + '</div>'
-        + '<div class="lbl">Account / tax years</div><div class="val">' + rec.account + ' / ' + rec.years.join(', ') + '</div>';
+        + '<div class="lbl">Account / tax years</div><div class="val">' + rec.account + ' / ' + rec.years.join(', ') + '</div>'
+        + (rec.taxSuit ? '<div class="lbl">Tax suit</div><div class="val">Yes - county has sued for back taxes</div>' : '')
+        + (rec.deferral ? '<div class="lbl">Deferral</div><div class="val">Yes - over-65/disabled deferral, not collectible yet</div>' : '')
+        + '<div class="lbl">' + t.amountNote + '</div>';
     } else {
       taxCard = '<span class="pill lo">Current</span><div class="lbl">Not on the county delinquent list</div>';
     }

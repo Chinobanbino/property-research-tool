@@ -2,27 +2,32 @@ const fetch = require('node-fetch');
 const readline = require('readline');
 const unzipper = require('unzipper');
 
-// Field positions are 1-based [start, length], copied from each county's
-// published record layout. A county stays disabled until its layout is filled
-// in -- guessed positions would silently produce wrong leads.
-//   Dallas:  TRW-02 "Tax Roll (TRW) File Layout" (dallascounty.org/departments/tax/tax-roll.php)
-//   Tarrant: "Tax Roll Record Definition Layout" (tarrantcountytx.gov tax roll page)
-// Required fields: account, taxYear, amountDue, dueDate, situsNum, situsStreet.
-// Optional: owner, mail1, mail2, mailCity, mailState, mailZip, situsZip.
+// Each county posts a weekly zip whose filename changes every week, so the
+// current link is scraped from the county's tax roll page unless overridden.
+//
+// Field positions (0-based offsets below) come from the county layouts, checked
+// against the 10/2026 files:
+//   Dallas:  TRW-02 "2026 Tax Roll (TRW) File Layout". One row per account/year/jurisdiction.
+//   Tarrant: "Taxroll Record Definition" (10/2017). Master.dat has grown to 782 bytes since
+//            then, so everything after the owner name sits 40-50 bytes later than published.
 const COUNTIES = {
   dallas: {
     name: 'Dallas County',
+    pageUrl: 'https://www.dallascounty.org/departments/tax/tax-roll.php',
+    linkPattern: /[^"'\s]*trwfile\.\d+\.zip/i,
     url: process.env.DALLAS_TRW_URL || null,
-    layout: null
+    amountNote: 'Total due incl. penalty & interest',
+    createParser: createDallasParser
   },
   tarrant: {
     name: 'Tarrant County',
+    pageUrl: 'https://www.tarrantcountytx.gov/en/tax/property-tax/tarrant-county-tax-roll.html',
+    linkPattern: /[^"'\s]*TaxRoll\d{8}\.zip/i,
     url: process.env.TARRANT_ROLL_URL || null,
-    layout: null
+    amountNote: 'Base tax due, before penalty & interest',
+    createParser: createTarrantParser
   }
 };
-
-const REQUIRED_FIELDS = ['account', 'taxYear', 'amountDue', 'dueDate', 'situsNum', 'situsStreet'];
 
 const SUFFIXES = {
   STREET: 'ST', ST: 'ST', AVENUE: 'AVE', AVE: 'AVE', AV: 'AVE', ROAD: 'RD', RD: 'RD',
@@ -37,164 +42,222 @@ const DIRECTIONS = {
 };
 
 // "1234 N. Main Street" and "1234 MAIN ST" both become "1234 MAIN".
-// Directionals and suffixes are dropped because counties and OSM disagree on them.
+// A leading directional and trailing street suffix are dropped because counties
+// and OSM disagree on them, but never the last remaining word ("101 East Pl" -> "101 EAST").
 function addressKey(houseNumber, street) {
   const num = String(houseNumber || '').trim().replace(/^0+/, '').toUpperCase();
   const words = String(street || '')
     .toUpperCase()
     .replace(/[.,#]/g, ' ')
     .split(/\s+/)
-    .filter(Boolean)
-    .filter(function(w) { return !DIRECTIONS[w] && !SUFFIXES[w]; });
+    .filter(Boolean);
+  while (words.length > 1 && SUFFIXES[words[words.length - 1]]) words.pop();
+  if (words.length > 1 && DIRECTIONS[words[0]]) words.shift();
   if (!num || words.length === 0) return null;
   return num + ' ' + words.join(' ');
 }
 
-function field(line, layout, name) {
-  const pos = layout.fields[name];
-  if (!pos) return '';
-  return line.substr(pos[0] - 1, pos[1]).trim();
+// V8 keeps a substring pointing at its whole parent line, so values that are
+// stored copy into a fresh string; otherwise every kept field pins a 500-800 byte row.
+function cut(line, start, length) {
+  return Buffer.from(line.substr(start, length).trim(), 'latin1').toString('latin1');
 }
 
-function parseDate(raw, format) {
-  const digits = raw.replace(/\D/g, '');
-  if (digits.length !== 8 || /^0+$/.test(digits)) return null;
-  let y, m, d;
-  if (format === 'MMDDYYYY') {
-    m = digits.slice(0, 2); d = digits.slice(2, 4); y = digits.slice(4);
-  } else {
-    y = digits.slice(0, 4); m = digits.slice(4, 6); d = digits.slice(6);
+function joinParts(parts) {
+  return parts.filter(Boolean).join(' ').replace(/\s+/g, ' ').trim();
+}
+
+// MM/DD/YYYY -> YYYYMMDD so dates compare as strings.
+function mdyToYmd(raw) {
+  const m = raw.match(/^(\d{2})\/(\d{2})\/(\d{4})$/);
+  return m ? m[3] + m[1] + m[2] : '';
+}
+
+function ymd(date) {
+  return date.toISOString().slice(0, 10).replace(/-/g, '');
+}
+
+function newLead(account) {
+  return {
+    account: account,
+    owner: '',
+    mailingAddress: '',
+    mailCity: '',
+    mailState: '',
+    mailZip: '',
+    propertyAddress: '',
+    key: null,
+    totalOwed: 0,
+    years: [],
+    taxSuit: false,
+    deferral: false
+  };
+}
+
+function addYear(lead, year) {
+  if (year && !lead.years.includes(year)) lead.years.push(year);
+}
+
+// Dallas TRW: delinquent when DUE-DATE has passed and TOT_AMT_DUE is still owed.
+// Only real property, commercial and mobile home rolls; business personal property is not a house lead.
+function createDallasParser(today) {
+  const todayYmd = ymd(today);
+  const leads = new Map();
+  return {
+    entries: [{
+      match: /flat404/i,
+      onLine: function(line) {
+        if ('RCM'.indexOf(line.charAt(439)) === -1) return;
+        if (cut(line, 100, 8) >= todayYmd) return;
+        const owed = (parseInt(line.substr(489, 11), 10) || 0) / 100;
+        if (owed <= 0) return;
+        const account = cut(line, 0, 34);
+        let lead = leads.get(account);
+        if (!lead) {
+          lead = newLead(account);
+          const num = cut(line, 440, 8);
+          // PARCEL NAME is "STREET, CITY-CODE" (e.g. "BROOKVIEW DR, DA").
+          const street = cut(line, 448, 40).replace(/,[^,]*$/, '').trim();
+          lead.owner = cut(line, 225, 40);
+          lead.mailingAddress = joinParts([cut(line, 265, 40), cut(line, 305, 40), cut(line, 345, 40)]);
+          lead.mailCity = cut(line, 385, 40);
+          lead.mailState = cut(line, 425, 2);
+          lead.mailZip = cut(line, 427, 12).slice(0, 5);
+          lead.propertyAddress = joinParts([num, street]);
+          lead.key = addressKey(num, street);
+          leads.set(account, lead);
+        }
+        lead.totalOwed += owed;
+        addYear(lead, parseInt(line.substr(34, 4), 10));
+        if (line.charAt(121) !== ' ') lead.taxSuit = true;
+        if (line.charAt(218) === 'D') lead.deferral = true;
+      }
+    }],
+    finish: function() { return Array.from(leads.values()); }
+  };
+}
+
+// Tarrant: Rec.DAT (one row per account/year/unit/charge) says what is past due;
+// Master.dat (one row per account) supplies owner and property address.
+// The zip stores Rec.DAT first, so delinquent accounts are known before Master is read.
+function createTarrantParser(today) {
+  const todayYmd = ymd(today);
+  const leads = new Map();
+  let recSeen = false;
+  return {
+    entries: [{
+      match: /^rec\.dat$/i,
+      onLine: function(line) {
+        recSeen = true;
+        const due = parseFloat(line.substr(78, 12)) || 0;
+        if (due <= 0) return;
+        const delinquent = mdyToYmd(cut(line, 90, 10));
+        if (!delinquent || delinquent > todayYmd) return;
+        const account = cut(line, 0, 11);
+        let lead = leads.get(account);
+        if (!lead) {
+          lead = newLead(account);
+          leads.set(account, lead);
+        }
+        lead.totalOwed += due;
+        addYear(lead, parseInt(line.substr(30, 4), 10));
+        if (cut(line, 120, 18) || mdyToYmd(cut(line, 110, 10)) < '99990101') lead.taxSuit = true;
+      }
+    }, {
+      match: /^master\.dat$/i,
+      onLine: function(line) {
+        if (!recSeen) throw new Error('Tarrant zip: Master.dat came before Rec.DAT');
+        const lead = leads.get(cut(line, 0, 11));
+        if (!lead) return;
+        const num = cut(line, 223, 7).replace(/^0+/, '');
+        const street = cut(line, 198, 25);
+        lead.owner = cut(line, 326, 50);
+        lead.mailingAddress = joinParts([cut(line, 376, 50), cut(line, 426, 60)]);
+        lead.mailCity = cut(line, 486, 30);
+        lead.mailState = cut(line, 516, 20);
+        lead.mailZip = cut(line, 536, 18).slice(0, 5);
+        lead.propertyAddress = joinParts([num, street]);
+        lead.key = addressKey(num, street);
+        // Over-65/disabled deferral: start date set, end date open or in the future.
+        const deferStart = cut(line, 554, 10);
+        const deferEnd = mdyToYmd(cut(line, 564, 10));
+        if (deferStart !== '01/01/9999' && (deferEnd === '99990101' || deferEnd > todayYmd)) lead.deferral = true;
+      }
+    }],
+    finish: function() { return Array.from(leads.values()); }
+  };
+}
+
+// Accounts without a property address (mineral interests, business personal
+// property) are not house leads, so they are left out.
+function indexLeads(leads) {
+  const list = [];
+  const byAddress = new Map();
+  for (const lead of leads) {
+    if (!lead.propertyAddress) continue;
+    lead.totalOwed = Math.round(lead.totalOwed * 100) / 100;
+    lead.years.sort();
+    lead.yearsOwed = lead.years.length;
+    lead.outOfStateOwner = Boolean(lead.mailState) && !/^(TX|TEXAS)$/i.test(lead.mailState);
+    list.push(lead);
+    if (lead.key) byAddress.set(lead.key, lead);
   }
-  const date = new Date(Date.UTC(+y, +m - 1, +d));
-  return isNaN(date) ? null : date;
+  list.sort(function(a, b) { return b.totalOwed - a.totalOwed; });
+  return { list: list, byAddress: byAddress };
 }
 
-function parseAmount(raw, impliedDecimals) {
-  const negative = /-/.test(raw);
-  const cleaned = raw.replace(/[^\d.]/g, '');
-  if (!cleaned) return 0;
-  let value = cleaned.includes('.') ? parseFloat(cleaned) : parseInt(cleaned, 10) / Math.pow(10, impliedDecimals || 0);
-  return negative ? -value : value;
-}
-
-function parseLine(line, layout) {
-  return {
-    account: field(line, layout, 'account'),
-    owner: field(line, layout, 'owner'),
-    mail1: field(line, layout, 'mail1'),
-    mail2: field(line, layout, 'mail2'),
-    mailCity: field(line, layout, 'mailCity'),
-    mailState: field(line, layout, 'mailState'),
-    mailZip: field(line, layout, 'mailZip'),
-    situsNum: field(line, layout, 'situsNum'),
-    situsStreet: field(line, layout, 'situsStreet'),
-    situsZip: field(line, layout, 'situsZip'),
-    taxYear: parseInt(field(line, layout, 'taxYear'), 10) || null,
-    amountDue: parseAmount(field(line, layout, 'amountDue'), layout.amountImpliedDecimals),
-    dueDate: parseDate(field(line, layout, 'dueDate'), layout.dateFormat)
-  };
-}
-
-function isDelinquent(row, today) {
-  return row.amountDue > 0 && row.dueDate !== null && row.dueDate < today;
-}
-
-// Folds delinquent rows (one per account per tax year) into one lead per account.
-function createAccumulator() {
-  const accounts = new Map();
-  return {
-    add: function(row) {
-      let acct = accounts.get(row.account);
-      if (!acct) {
-        acct = {
-          account: row.account,
-          owner: row.owner,
-          mailingAddress: [row.mail1, row.mail2].filter(Boolean).join(' '),
-          mailCity: row.mailCity,
-          mailState: row.mailState,
-          mailZip: row.mailZip,
-          propertyAddress: [row.situsNum, row.situsStreet].filter(Boolean).join(' '),
-          propertyZip: row.situsZip,
-          key: addressKey(row.situsNum, row.situsStreet),
-          totalOwed: 0,
-          years: []
-        };
-        accounts.set(row.account, acct);
-      }
-      acct.totalOwed += row.amountDue;
-      if (row.taxYear && !acct.years.includes(row.taxYear)) acct.years.push(row.taxYear);
-    },
-    finish: function() {
-      const list = [];
-      const byAddress = new Map();
-      for (const acct of accounts.values()) {
-        acct.totalOwed = Math.round(acct.totalOwed * 100) / 100;
-        acct.years.sort();
-        acct.yearsOwed = acct.years.length;
-        acct.outOfStateOwner = Boolean(acct.mailState) && acct.mailState.toUpperCase() !== 'TX';
-        list.push(acct);
-        if (acct.key) byAddress.set(acct.key, acct);
-      }
-      list.sort(function(a, b) { return b.totalOwed - a.totalOwed; });
-      return { list: list, byAddress: byAddress };
-    }
-  };
-}
-
-async function openLineStream(url, isZip) {
-  const response = await fetch(url);
-  if (!response.ok) throw new Error('Download failed: HTTP ' + response.status);
-  let stream = response.body;
-  if (isZip) stream = response.body.pipe(unzipper.ParseOne());
-  return readline.createInterface({ input: stream, crlfDelay: Infinity });
-}
-
-// Builds a delinquent-only index from any async iterable of lines.
-async function buildIndex(lines, layout, today) {
-  const acc = createAccumulator();
+// Feeds every line of each matching zip entry to its parser; other entries are skipped.
+async function parseZipStream(stream, parser) {
   let scanned = 0;
-  for await (const line of lines) {
-    if (!line.trim()) continue;
-    scanned++;
-    const row = parseLine(line, layout);
-    if (row.account && isDelinquent(row, today)) acc.add(row);
+  const zip = stream.pipe(unzipper.Parse({ forceStream: true }));
+  for await (const entry of zip) {
+    const name = entry.path.split('/').pop();
+    const handler = parser.entries.find(function(e) { return e.match.test(name); });
+    if (!handler) { entry.autodrain(); continue; }
+    const lines = readline.createInterface({ input: entry, crlfDelay: Infinity });
+    for await (const line of lines) {
+      if (!line) continue;
+      scanned++;
+      handler.onLine(line);
+    }
   }
-  const result = acc.finish();
-  result.scanned = scanned;
-  return result;
+  return scanned;
+}
+
+async function resolveUrl(county) {
+  if (county.url) return county.url;
+  const response = await fetch(county.pageUrl);
+  if (!response.ok) throw new Error('Tax roll page: HTTP ' + response.status);
+  const match = (await response.text()).match(county.linkPattern);
+  if (!match) throw new Error('No tax roll download link found on ' + county.pageUrl);
+  return new URL(match[0].replace(/^href=/i, ''), county.pageUrl).toString();
 }
 
 const state = {};
 for (const key of Object.keys(COUNTIES)) {
-  state[key] = { loadedAt: null, scanned: 0, list: [], byAddress: new Map(), error: null, loading: false };
-}
-
-function configProblem(county) {
-  if (!county.layout) return 'Record layout not configured yet';
-  const missing = REQUIRED_FIELDS.filter(function(f) { return !county.layout.fields[f]; });
-  if (missing.length) return 'Layout missing fields: ' + missing.join(', ');
-  if (!county.url) return 'Download URL not configured';
-  return null;
+  state[key] = { loadedAt: null, sourceUrl: null, scanned: 0, list: [], byAddress: new Map(), error: null, loading: false };
 }
 
 async function loadCounty(key) {
   const county = COUNTIES[key];
   const s = state[key];
-  const problem = configProblem(county);
-  if (problem) { s.error = problem; return; }
   if (s.loading) return;
   s.loading = true;
   try {
-    const isZip = county.layout.zip || /\.zip(\?|$)/i.test(county.url);
-    const lines = await openLineStream(county.url, isZip);
-    const result = await buildIndex(lines, county.layout, new Date());
+    const url = await resolveUrl(county);
+    const response = await fetch(url);
+    if (!response.ok) throw new Error('Download failed: HTTP ' + response.status);
+    const parser = county.createParser(new Date());
+    const scanned = await parseZipStream(response.body, parser);
+    const result = indexLeads(parser.finish());
     // Swap in only after a full successful parse, so a failed refresh keeps the last good data.
     s.list = result.list;
     s.byAddress = result.byAddress;
-    s.scanned = result.scanned;
+    s.scanned = scanned;
+    s.sourceUrl = url;
     s.loadedAt = new Date();
     s.error = null;
-    console.log(county.name + ' tax roll loaded: ' + result.list.length + ' delinquent accounts of ' + result.scanned + ' rows');
+    console.log(county.name + ' tax roll loaded: ' + result.list.length + ' delinquent accounts from ' + scanned + ' rows');
   } catch (error) {
     s.error = error.message;
     console.error(county.name + ' tax roll error:', error);
@@ -203,8 +266,9 @@ async function loadCounty(key) {
   }
 }
 
-function loadAll() {
-  return Promise.all(Object.keys(COUNTIES).map(loadCounty));
+// Load one county at a time to keep peak memory and bandwidth down on small hosts.
+async function loadAll() {
+  for (const key of Object.keys(COUNTIES)) await loadCounty(key);
 }
 
 // Rolls are posted Monday after the Friday build; refresh Monday 3pm Central (20:00 UTC).
@@ -224,6 +288,7 @@ function scheduleRefresh() {
 }
 
 function start() {
+  if (process.env.TAXROLL_DISABLED === '1') return;
   loadAll();
   scheduleRefresh();
 }
@@ -235,9 +300,9 @@ function isSupported(key) {
 function lookup(key, houseNumber, street) {
   const s = state[key];
   if (!s) return null;
-  const base = { county: COUNTIES[key].name, dataAsOf: s.loadedAt };
+  const base = { county: COUNTIES[key].name, dataAsOf: s.loadedAt, amountNote: COUNTIES[key].amountNote };
   if (!s.loadedAt) {
-    return Object.assign(base, { available: false, reason: s.error || configProblem(COUNTIES[key]) || 'Tax roll still loading' });
+    return Object.assign(base, { available: false, reason: s.error || 'Tax roll still loading' });
   }
   const k = addressKey(houseNumber, street);
   if (!k) {
@@ -256,7 +321,8 @@ function filterLeads(key, opts) {
   return s.list.filter(function(r) {
     if (r.totalOwed < minOwed) return false;
     if (r.yearsOwed < minYears) return false;
-    if (opts.zip && !String(r.propertyZip).startsWith(opts.zip)) return false;
+    // Neither county file carries a property zip, so this filters on the owner's mailing zip.
+    if (opts.zip && !String(r.mailZip).startsWith(opts.zip)) return false;
     return true;
   });
 }
@@ -268,8 +334,10 @@ function status() {
     out[key] = {
       county: COUNTIES[key].name,
       loadedAt: s.loadedAt,
+      sourceUrl: s.sourceUrl,
       rowsScanned: s.scanned,
       delinquentAccounts: s.list.length,
+      amountNote: COUNTIES[key].amountNote,
       loading: s.loading,
       error: s.error
     };
@@ -280,9 +348,10 @@ function status() {
 module.exports = {
   COUNTIES: COUNTIES,
   addressKey: addressKey,
-  parseLine: parseLine,
-  isDelinquent: isDelinquent,
-  buildIndex: buildIndex,
+  createDallasParser: createDallasParser,
+  createTarrantParser: createTarrantParser,
+  indexLeads: indexLeads,
+  parseZipStream: parseZipStream,
   msUntilNextRefresh: msUntilNextRefresh,
   start: start,
   isSupported: isSupported,
