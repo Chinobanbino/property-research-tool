@@ -39,6 +39,7 @@ PRIVACY = {
 </ul>
 <h2>Who helps us run FeeArmor</h2>
 <p>We use a small number of service providers to run this website and store data (for example, our hosting and database provider), and, when we start sending emails, an email delivery service. They may only use your information to provide their service to us.</p>
+<p><b>Our team includes contractors who work outside the United States.</b> They may see your bills and account details so they can call your providers for you. They work under written confidentiality agreements, only through our access-controlled systems, and never ask for your passwords.</p>
 <h2>Texts</h2>
 <p>We send texts only if you checked the box agreeing to them. Up to 4 messages a month. Reply STOP to stop at any time. Consent is not required to use FeeArmor.</p>
 <h2>Security and how long we keep it</h2>
@@ -80,6 +81,7 @@ PRIVACY = {
 </ul>
 <h2>Quién nos ayuda a operar FeeArmor</h2>
 <p>Usamos pocos proveedores de servicio para operar este sitio y guardar datos (por ejemplo, nuestro proveedor de hospedaje y base de datos) y, cuando empecemos a enviar correos, un servicio de envío de correo. Solo pueden usar su información para darnos su servicio.</p>
+<p><b>Nuestro equipo incluye contratistas que trabajan fuera de Estados Unidos.</b> Pueden ver sus facturas y los datos de sus cuentas para llamar a sus compañías por usted. Trabajan bajo acuerdos de confidencialidad por escrito, solo a través de nuestros sistemas con acceso controlado, y nunca le piden sus contraseñas.</p>
 <h2>Mensajes de texto</h2>
 <p>Solo enviamos mensajes de texto si usted marcó la casilla para recibirlos. Hasta 4 mensajes al mes. Responda STOP para dejar de recibirlos en cualquier momento. No se necesita este permiso para usar FeeArmor.</p>
 <h2>Seguridad y cuánto tiempo la guardamos</h2>
