@@ -1,0 +1,19 @@
+{
+  "name": "feearmor-site",
+  "version": "1.0.0",
+  "private": true,
+  "description": "FeeArmor website: English + Spanish pages, waitlist signup, blog",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "dependencies": {
+    "compression": "^1.7.4",
+    "dotenv": "^16.4.5",
+    "express": "^4.21.2",
+    "pg": "^8.13.1"
+  }
+}
