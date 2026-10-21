@@ -38,12 +38,8 @@ PART C: CHECK
 3. Report back: the Railway *.up.railway.app address, the DNS records you added, the forwarding setting, and whether https://www.feearmor.com loads. Never include the ADMIN_TOKEN.
 ```
 
-### Optional: a working hello@feearmor.com inbox (free forwarding)
-The site lists hello@feearmor.com. To have it forward to your Gmail, run this in Claude in Chrome after Part B:
-
-```
-Set up free email forwarding for hello@feearmor.com to my Gmail using ImprovMX (improvmx.com). Sign up with my Gmail (hand me the sign-in). Add the domain feearmor.com, create the alias "hello" forwarding to my Gmail, then in GoDaddy DNS for feearmor.com add exactly the MX and TXT (SPF) records ImprovMX shows. Only add those records; don't delete any others. Wait until ImprovMX shows the domain as verified, then tell me.
-```
+### Email
+The site lists **support@feearmor.com** (help@feearmor.com is also mentioned in the privacy pages). Gio is setting up both inboxes. Make sure the email provider's MX and TXT records are added in GoDaddy DNS alongside the Railway records, and don't delete them later.
 
 ## Step 7: After it's live (5-minute phone check)
 
@@ -58,7 +54,7 @@ Set up free email forwarding for hello@feearmor.com to my Gmail using ImprovMX (
 - [ ] Signup works on your phone, and your row is in the CSV
 - [ ] The QR codes in the Bill Rescue PDF open feearmor.com/rescue
 - [ ] Your Spanish-speaking VA has read /es and the Spanish blog posts
-- [ ] hello@feearmor.com forwards to you (optional ImprovMX step)
+- [ ] support@feearmor.com and help@feearmor.com receive mail (send a test to each)
 - [ ] Add the site to Google Search Console and submit https://www.feearmor.com/sitemap.xml
 
 ## UTM links per channel

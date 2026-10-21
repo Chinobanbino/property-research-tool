@@ -115,7 +115,7 @@ If you give us false information, or sign up for an account you're not allowed t
 - **Texts:** we send texts only if you separately agreed to them. Reply STOP to end texts anytime.
 
 ### 15. Disputes
-- Please contact us first at [CONFIRM: support email]. Most issues can be fixed in a few days.
+- Please contact us first at support@feearmor.com. Most issues can be fixed in a few days.
 - This agreement follows Texas law.
 - Either of us may bring a claim in justice court (small claims) in the county where you live. [ATTORNEY: decide whether to add arbitration.]
 
@@ -152,7 +152,7 @@ We may update these terms. We'll email you at least 30 days before a change take
 - You can't transfer this agreement to someone else. We may transfer it if FeeArmor is sold or merged, and we'll tell you if that happens.
 
 ### 23. Contact
-[CONFIRM: legal entity name], [CONFIRM: mailing address], [CONFIRM: support email], [CONFIRM: phone]. Hablamos español.
+[CONFIRM: legal entity name], [CONFIRM: mailing address], support@feearmor.com, [CONFIRM: phone]. Hablamos español.
 
 **Customer:** ______________________ **Date:** __________
 **Payment option:** ☐ Pay the fee at once  ☐ Split into 3 monthly payments
