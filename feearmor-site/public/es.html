@@ -20,218 +20,27 @@
 <meta name="twitter:description" content="Encontramos los cargos escondidos en sus facturas y luchamos para quitarlos. Todo en español.">
 <meta name="twitter:image" content="https://www.feearmor.com/og-image.png">
 <meta name="theme-color" content="#0B1120">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z' fill='%231F2937' stroke='%23A3E635' stroke-width='2' stroke-linejoin='round'/%3E%3Cpath d='M8 11l3 3 5-6' fill='none' stroke='%23A3E635' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+<link rel="icon" href="/logo.svg" type="image/svg+xml">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "Organization",
   "name": "FeeArmor",
   "url": "https://www.feearmor.com/",
-  "slogan": "Defend your wallet against hidden fees."
+  "slogan": "Put an armor around your wallet."
 }
 </script>
-<style>
-  :root {
-    --bg: #0B1120;
-    --surface: #111827;
-    --surface-2: #1F2937;
-    --border: #273244;
-    --text: #F9FAFB;
-    --muted: #9CA3AF;
-    --lime: #A3E635;
-    --lime-hover: #BEF264;
-    --on-lime: #0B1120;
-    --error: #F87171;
-    --radius: 14px;
-  }
-  *, *::before, *::after { box-sizing: border-box; }
-  html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
-  body {
-    margin: 0;
-    background: var(--bg);
-    color: var(--text);
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-    font-size: 17px;
-    line-height: 1.6;
-    overflow-x: hidden;
-  }
-  a { color: var(--lime); }
-  a:focus-visible, button:focus-visible, input:focus-visible, summary:focus-visible {
-    outline: 3px solid var(--lime); outline-offset: 2px;
-  }
-  .wrap { max-width: 720px; margin: 0 auto; padding: 0 24px; }
-  section { padding: 56px 0; }
-  section + section { border-top: 1px solid var(--border); }
-  h1, h2, h3 { line-height: 1.2; margin: 0 0 16px; letter-spacing: -0.01em; }
-  h1 { font-size: clamp(34px, 8vw, 54px); font-weight: 800; }
-  h2 { font-size: clamp(26px, 6vw, 36px); font-weight: 800; }
-  h3 { font-size: 20px; font-weight: 700; }
-  p { margin: 0 0 16px; }
-  .muted { color: var(--muted); }
-  .eyebrow { color: var(--lime); font-size: 14px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; margin-bottom: 8px; }
-  .lime { color: var(--lime); }
-
-  /* Header */
-  header {
-    position: sticky; top: 0; z-index: 50;
-    background: rgba(11,17,32,.92);
-    backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
-    border-bottom: 1px solid var(--border);
-  }
-  header .wrap { display: flex; align-items: center; justify-content: space-between; height: 64px; max-width: 1120px; }
-  .wordmark { display: flex; align-items: center; gap: 10px; font-size: 22px; font-weight: 800; color: var(--text); text-decoration: none; }
-  .wordmark svg { width: 28px; height: 28px; }
-
-  /* Buttons */
-  .btn {
-    display: inline-flex; align-items: center; justify-content: center; gap: 8px;
-    min-height: 52px; padding: 0 24px;
-    background: var(--lime); color: var(--on-lime);
-    border: 0; border-radius: 12px;
-    font: inherit; font-weight: 800; font-size: 17px; text-decoration: none; cursor: pointer;
-    transition: background .15s, transform .15s;
-  }
-  .btn:hover { background: var(--lime-hover); transform: translateY(-1px); }
-  .btn[disabled] { opacity: .7; cursor: wait; transform: none; }
-  .btn-sm { min-height: 44px; padding: 0 16px; font-size: 15px; }
-  .btn-block { width: 100%; }
-
-  /* Hero */
-  .hero { padding-top: 40px; position: relative; overflow: hidden; isolation: isolate; }
-  .hero::before {
-    content: ""; position: absolute; top: -80px; left: 50%; width: 420px; height: 420px; transform: translateX(-50%);
-    background: radial-gradient(circle, rgba(163,230,53,.18), transparent 65%); pointer-events: none; z-index: -1;
-  }
-  .hero-grid { display: grid; gap: 40px; }
-  .hero .sub { font-size: 19px; color: var(--muted); }
-  .hero .note { font-size: 15px; color: var(--muted); margin-top: 12px; }
-
-  /* Example card */
-  .card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 20px; }
-  .example-tag { display: inline-block; font-size: 12px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: var(--muted); border: 1px solid var(--border); border-radius: 999px; padding: 2px 10px; margin-bottom: 14px; }
-  .example-head { display: flex; justify-content: space-between; align-items: baseline; border-bottom: 1px solid var(--border); padding-bottom: 14px; margin-bottom: 14px; }
-  .example-head strong { font-size: 26px; }
-  .row { display: flex; justify-content: space-between; gap: 12px; padding: 12px 14px; background: var(--bg); border: 1px solid var(--border); border-radius: 10px; margin-bottom: 10px; }
-  .row:last-child { margin-bottom: 0; }
-  .row b { display: block; font-size: 15px; }
-  .row span { font-size: 14px; color: var(--muted); }
-  .row .amt { color: var(--lime); font-weight: 800; white-space: nowrap; font-size: 15px; }
-
-  /* Fee chips */
-  .chips { display: flex; flex-wrap: wrap; gap: 10px; padding: 0; margin: 24px 0 0; list-style: none; }
-  .chips li { background: var(--surface); border: 1px solid var(--border); border-radius: 999px; padding: 8px 14px; font-size: 15px; }
-
-  /* Steps */
-  .steps { display: grid; gap: 16px; margin-top: 24px; }
-  .step-num { display: inline-flex; width: 36px; height: 36px; border-radius: 10px; align-items: center; justify-content: center; background: rgba(163,230,53,.12); color: var(--lime); font-weight: 800; margin-bottom: 12px; }
-  .step p { color: var(--muted); margin: 0; }
-
-  /* Pricing */
-  .price-card { border-color: rgba(163,230,53,.4); text-align: center; padding: 32px 24px; }
-  .price-big { font-size: 40px; font-weight: 800; color: var(--lime); line-height: 1.1; margin-bottom: 8px; }
-
-  /* Form */
-  form { display: grid; gap: 14px; margin-top: 24px; }
-  label { font-weight: 600; font-size: 15px; display: block; margin-bottom: 6px; }
-  input[type=text], input[type=email] {
-    width: 100%; min-height: 52px; padding: 0 16px;
-    background: var(--bg); color: var(--text);
-    border: 1px solid var(--border); border-radius: 12px;
-    font: inherit; font-size: 17px;
-  }
-  input::placeholder { color: #6B7280; }
-  .hp { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
-  .small { font-size: 14px; color: var(--muted); }
-  .form-error { color: var(--error); font-size: 15px; margin: 0; }
-  .success { text-align: center; padding: 8px 0; }
-  .success .check { width: 56px; height: 56px; border-radius: 50%; background: rgba(163,230,53,.15); display: inline-flex; align-items: center; justify-content: center; margin-bottom: 12px; }
-
-  /* FAQ */
-  details { border-bottom: 1px solid var(--border); }
-  summary { cursor: pointer; list-style: none; padding: 18px 32px 18px 0; font-weight: 700; position: relative; min-height: 44px; }
-  summary::-webkit-details-marker { display: none; }
-  summary::after { content: "+"; position: absolute; right: 4px; top: 14px; font-size: 24px; color: var(--lime); font-weight: 400; }
-  details[open] summary::after { content: "–"; }
-  details p { color: var(--muted); padding-bottom: 8px; }
-
-  /* Footer */
-  footer { border-top: 1px solid var(--border); padding: 40px 0; font-size: 15px; color: var(--muted); }
-  footer .wrap { display: grid; gap: 16px; }
-  footer nav { display: flex; flex-wrap: wrap; gap: 20px; }
-  footer a { color: var(--muted); text-decoration: none; min-height: 44px; display: inline-flex; align-items: center; }
-  footer a:hover { color: var(--text); }
-
-  @media (min-width: 960px) {
-    .hero .wrap { max-width: 1120px; }
-    .hero-grid { grid-template-columns: 1.1fr 1fr; align-items: center; gap: 64px; }
-    .hero { padding: 88px 0 72px; }
-    .hero .btn { width: auto; }
-    .steps { grid-template-columns: repeat(3, 1fr); }
-  }
-  @media (max-width: 959px) {
-    .hero .btn { width: 100%; }
-  }
-  @media (prefers-reduced-motion: reduce) {
-    html { scroll-behavior: auto; }
-    .btn { transition: none; }
-  }
-  .plans { display: grid; gap: 16px; margin-top: 24px; }
-  .plan { position: relative; padding: 24px; }
-  .plan-best { border: 2px solid var(--lime); }
-  .tag { position: absolute; top: -12px; left: 20px; background: var(--lime); color: var(--on-lime); font-size: 12px; font-weight: 800; letter-spacing: .06em; text-transform: uppercase; padding: 3px 10px; border-radius: 999px; }
-  .plan h3 { margin-bottom: 4px; }
-  .plan-price { font-size: 40px; font-weight: 800; line-height: 1.1; }
-  .plan-price span { font-size: 17px; font-weight: 600; color: var(--muted); }
-  .plan-sub { color: var(--muted); margin: 6px 0 14px; }
-  .ticks { list-style: none; padding: 0; margin: 0; }
-  .ticks li { padding-left: 26px; position: relative; margin-bottom: 8px; font-size: 16px; }
-  .ticks li::before { content: "\2713"; position: absolute; left: 0; color: var(--lime); font-weight: 800; }
-  .table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; border: 1px solid var(--border); border-radius: var(--radius); }
-  .compare-table { width: 100%; border-collapse: collapse; font-size: 15px; min-width: 520px; }
-  .compare-table th, .compare-table td { padding: 12px; text-align: left; border-bottom: 1px solid var(--border); vertical-align: top; }
-  .compare-table th { background: var(--surface); font-size: 13px; color: var(--muted); font-weight: 700; }
-  .compare-table tr:last-child td { border-bottom: 0; }
-  .compare-table td span { font-size: 13px; color: var(--lime); }
-  .swipe { margin: -8px 0 10px; }
-  @media (min-width: 720px) { .plans { grid-template-columns: 1fr 1fr; } .swipe { display: none; } }
-  .head-right { display: flex; align-items: center; gap: 14px; }
-  .lang-link { color: var(--text); font-weight: 700; font-size: 15px; text-decoration: none; min-height: 44px; display: inline-flex; align-items: center; }
-  .lang-link:hover { color: var(--lime); }
-  .badge-es { display: inline-flex; align-items: center; gap: 8px; border: 1px solid rgba(163,230,53,.5); background: rgba(163,230,53,.08); color: var(--text); border-radius: 999px; padding: 6px 14px; font-size: 14px; font-weight: 700; margin-bottom: 16px; }
-  .badge-es b { color: var(--lime); }
-  .es-band { background: linear-gradient(135deg, rgba(163,230,53,.12), rgba(163,230,53,.02)); }
-  .es-band .ticks { margin-top: 16px; }
-  .lang-choice { display: flex; gap: 10px; }
-  .lang-choice label { flex: 1; display: flex; align-items: center; justify-content: center; gap: 8px; min-height: 52px; border: 1px solid var(--border); border-radius: 12px; cursor: pointer; font-weight: 600; margin: 0; }
-  .lang-choice input { accent-color: #A3E635; width: 18px; height: 18px; }
-  .lang-choice label:has(input:checked) { border-color: var(--lime); background: rgba(163,230,53,.08); }
-  fieldset { border: 0; margin: 0; padding: 0; }
-  legend { font-weight: 600; font-size: 15px; margin-bottom: 6px; padding: 0; }
-  @media (max-width: 380px) {
-    header .wrap { padding: 0 14px; }
-    .wordmark { font-size: 18px; gap: 6px; }
-    .wordmark svg { width: 24px; height: 24px; }
-    .head-right { gap: 10px; }
-    .lang-link { font-size: 14px; }
-    .btn-sm { padding: 0 12px; font-size: 14px; }
-  }
-  .nav-link { color: var(--text); font-weight: 700; font-size: 15px; text-decoration: none; min-height: 44px; display: inline-flex; align-items: center; }
-  .nav-link:hover { color: var(--lime); }
-  @media (max-width: 400px) { .hide-xs { display: none; } }
-</style>
+<link rel="stylesheet" href="/site.css">
 </head>
 <body>
 
 <header>
   <div class="wrap">
-    <a class="wordmark" href="#top" aria-label="FeeArmor inicio">
-      <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" fill="#1F2937" stroke="#A3E635" stroke-width="2" stroke-linejoin="round"/><path d="M8 11l3 3 5-6" stroke="#A3E635" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      <span>Fee<span class="lime">Armor</span></span>
-    </a>
+    <a class="wordmark" href="/es" aria-label="FeeArmor"><img src="/logo.svg" alt="" width="34" height="34"><span>Fee<span class="lime">Armor</span></span></a>
     <div class="head-right">
       <a class="nav-link hide-xs" href="/es/blog">Blog</a>
       <a class="lang-link" href="/" hreflang="en" lang="en">English</a>
-      <a class="btn btn-sm" href="#signup">Apuntarme</a>
+      <a class="btn btn-sm" href="#signup">Empezar</a>
     </div>
   </div>
 </header>
@@ -241,46 +50,83 @@
   <!-- Hero -->
   <section class="hero">
     <div class="wrap">
-      <div class="hero-grid">
-        <div>
-          <span class="badge-es"><b>Hablamos español</b> · De principio a fin</span>
-          <p class="eyebrow">Proteja su dinero de los cargos ocultos</p>
-          <h1>Deje de pagar cargos que <span class="lime">nunca aceptó.</span></h1>
-          <p class="sub">FeeArmor revisa sus facturas de internet, teléfono, TV y servicios, encuentra los cargos basura, las promociones vencidas y los errores de cobro, y lucha para que se los quiten. Todo en español.</p>
-          <a class="btn" href="#signup">Reservar mi lugar
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          </a>
-          <p class="note">Apuntarse es gratis. No necesita tarjeta. $0 por adelantado: si no ahorra, no paga.</p>
-        </div>
+      <span class="pill">Negociadores bilingües · Hablamos español</span>
+      <h1>La armadura que <span class="lime">su bolsillo necesita.</span></h1>
+      <p class="sub">Los cargos escondidos, las promociones vencidas y los aumentos silenciosos le vacían la cuenta. Personas reales de nuestro equipo bilingüe llaman a sus compañías de internet, teléfono y TV para quitar esos cargos y bajar su factura.</p>
+      <a class="btn" href="#signup">Empezar <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+      <p class="fee-line"><b>Si no ahorra, no paga.</b> Cargo único: 40% de sus primeros 12 meses de ahorro, cobrado solo cuando el ahorro aparece en su factura.</p>
+      <p class="note">Apuntarse no cuesta nada. Usted aprueba cada cambio.</p>
+    </div>
+  </section>
 
-        <div class="card" aria-label="Cargos comunes que revisa FeeArmor">
-          <span class="example-tag">Lo que buscamos</span>
-          <div class="example-head">
-            <div><b>Cargos comunes que revisamos</b><br><span class="muted" style="font-size:14px">En cada factura que nos envía</span></div>
-          </div>
-          <div class="row">
-            <div><b>Internet</b><span>Renta de un módem que usted ya compró</span></div>
-            <div class="amt">✓ Revisar</div>
-          </div>
-          <div class="row">
-            <div><b>Celular</b><span>Se acabó la promoción y subió el precio</span></div>
-            <div class="amt">✓ Revisar</div>
-          </div>
-          <div class="row">
-            <div><b>Luz</b><span>Recargo por atraso en un pago hecho a tiempo</span></div>
-            <div class="amt">✓ Revisar</div>
-          </div>
-          <div class="row">
-            <div><b>TV</b><span>Cargo por factura en papel que nunca pidió</span></div>
-            <div class="amt">✓ Revisar</div>
-          </div>
+  <!-- Trust -->
+  <section class="trust-bar off" aria-label="Highlights">
+    <div class="wrap">
+      <span class="ti">$0 por adelantado</span>
+      <span class="ti">Le mostramos el cargo antes de cobrar</span>
+      <span class="ti">Si no ahorra, no paga</span>
+      <span class="ti">Equipo bilingüe, español e inglés</span>
+    </div>
+  </section>
+
+  <!-- How it works -->
+  <section id="how" class="light">
+    <div class="wrap wide">
+      <p class="eyebrow">Cómo funciona</p>
+      <h2>Tres pasos. Usted tiene el control.</h2>
+      <p class="muted">Nosotros llamamos. Usted aprueba cada cambio y solo paga cuando ahorra.</p>
+      <div class="steps">
+        <div class="card step">
+          <div class="step-num">1</div>
+          <div class="step-icon"><svg viewBox="0 0 28 28" aria-hidden="true"><rect x="5" y="2" width="18" height="24" rx="3"/><path d="M9 9h10M9 13h10M9 17h6"/></svg></div>
+          <h3>Comparta sus facturas</h3>
+          <p>Suba una foto o PDF de su factura más reciente de internet, teléfono o TV. Toma unos dos minutos.</p>
+        </div>
+        <div class="card step">
+          <div class="step-num">2</div>
+          <div class="step-icon"><svg viewBox="0 0 28 28" aria-hidden="true"><path d="M8 3h4l2 6-3 2a14 14 0 0 0 6 6l2-3 6 2v4a3 3 0 0 1-3 3A20 20 0 0 1 5 6a3 3 0 0 1 3-3z"/></svg></div>
+          <h3>Peleamos por usted</h3>
+          <p>Nuestro equipo bilingüe llama a sus compañías con usted en la línea y pide que quiten cargos y bajen precios. Nunca nos hacemos pasar por usted.</p>
+        </div>
+        <div class="card step">
+          <div class="step-num">3</div>
+          <div class="step-icon"><svg viewBox="0 0 28 28" aria-hidden="true"><circle cx="14" cy="14" r="11"/><path d="M9 14.5l3.5 3.5L19 11"/></svg></div>
+          <h3>Usted aprueba y ahorra</h3>
+          <p>Le leemos cada oferta antes de que diga que sí. Solo paga cuando el ahorro aparece en su factura, y le mostramos el cargo primero.</p>
         </div>
       </div>
     </div>
   </section>
 
+  <!-- Difference -->
+  <section id="why">
+    <div class="wrap wide">
+      <p class="eyebrow">La diferencia FeeArmor</p>
+      <h2>Usted decide antes de pagar.</h2>
+      <p class="muted">Así nos comparamos con muchos servicios para bajar facturas.</p>
+      <div class="cmp-grid">
+        <div class="ccard bad">
+          <div class="ccard-head">Muchos servicios para bajar facturas</div>
+          <div class="ci"><b>✕</b><span>Algunos cobran sobre hasta 24 meses de ahorro</span></div>
+          <div class="ci"><b>✕</b><span>Algunos cobran antes de que el precio más bajo aparezca en su factura</span></div>
+          <div class="ci"><b>✕</b><span>Algunos vuelven a negociar automáticamente si usted no lo cancela</span></div>
+          <div class="ci"><b>✕</b><span>Algunos piden las contraseñas o los PIN de sus cuentas</span></div>
+        </div>
+        <div class="ccard good">
+          <div class="ccard-head">FeeArmor</div>
+          <div class="ci"><b>✓</b><span>12 meses de ahorro como máximo</span></div>
+          <div class="ci"><b>✓</b><span>Cobramos solo cuando el ahorro aparece en su factura</span></div>
+          <div class="ci"><b>✓</b><span>Le preguntamos antes de cada cambio y cada nueva negociación</span></div>
+          <div class="ci"><b>✓</b><span>Nunca le pedimos contraseñas ni PIN</span></div>
+          <div class="ci"><b>✓</b><span>Equipo bilingüe, español e inglés</span></div>
+        </div>
+      </div>
+      <p class="small" style="margin-top:14px">Según los términos publicados por otros servicios, revisados en octubre de 2026.</p>
+    </div>
+  </section>
+
   <!-- Spanish -->
-  <section id="espanol" class="es-band">
+  <section id="espanol" class="light es-band">
     <div class="wrap">
       <p class="eyebrow">En su idioma</p>
       <h2>Sus facturas, sus llamadas, en español.</h2>
@@ -294,7 +140,7 @@
   </section>
 
   <!-- Fees we hunt -->
-  <section id="fees">
+  <section id="fees" class="off">
     <div class="wrap">
       <p class="eyebrow">Lo que buscamos</p>
       <h2>Los cargos escondidos en sus facturas</h2>
@@ -311,32 +157,6 @@
         <li>Plan equivocado</li>
         <li>Cobros por servicios que ya canceló</li>
       </ul>
-    </div>
-  </section>
-
-  <!-- How it works -->
-  <section id="how">
-    <div class="wrap">
-      <p class="eyebrow">Cómo funciona</p>
-      <h2>Tres pasos. Nosotros hacemos la parte difícil.</h2>
-      <p class="muted">Sin música de espera. Sin departamento de retención. Sin discusiones.</p>
-      <div class="steps">
-        <div class="card step">
-          <div class="step-num">1</div>
-          <h3>Comparta sus facturas</h3>
-          <p>Suba un PDF o una foto de sus facturas más recientes. Toma unos dos minutos.</p>
-        </div>
-        <div class="card step">
-          <div class="step-num">2</div>
-          <h3>Encontramos los cargos basura</h3>
-          <p>Revisamos cada cargo contra su plan y marcamos los cargos que no debería pagar, las promociones vencidas y los precios que subieron.</p>
-        </div>
-        <div class="card step">
-          <div class="step-num">3</div>
-          <h3>Luchamos para quitarlos</h3>
-          <p>Llamamos a la compañía por usted para que le quiten cargos y le apliquen créditos, y luego seguimos revisando sus próximas facturas.</p>
-        </div>
-      </div>
     </div>
   </section>
 
@@ -373,13 +193,13 @@
   </section>
 
   <!-- Signup -->
-  <section id="signup">
+  <section id="signup" class="light">
     <div class="wrap">
-      <div class="card" style="padding:28px 24px">
+      <div class="card signup-card" style="padding:28px 24px">
         <div id="signup-body">
-          <p class="eyebrow">Acceso anticipado</p>
-          <h2>Sea de los primeros en recibir su revisión gratis.</h2>
-          <p class="muted">FeeArmor ya está abierto en acceso anticipado. Apúntese y le escribimos en un día hábil para empezar su revisión gratis.</p>
+          <p class="eyebrow">Empezar</p>
+          <h2>Empiece su revisión gratis.</h2>
+          <p class="muted">FeeArmor está abierto en acceso anticipado. Apúntese y le escribimos en un día hábil para empezar.</p>
           <form id="waitlist" novalidate>
             <div>
               <label for="first_name">Nombre</label>
@@ -401,7 +221,7 @@
               <input id="company" name="company" type="text" tabindex="-1" autocomplete="off">
             </div>
             <p class="form-error" id="form-error" role="alert" hidden></p>
-            <button class="btn btn-block" type="submit" id="submit-btn">Reservar mi lugar</button>
+            <button class="btn btn-block" type="submit" id="submit-btn">Empezar</button>
             <p class="small" style="margin:0">Solo le enviaremos correos sobre FeeArmor. Puede darse de baja cuando quiera. Vea nuestra <a href="/es/privacidad">Política de privacidad</a>.</p>
           </form>
         </div>
@@ -415,7 +235,7 @@
   </section>
 
   <!-- FAQ -->
-  <section id="faq">
+  <section id="faq" class="off">
     <div class="wrap">
       <p class="eyebrow">Preguntas frecuentes</p>
       <h2>Sus preguntas, respondidas</h2>
@@ -458,12 +278,22 @@
     </div>
   </section>
 
+
+  <!-- Bottom CTA -->
+  <section class="cta-end">
+    <div class="wrap">
+      <h2>¿Listo para ponerse la armadura?</h2>
+      <p>Díganos sus facturas. Nosotros hacemos las llamadas. Usted se queda con el ahorro.</p>
+      <a class="btn" href="#signup">Empezar <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+    </div>
+  </section>
+
 </main>
 
 <footer>
   <div class="wrap">
     <a class="wordmark" href="#top" style="font-size:18px">
-      <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" fill="#1F2937" stroke="#A3E635" stroke-width="2" stroke-linejoin="round"/><path d="M8 11l3 3 5-6" stroke="#A3E635" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <img src="/logo.svg" alt="" width="28" height="28">
       <span>Fee<span class="lime">Armor</span></span>
     </a>
     <nav aria-label="Pie de página">
@@ -523,7 +353,7 @@
     }).catch(function (e2) {
       showError(e2.message === 'rate' ? 'Demasiados intentos. Espere un momento y vuelva a intentarlo.' : 'Algo salió mal. Revise su conexión y vuelva a intentarlo.');
       btn.disabled = false;
-      btn.textContent = 'Reservar mi lugar';
+      btn.textContent = 'Empezar';
     });
   });
 })();

@@ -4,7 +4,7 @@ from blog_content import POSTS
 # Reads the site's look from public/index.html and writes pages into public/blog
 ROOT = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), 'public')
 src = open(os.path.join(ROOT, 'index.html')).read()
-style = src[src.index('<style>'):src.index('</style>') + len('</style>')]
+style = '<link rel="stylesheet" href="/site.css">\n<style>\n</style>'
 style = style.replace('</style>', '''  .nav-link { color: var(--text); font-weight: 700; font-size: 15px; text-decoration: none; min-height: 44px; display: inline-flex; align-items: center; }
   .nav-link:hover { color: var(--lime); }
   .crumb { font-size: 14px; color: var(--muted); margin-bottom: 12px; }
@@ -24,18 +24,18 @@ style = style.replace('</style>', '''  .nav-link { color: var(--text); font-weig
   .post-card .more { color: var(--lime); font-weight: 700; margin-top: 10px; display: inline-block; }
   @media (max-width: 400px) { .hide-xs { display: none; } }
 </style>''')
-FAVICON = src[src.index('<link rel="icon"'):src.index('>', src.index('<link rel="icon"')) + 1]
-LOGO = '<svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" fill="#1F2937" stroke="#A3E635" stroke-width="2" stroke-linejoin="round"/><path d="M8 11l3 3 5-6" stroke="#A3E635" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>'
+FAVICON = '<link rel="icon" href="/logo.svg" type="image/svg+xml">'
+LOGO = '<img src="/logo.svg" alt="" width="34" height="34">'
 DATE_ISO, DATE = '2026-10-21', {'en': 'October 21, 2026', 'es': '21 de octubre de 2026'}
 BASE = 'https://www.feearmor.com'
 T = {
- 'en': dict(home='/', blog='/blog', other='English', other_lang='es', other_label='Español', cta='Get Early Access', signup='/#signup',
+ 'en': dict(home='/', blog='/blog', other='English', other_lang='es', other_label='Español', cta='Get Started', signup='/#signup',
             blog_title='The FeeArmor Blog', blog_sub='Plain-English guides to the fees hiding in your monthly bills.',
             blog_desc='Guides to removing junk fees, expired promos and billing mistakes from your internet, phone and TV bills.',
             by='By Giovanni Morado', read='Read the guide →',
             box_h='Rather not make the call?', box_p='FeeArmor makes these calls for you, in English or Spanish. $0 upfront: no savings, no fee.',
             privacy='/privacy', privacy_l='Privacy Policy', footer='All rights reserved.', entity='FeeArmor'),
- 'es': dict(home='/es', blog='/es/blog', other='Español', other_lang='en', other_label='English', cta='Apuntarme', signup='/es#signup',
+ 'es': dict(home='/es', blog='/es/blog', other='Español', other_lang='en', other_label='English', cta='Empezar', signup='/es#signup',
             blog_title='El blog de FeeArmor', blog_sub='Guías sencillas sobre los cargos escondidos en sus facturas.',
             blog_desc='Guías para quitar cargos basura, promociones vencidas y errores de cobro de sus facturas de internet, teléfono y TV.',
             by='Por Giovanni Morado', read='Leer la guía →',
@@ -81,7 +81,7 @@ def page(lang, title, desc, canon, alt_en, alt_es, body, jsonld):
   </div>
 </header>
 <main>
-  <section>
+  <section class="light">
     <div class="wrap">
 {body}
     </div>

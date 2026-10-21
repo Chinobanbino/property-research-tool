@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" role="img" aria-label="FeeArmor shield">
+  <defs><clipPath id="s"><path d="M24 3 6 9.5v13C6 34 14 41.5 24 45c10-3.5 18-11 18-22.5v-13Z"/></clipPath></defs>
+  <g clip-path="url(#s)">
+    <rect x="0" y="0" width="24" height="48" fill="#1F3A5C"/>
+    <rect x="24" y="0" width="24" height="48" fill="#4EC94C"/>
+  </g>
+  <path d="M24 3 6 9.5v13C6 34 14 41.5 24 45c10-3.5 18-11 18-22.5v-13Z" fill="none" stroke="#4EC94C" stroke-width="2"/>
+  <path d="M15 30 22 23l4 4 8-9" fill="none" stroke="#fff" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M28 17.5h6.5V24" fill="none" stroke="#fff" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

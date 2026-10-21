@@ -19,218 +19,27 @@
 <meta name="twitter:description" content="We find the junk fees hiding in your monthly bills and fight to get them removed.">
 <meta name="twitter:image" content="https://www.feearmor.com/og-image.png">
 <meta name="theme-color" content="#0B1120">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z' fill='%231F2937' stroke='%23A3E635' stroke-width='2' stroke-linejoin='round'/%3E%3Cpath d='M8 11l3 3 5-6' fill='none' stroke='%23A3E635' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+<link rel="icon" href="/logo.svg" type="image/svg+xml">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "Organization",
   "name": "FeeArmor",
   "url": "https://www.feearmor.com/",
-  "slogan": "Defend your wallet against hidden fees."
+  "slogan": "Put an armor around your wallet."
 }
 </script>
-<style>
-  :root {
-    --bg: #0B1120;
-    --surface: #111827;
-    --surface-2: #1F2937;
-    --border: #273244;
-    --text: #F9FAFB;
-    --muted: #9CA3AF;
-    --lime: #A3E635;
-    --lime-hover: #BEF264;
-    --on-lime: #0B1120;
-    --error: #F87171;
-    --radius: 14px;
-  }
-  *, *::before, *::after { box-sizing: border-box; }
-  html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
-  body {
-    margin: 0;
-    background: var(--bg);
-    color: var(--text);
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-    font-size: 17px;
-    line-height: 1.6;
-    overflow-x: hidden;
-  }
-  a { color: var(--lime); }
-  a:focus-visible, button:focus-visible, input:focus-visible, summary:focus-visible {
-    outline: 3px solid var(--lime); outline-offset: 2px;
-  }
-  .wrap { max-width: 720px; margin: 0 auto; padding: 0 24px; }
-  section { padding: 56px 0; }
-  section + section { border-top: 1px solid var(--border); }
-  h1, h2, h3 { line-height: 1.2; margin: 0 0 16px; letter-spacing: -0.01em; }
-  h1 { font-size: clamp(34px, 8vw, 54px); font-weight: 800; }
-  h2 { font-size: clamp(26px, 6vw, 36px); font-weight: 800; }
-  h3 { font-size: 20px; font-weight: 700; }
-  p { margin: 0 0 16px; }
-  .muted { color: var(--muted); }
-  .eyebrow { color: var(--lime); font-size: 14px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; margin-bottom: 8px; }
-  .lime { color: var(--lime); }
-
-  /* Header */
-  header {
-    position: sticky; top: 0; z-index: 50;
-    background: rgba(11,17,32,.92);
-    backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
-    border-bottom: 1px solid var(--border);
-  }
-  header .wrap { display: flex; align-items: center; justify-content: space-between; height: 64px; max-width: 1120px; }
-  .wordmark { display: flex; align-items: center; gap: 10px; font-size: 22px; font-weight: 800; color: var(--text); text-decoration: none; }
-  .wordmark svg { width: 28px; height: 28px; }
-
-  /* Buttons */
-  .btn {
-    display: inline-flex; align-items: center; justify-content: center; gap: 8px;
-    min-height: 52px; padding: 0 24px;
-    background: var(--lime); color: var(--on-lime);
-    border: 0; border-radius: 12px;
-    font: inherit; font-weight: 800; font-size: 17px; text-decoration: none; cursor: pointer;
-    transition: background .15s, transform .15s;
-  }
-  .btn:hover { background: var(--lime-hover); transform: translateY(-1px); }
-  .btn[disabled] { opacity: .7; cursor: wait; transform: none; }
-  .btn-sm { min-height: 44px; padding: 0 16px; font-size: 15px; }
-  .btn-block { width: 100%; }
-
-  /* Hero */
-  .hero { padding-top: 40px; position: relative; overflow: hidden; isolation: isolate; }
-  .hero::before {
-    content: ""; position: absolute; top: -80px; left: 50%; width: 420px; height: 420px; transform: translateX(-50%);
-    background: radial-gradient(circle, rgba(163,230,53,.18), transparent 65%); pointer-events: none; z-index: -1;
-  }
-  .hero-grid { display: grid; gap: 40px; }
-  .hero .sub { font-size: 19px; color: var(--muted); }
-  .hero .note { font-size: 15px; color: var(--muted); margin-top: 12px; }
-
-  /* Example card */
-  .card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 20px; }
-  .example-tag { display: inline-block; font-size: 12px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: var(--muted); border: 1px solid var(--border); border-radius: 999px; padding: 2px 10px; margin-bottom: 14px; }
-  .example-head { display: flex; justify-content: space-between; align-items: baseline; border-bottom: 1px solid var(--border); padding-bottom: 14px; margin-bottom: 14px; }
-  .example-head strong { font-size: 26px; }
-  .row { display: flex; justify-content: space-between; gap: 12px; padding: 12px 14px; background: var(--bg); border: 1px solid var(--border); border-radius: 10px; margin-bottom: 10px; }
-  .row:last-child { margin-bottom: 0; }
-  .row b { display: block; font-size: 15px; }
-  .row span { font-size: 14px; color: var(--muted); }
-  .row .amt { color: var(--lime); font-weight: 800; white-space: nowrap; font-size: 15px; }
-
-  /* Fee chips */
-  .chips { display: flex; flex-wrap: wrap; gap: 10px; padding: 0; margin: 24px 0 0; list-style: none; }
-  .chips li { background: var(--surface); border: 1px solid var(--border); border-radius: 999px; padding: 8px 14px; font-size: 15px; }
-
-  /* Steps */
-  .steps { display: grid; gap: 16px; margin-top: 24px; }
-  .step-num { display: inline-flex; width: 36px; height: 36px; border-radius: 10px; align-items: center; justify-content: center; background: rgba(163,230,53,.12); color: var(--lime); font-weight: 800; margin-bottom: 12px; }
-  .step p { color: var(--muted); margin: 0; }
-
-  /* Pricing */
-  .price-card { border-color: rgba(163,230,53,.4); text-align: center; padding: 32px 24px; }
-  .price-big { font-size: 40px; font-weight: 800; color: var(--lime); line-height: 1.1; margin-bottom: 8px; }
-
-  /* Form */
-  form { display: grid; gap: 14px; margin-top: 24px; }
-  label { font-weight: 600; font-size: 15px; display: block; margin-bottom: 6px; }
-  input[type=text], input[type=email] {
-    width: 100%; min-height: 52px; padding: 0 16px;
-    background: var(--bg); color: var(--text);
-    border: 1px solid var(--border); border-radius: 12px;
-    font: inherit; font-size: 17px;
-  }
-  input::placeholder { color: #6B7280; }
-  .hp { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
-  .small { font-size: 14px; color: var(--muted); }
-  .form-error { color: var(--error); font-size: 15px; margin: 0; }
-  .success { text-align: center; padding: 8px 0; }
-  .success .check { width: 56px; height: 56px; border-radius: 50%; background: rgba(163,230,53,.15); display: inline-flex; align-items: center; justify-content: center; margin-bottom: 12px; }
-
-  /* FAQ */
-  details { border-bottom: 1px solid var(--border); }
-  summary { cursor: pointer; list-style: none; padding: 18px 32px 18px 0; font-weight: 700; position: relative; min-height: 44px; }
-  summary::-webkit-details-marker { display: none; }
-  summary::after { content: "+"; position: absolute; right: 4px; top: 14px; font-size: 24px; color: var(--lime); font-weight: 400; }
-  details[open] summary::after { content: "–"; }
-  details p { color: var(--muted); padding-bottom: 8px; }
-
-  /* Footer */
-  footer { border-top: 1px solid var(--border); padding: 40px 0; font-size: 15px; color: var(--muted); }
-  footer .wrap { display: grid; gap: 16px; }
-  footer nav { display: flex; flex-wrap: wrap; gap: 20px; }
-  footer a { color: var(--muted); text-decoration: none; min-height: 44px; display: inline-flex; align-items: center; }
-  footer a:hover { color: var(--text); }
-
-  @media (min-width: 960px) {
-    .hero .wrap { max-width: 1120px; }
-    .hero-grid { grid-template-columns: 1.1fr 1fr; align-items: center; gap: 64px; }
-    .hero { padding: 88px 0 72px; }
-    .hero .btn { width: auto; }
-    .steps { grid-template-columns: repeat(3, 1fr); }
-  }
-  @media (max-width: 959px) {
-    .hero .btn { width: 100%; }
-  }
-  @media (prefers-reduced-motion: reduce) {
-    html { scroll-behavior: auto; }
-    .btn { transition: none; }
-  }
-  .plans { display: grid; gap: 16px; margin-top: 24px; }
-  .plan { position: relative; padding: 24px; }
-  .plan-best { border: 2px solid var(--lime); }
-  .tag { position: absolute; top: -12px; left: 20px; background: var(--lime); color: var(--on-lime); font-size: 12px; font-weight: 800; letter-spacing: .06em; text-transform: uppercase; padding: 3px 10px; border-radius: 999px; }
-  .plan h3 { margin-bottom: 4px; }
-  .plan-price { font-size: 40px; font-weight: 800; line-height: 1.1; }
-  .plan-price span { font-size: 17px; font-weight: 600; color: var(--muted); }
-  .plan-sub { color: var(--muted); margin: 6px 0 14px; }
-  .ticks { list-style: none; padding: 0; margin: 0; }
-  .ticks li { padding-left: 26px; position: relative; margin-bottom: 8px; font-size: 16px; }
-  .ticks li::before { content: "\2713"; position: absolute; left: 0; color: var(--lime); font-weight: 800; }
-  .table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; border: 1px solid var(--border); border-radius: var(--radius); }
-  .compare-table { width: 100%; border-collapse: collapse; font-size: 15px; min-width: 520px; }
-  .compare-table th, .compare-table td { padding: 12px; text-align: left; border-bottom: 1px solid var(--border); vertical-align: top; }
-  .compare-table th { background: var(--surface); font-size: 13px; color: var(--muted); font-weight: 700; }
-  .compare-table tr:last-child td { border-bottom: 0; }
-  .compare-table td span { font-size: 13px; color: var(--lime); }
-  .swipe { margin: -8px 0 10px; }
-  @media (min-width: 720px) { .plans { grid-template-columns: 1fr 1fr; } .swipe { display: none; } }
-  .head-right { display: flex; align-items: center; gap: 14px; }
-  .lang-link { color: var(--text); font-weight: 700; font-size: 15px; text-decoration: none; min-height: 44px; display: inline-flex; align-items: center; }
-  .lang-link:hover { color: var(--lime); }
-  .badge-es { display: inline-flex; align-items: center; gap: 8px; border: 1px solid rgba(163,230,53,.5); background: rgba(163,230,53,.08); color: var(--text); border-radius: 999px; padding: 6px 14px; font-size: 14px; font-weight: 700; margin-bottom: 16px; }
-  .badge-es b { color: var(--lime); }
-  .es-band { background: linear-gradient(135deg, rgba(163,230,53,.12), rgba(163,230,53,.02)); }
-  .es-band .ticks { margin-top: 16px; }
-  .lang-choice { display: flex; gap: 10px; }
-  .lang-choice label { flex: 1; display: flex; align-items: center; justify-content: center; gap: 8px; min-height: 52px; border: 1px solid var(--border); border-radius: 12px; cursor: pointer; font-weight: 600; margin: 0; }
-  .lang-choice input { accent-color: #A3E635; width: 18px; height: 18px; }
-  .lang-choice label:has(input:checked) { border-color: var(--lime); background: rgba(163,230,53,.08); }
-  fieldset { border: 0; margin: 0; padding: 0; }
-  legend { font-weight: 600; font-size: 15px; margin-bottom: 6px; padding: 0; }
-  @media (max-width: 380px) {
-    header .wrap { padding: 0 14px; }
-    .wordmark { font-size: 18px; gap: 6px; }
-    .wordmark svg { width: 24px; height: 24px; }
-    .head-right { gap: 10px; }
-    .lang-link { font-size: 14px; }
-    .btn-sm { padding: 0 12px; font-size: 14px; }
-  }
-  .nav-link { color: var(--text); font-weight: 700; font-size: 15px; text-decoration: none; min-height: 44px; display: inline-flex; align-items: center; }
-  .nav-link:hover { color: var(--lime); }
-  @media (max-width: 400px) { .hide-xs { display: none; } }
-</style>
+<link rel="stylesheet" href="/site.css">
 </head>
 <body>
 
 <header>
   <div class="wrap">
-    <a class="wordmark" href="#top" aria-label="FeeArmor home">
-      <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" fill="#1F2937" stroke="#A3E635" stroke-width="2" stroke-linejoin="round"/><path d="M8 11l3 3 5-6" stroke="#A3E635" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      <span>Fee<span class="lime">Armor</span></span>
-    </a>
+    <a class="wordmark" href="/" aria-label="FeeArmor"><img src="/logo.svg" alt="" width="34" height="34"><span>Fee<span class="lime">Armor</span></span></a>
     <div class="head-right">
       <a class="nav-link hide-xs" href="/blog">Blog</a>
       <a class="lang-link" href="/es" hreflang="es" lang="es">Español</a>
-      <a class="btn btn-sm" href="#signup">Get Early Access</a>
+      <a class="btn btn-sm" href="#signup">Get Started</a>
     </div>
   </div>
 </header>
@@ -240,46 +49,98 @@
   <!-- Hero -->
   <section class="hero">
     <div class="wrap">
-      <div class="hero-grid">
-        <div>
-          <a class="badge-es" href="/es" lang="es"><b>Hablamos español</b> · Service in English or Spanish</a>
-          <p class="eyebrow">Defend your wallet against hidden fees</p>
-          <h1>Stop paying fees you <span class="lime">never agreed to.</span></h1>
-          <p class="sub">FeeArmor reads your internet, phone, TV and utility bills, finds the junk fees, expired promos and billing mistakes, and fights to get them removed.</p>
-          <a class="btn" href="#signup">Get Early Access
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          </a>
-          <p class="note">Free to join. No card needed. $0 upfront: no savings, no fee.</p>
-        </div>
+      <span class="pill">Bilingual bill negotiators · Hablamos español</span>
+      <h1>Put an Armor Around <span class="lime">Your Wallet.</span></h1>
+      <p class="sub">Hidden fees, expired promos and quiet price hikes drain your bank account. Real people on our bilingual team call your internet, phone and TV providers to get those charges removed and your bill lowered.</p>
+      <a class="btn" href="#signup">Get Started <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+      <p class="fee-line"><b>No savings, no fee.</b> One-time fee: 40% of your first 12 months of savings, charged only after the savings show up on your bill.</p>
+      <p class="note">No charge to sign up. You approve every change.</p>
+    </div>
+  </section>
 
-        <div class="card" aria-label="Common fees FeeArmor checks for">
-          <span class="example-tag">What we look for</span>
-          <div class="example-head">
-            <div><b>Common fees we check</b><br><span class="muted" style="font-size:14px">On every bill you send us</span></div>
-          </div>
-          <div class="row">
-            <div><b>Internet</b><span>Modem rental fee on a modem you own</span></div>
-            <div class="amt">✓ Check</div>
-          </div>
-          <div class="row">
-            <div><b>Mobile phone</b><span>Promo ended, price went up</span></div>
-            <div class="amt">✓ Check</div>
-          </div>
-          <div class="row">
-            <div><b>Electric</b><span>Late fee charged on a payment made on time</span></div>
-            <div class="amt">✓ Check</div>
-          </div>
-          <div class="row">
-            <div><b>TV</b><span>Paper bill fee you never opted into</span></div>
-            <div class="amt">✓ Check</div>
-          </div>
+  <!-- Trust -->
+  <section class="trust-bar off" aria-label="Highlights">
+    <div class="wrap">
+      <span class="ti">$0 upfront</span>
+      <span class="ti">We show your fee before we charge</span>
+      <span class="ti">No savings, no fee</span>
+      <span class="ti">Bilingual team, English &amp; Spanish</span>
+    </div>
+  </section>
+
+  <!-- How it works -->
+  <section id="how" class="light">
+    <div class="wrap wide">
+      <p class="eyebrow">How it works</p>
+      <h2>Three steps. You stay in control.</h2>
+      <p class="muted">We do the calling. You approve every change and only pay when you save.</p>
+      <div class="steps">
+        <div class="card step">
+          <div class="step-num">1</div>
+          <div class="step-icon"><svg viewBox="0 0 28 28" aria-hidden="true"><rect x="5" y="2" width="18" height="24" rx="3"/><path d="M9 9h10M9 13h10M9 17h6"/></svg></div>
+          <h3>Share your bills</h3>
+          <p>Upload a photo or PDF of your latest internet, phone or TV bill. It takes about two minutes.</p>
+        </div>
+        <div class="card step">
+          <div class="step-num">2</div>
+          <div class="step-icon"><svg viewBox="0 0 28 28" aria-hidden="true"><path d="M8 3h4l2 6-3 2a14 14 0 0 0 6 6l2-3 6 2v4a3 3 0 0 1-3 3A20 20 0 0 1 5 6a3 3 0 0 1 3-3z"/></svg></div>
+          <h3>We fight for you</h3>
+          <p>Our bilingual team calls your providers with you on the line and asks for fees to be removed and prices lowered. We never pretend to be you.</p>
+        </div>
+        <div class="card step">
+          <div class="step-num">3</div>
+          <div class="step-icon"><svg viewBox="0 0 28 28" aria-hidden="true"><circle cx="14" cy="14" r="11"/><path d="M9 14.5l3.5 3.5L19 11"/></svg></div>
+          <h3>You approve, then save</h3>
+          <p>We read you every offer before you say yes. You pay only after the savings show up on your bill, and we show you the fee first.</p>
         </div>
       </div>
     </div>
   </section>
 
+  <!-- Difference -->
+  <section id="why">
+    <div class="wrap wide">
+      <p class="eyebrow">The FeeArmor difference</p>
+      <h2>You decide before you pay.</h2>
+      <p class="muted">How we compare with many bill-cutting services.</p>
+      <div class="cmp-grid">
+        <div class="ccard bad">
+          <div class="ccard-head">Many bill-cutting services</div>
+          <div class="ci"><b>✕</b><span>Some charge on up to 24 months of savings</span></div>
+          <div class="ci"><b>✕</b><span>Some bill before the lower price shows up on your bill</span></div>
+          <div class="ci"><b>✕</b><span>Some re-negotiate automatically unless you opt out</span></div>
+          <div class="ci"><b>✕</b><span>Some ask for your account passwords or PINs</span></div>
+        </div>
+        <div class="ccard good">
+          <div class="ccard-head">FeeArmor</div>
+          <div class="ci"><b>✓</b><span>12 months of savings, max</span></div>
+          <div class="ci"><b>✓</b><span>We bill only after savings show up on your bill</span></div>
+          <div class="ci"><b>✓</b><span>We ask before every change and every new negotiation</span></div>
+          <div class="ci"><b>✓</b><span>We never ask for your passwords or PINs</span></div>
+          <div class="ci"><b>✓</b><span>Bilingual team, English and Spanish</span></div>
+        </div>
+      </div>
+      <p class="small" style="margin-top:14px">Based on other services' published terms, checked October 2026.</p>
+    </div>
+  </section>
+
+  <!-- Spanish -->
+  <section id="espanol" class="light es-band">
+    <div class="wrap">
+      <p class="eyebrow">Hablamos español</p>
+      <h2>Your bills, your calls, your language.</h2>
+      <p class="muted">Our team speaks Spanish. If you or your parents are more comfortable in Spanish, we'll explain every bill, call providers on their Spanish lines, and join you on the call in Spanish when a provider needs you on the line.</p>
+      <ul class="ticks">
+        <li>Agreement and authorization in Spanish</li>
+        <li>Calls, texts and emails in Spanish</li>
+        <li>Every change explained before you say yes</li>
+      </ul>
+      <p style="margin:20px 0 0"><a href="/es" lang="es" style="font-weight:700">Ver esta página en español →</a></p>
+    </div>
+  </section>
+
   <!-- Fees we hunt -->
-  <section id="fees">
+  <section id="fees" class="off">
     <div class="wrap">
       <p class="eyebrow">What we hunt</p>
       <h2>The fees hiding in your monthly bills</h2>
@@ -296,47 +157,6 @@
         <li>Wrong rate plan</li>
         <li>Charges for services you cancelled</li>
       </ul>
-    </div>
-  </section>
-
-  <!-- How it works -->
-  <section id="how">
-    <div class="wrap">
-      <p class="eyebrow">How it works</p>
-      <h2>Three steps. We do the hard part.</h2>
-      <p class="muted">No hold music. No retention department. No arguing.</p>
-      <div class="steps">
-        <div class="card step">
-          <div class="step-num">1</div>
-          <h3>Share your bills</h3>
-          <p>Upload a PDF or a photo of your latest bills. It takes about two minutes.</p>
-        </div>
-        <div class="card step">
-          <div class="step-num">2</div>
-          <h3>We find the junk</h3>
-          <p>We check every charge against your plan and flag fees you shouldn't be paying, promos that expired and prices that went up.</p>
-        </div>
-        <div class="card step">
-          <div class="step-num">3</div>
-          <h3>We fight to remove them</h3>
-          <p>We contact the provider for you to get fees removed and credits applied, then keep watching your next bills for new ones.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Spanish -->
-  <section id="espanol" class="es-band">
-    <div class="wrap">
-      <p class="eyebrow">Hablamos español</p>
-      <h2>Your bills, your calls, your language.</h2>
-      <p class="muted">Our team speaks Spanish. If you or your parents are more comfortable in Spanish, we'll explain every bill, call providers on their Spanish lines, and join you on the call in Spanish when a provider needs you on the line.</p>
-      <ul class="ticks">
-        <li>Agreement and authorization in Spanish</li>
-        <li>Calls, texts and emails in Spanish</li>
-        <li>Every change explained before you say yes</li>
-      </ul>
-      <p style="margin:20px 0 0"><a href="/es" lang="es" style="font-weight:700">Ver esta página en español →</a></p>
     </div>
   </section>
 
@@ -373,13 +193,13 @@
   </section>
 
   <!-- Signup -->
-  <section id="signup">
+  <section id="signup" class="light">
     <div class="wrap">
-      <div class="card" style="padding:28px 24px">
+      <div class="card signup-card" style="padding:28px 24px">
         <div id="signup-body">
-          <p class="eyebrow">Early access</p>
-          <h2>Be first in line for your free bill scan.</h2>
-          <p class="muted">FeeArmor is now open in early access. Sign up and we'll email you within one business day to start your free bill scan.</p>
+          <p class="eyebrow">Get started</p>
+          <h2>Start your free bill scan.</h2>
+          <p class="muted">FeeArmor is open in early access. Sign up and we'll email you within one business day to start.</p>
           <form id="waitlist" novalidate>
             <div>
               <label for="first_name">First name</label>
@@ -401,7 +221,7 @@
               <input id="company" name="company" type="text" tabindex="-1" autocomplete="off">
             </div>
             <p class="form-error" id="form-error" role="alert" hidden></p>
-            <button class="btn btn-block" type="submit" id="submit-btn">Get Early Access</button>
+            <button class="btn btn-block" type="submit" id="submit-btn">Get Started</button>
             <p class="small" style="margin:0">We'll only email you about FeeArmor. Unsubscribe anytime. See our <a href="/privacy">Privacy Policy</a>.</p>
           </form>
         </div>
@@ -415,7 +235,7 @@
   </section>
 
   <!-- FAQ -->
-  <section id="faq">
+  <section id="faq" class="off">
     <div class="wrap">
       <p class="eyebrow">FAQ</p>
       <h2>Questions, answered</h2>
@@ -458,12 +278,22 @@
     </div>
   </section>
 
+
+  <!-- Bottom CTA -->
+  <section class="cta-end">
+    <div class="wrap">
+      <h2>Ready to armor up?</h2>
+      <p>Tell us your bills. We make the calls. You keep the savings.</p>
+      <a class="btn" href="#signup">Get Started <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+    </div>
+  </section>
+
 </main>
 
 <footer>
   <div class="wrap">
     <a class="wordmark" href="#top" style="font-size:18px">
-      <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" fill="#1F2937" stroke="#A3E635" stroke-width="2" stroke-linejoin="round"/><path d="M8 11l3 3 5-6" stroke="#A3E635" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <img src="/logo.svg" alt="" width="28" height="28">
       <span>Fee<span class="lime">Armor</span></span>
     </a>
     <nav aria-label="Footer">
@@ -522,7 +352,7 @@
     }).catch(function (e2) {
       showError(e2.message && e2.message.indexOf('Too many') === 0 ? e2.message : 'Something went wrong. Please check your connection and try again.');
       btn.disabled = false;
-      btn.textContent = 'Get Early Access';
+      btn.textContent = 'Get Started';
     });
   });
 })();

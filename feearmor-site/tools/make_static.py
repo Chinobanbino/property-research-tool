@@ -9,9 +9,9 @@ SITE = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))),
 BASE = 'https://www.feearmor.com'
 UPDATED = {'en': 'October 21, 2026', 'es': '21 de octubre de 2026'}
 src = open(os.path.join(SITE, 'index.html')).read()
-STYLE = src[src.index('<style>'):src.index('</style>') + len('</style>')]
-FAVICON = src[src.index('<link rel="icon"'):src.index('>', src.index('<link rel="icon"')) + 1]
-LOGO = '<svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" fill="#1F2937" stroke="#A3E635" stroke-width="2" stroke-linejoin="round"/><path d="M8 11l3 3 5-6" stroke="#A3E635" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>'
+STYLE = '<link rel="stylesheet" href="/site.css">\n<style>\n</style>'
+FAVICON = '<link rel="icon" href="/logo.svg" type="image/svg+xml">'
+LOGO = '<img src="/logo.svg" alt="" width="34" height="34">'
 
 PRIVACY = {
  'en': ('Privacy Policy', 'How FeeArmor collects, uses and protects your information.', '/privacy', '''
@@ -100,8 +100,8 @@ PRIVACY = {
 '''),
 }
 NAV = {
- 'en': dict(home='/', blog='/blog', other_href='/es', other_lang='es', other_label='Español', cta='Get Early Access', signup='/#signup', privacy='/privacy', privacy_l='Privacy Policy', rights='All rights reserved.'),
- 'es': dict(home='/es', blog='/es/blog', other_href='/', other_lang='en', other_label='English', cta='Apuntarme', signup='/es#signup', privacy='/es/privacidad', privacy_l='Política de privacidad', rights='Todos los derechos reservados.'),
+ 'en': dict(home='/', blog='/blog', other_href='/es', other_lang='es', other_label='Español', cta='Get Started', signup='/#signup', privacy='/privacy', privacy_l='Privacy Policy', rights='All rights reserved.'),
+ 'es': dict(home='/es', blog='/es/blog', other_href='/', other_lang='en', other_label='English', cta='Empezar', signup='/es#signup', privacy='/es/privacidad', privacy_l='Política de privacidad', rights='Todos los derechos reservados.'),
 }
 EXTRA_CSS = '''  .doc h2 { font-size: 22px; margin: 28px 0 10px; }
   .doc ul { padding-left: 22px; }
@@ -138,7 +138,7 @@ def shell(lang, title, desc, canon, alt, body, robots=''):
   </div>
 </header>
 <main>
-  <section>
+  <section class="light">
     <div class="wrap doc">
 {body}
     </div>
