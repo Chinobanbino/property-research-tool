@@ -11,6 +11,16 @@
     <xhtml:link rel="alternate" hreflang="es" href="https://www.feearmor.com/es"/>
   </url>
   <url>
+    <loc>https://www.feearmor.com/intake</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.feearmor.com/intake"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.feearmor.com/es/intake"/>
+  </url>
+  <url>
+    <loc>https://www.feearmor.com/es/intake</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.feearmor.com/intake"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.feearmor.com/es/intake"/>
+  </url>
+  <url>
     <loc>https://www.feearmor.com/privacy</loc>
     <xhtml:link rel="alternate" hreflang="en" href="https://www.feearmor.com/privacy"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://www.feearmor.com/es/privacidad"/>

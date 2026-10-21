@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Get Started | FeeArmor</title>
+<meta name="description" content="Tell us your bills and we&#x27;ll call your providers to lower them. $0 upfront. No savings, no fee.">
+<link rel="canonical" href="https://www.feearmor.com/intake">
+<link rel="alternate" hreflang="en" href="https://www.feearmor.com/intake">
+<link rel="alternate" hreflang="es" href="https://www.feearmor.com/es/intake">
+<meta property="og:title" content="FeeArmor | Get Started">
+<meta property="og:description" content="Tell us your bills and we&#x27;ll call your providers to lower them. $0 upfront. No savings, no fee.">
+<meta property="og:image" content="https://www.feearmor.com/og-image.png">
+<meta name="theme-color" content="#0D1B2A">
+<link rel="icon" href="/logo.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/site.css">
+<style>
+  .intake h1 { font-size: clamp(32px, 7vw, 46px); }
+  .intake fieldset.box { background: var(--surface); border: 1.5px solid var(--border); border-radius: var(--radius); padding: 20px; margin: 0 0 18px; }
+  .intake fieldset.box > legend { font-size: 18px; font-weight: 800; padding: 0 6px; }
+  .grid2 { display: grid; gap: 14px; }
+  @media (min-width: 560px) { .grid2 { grid-template-columns: 1fr 1fr; } }
+  .hint { font-size: 14px; color: var(--muted); margin: -2px 0 12px; }
+  .bill { border: 1.5px solid var(--border); border-radius: 12px; padding: 12px 14px; margin-bottom: 10px; background: var(--bg); }
+  .bill > label { display: flex; align-items: center; gap: 10px; margin: 0; font-weight: 700; min-height: 32px; cursor: pointer; }
+  .bill input[type=checkbox], .times input { width: 20px; height: 20px; accent-color: #2E7D32; }
+  .bill .more { display: none; margin-top: 12px; }
+  .bill.on { border-color: var(--green); }
+  .bill.on .more { display: grid; }
+  .times { display: grid; gap: 8px; }
+  .times label { display: flex; align-items: center; gap: 10px; font-weight: 500; margin: 0; min-height: 40px; }
+  input[type=file] { width: 100%; padding: 12px; border: 1.5px dashed #9FB0C3; border-radius: 10px; background: var(--bg); font: inherit; font-size: 15px; }
+  textarea { width: 100%; min-height: 90px; padding: 12px 16px; border: 1.5px solid #CBD6E2; border-radius: 10px; font: inherit; font-size: 17px; resize: vertical; }
+  .next { counter-reset: n; list-style: none; padding: 0; margin: 0; }
+  .next li { counter-increment: n; position: relative; padding-left: 38px; margin-bottom: 12px; }
+  .next li::before { content: counter(n); position: absolute; left: 0; top: 0; width: 26px; height: 26px; border-radius: 50%; background: var(--navy); color: var(--green); font-weight: 900; font-size: 14px; display: flex; align-items: center; justify-content: center; }
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <a class="wordmark" href="/" aria-label="FeeArmor"><img src="/logo.svg" alt="" width="34" height="34"><span>Fee<span class="lime">Armor</span></span></a>
+    <div class="head-right">
+      <a class="nav-link hide-xs" href="/blog">Blog</a>
+      <a class="lang-link" href="/es/intake" hreflang="es" lang="es">Español</a>
+    </div>
+  </div>
+</header>
+<main class="intake">
+  <section class="off">
+    <div class="wrap">
+      <div id="intake-body">
+        <p class="eyebrow">Get started</p>
+        <h1>Tell us your bills.</h1>
+        <p class="muted">About 2 minutes. No charge until you save. Nothing changes on your accounts without your YES.</p>
+        <form id="intake" novalidate>
+          <fieldset class="box">
+            <legend>About you</legend>
+            <div class="grid2">
+              <div><label for="first_name">First name</label><input id="first_name" name="first_name" type="text" autocomplete="given-name" required maxlength="60"></div>
+              <div><label for="last_name">Last name</label><input id="last_name" name="last_name" type="text" autocomplete="family-name" required maxlength="60"></div>
+              <div><label for="email">Email</label><input id="email" name="email" type="email" autocomplete="email" inputmode="email" required maxlength="254"></div>
+              <div><label for="phone">Mobile phone</label><input id="phone" name="phone" type="tel" autocomplete="tel" inputmode="tel" required maxlength="20"><p class="hint" style="margin:6px 0 0">For your 3-way call with the provider</p></div>
+              <div><label for="zip">ZIP code</label><input id="zip" name="zip" type="text" autocomplete="postal-code" inputmode="numeric" required maxlength="10"></div>
+              <fieldset>
+                <legend>Preferred language</legend>
+                <div class="lang-choice">
+                  <label><input type="radio" name="preferred_language" value="en" checked> English</label>
+                  <label lang="es"><input type="radio" name="preferred_language" value="es"> Español</label>
+                </div>
+              </fieldset>
+            </div>
+          </fieldset>
+
+          <fieldset class="box">
+            <legend>Your bills</legend>
+            <p class="hint">Check every bill you'd like us to look at.</p>
+          <div class="bill" data-bill="internet">
+            <label><input type="checkbox" name="bill_internet" value="1"> Internet</label>
+            <div class="more grid2">
+              <div><label for="prov_internet">Provider</label><input id="prov_internet" name="provider_internet" type="text" maxlength="60" placeholder="e.g. Spectrum"></div>
+              <div><label for="amt_internet">About how much per month?</label><input id="amt_internet" name="amount_internet" type="text" inputmode="decimal" maxlength="8" placeholder="$"></div>
+            </div>
+          </div>
+          <div class="bill" data-bill="mobile">
+            <label><input type="checkbox" name="bill_mobile" value="1"> Mobile phone</label>
+            <div class="more grid2">
+              <div><label for="prov_mobile">Provider</label><input id="prov_mobile" name="provider_mobile" type="text" maxlength="60" placeholder="e.g. Spectrum"></div>
+              <div><label for="amt_mobile">About how much per month?</label><input id="amt_mobile" name="amount_mobile" type="text" inputmode="decimal" maxlength="8" placeholder="$"></div>
+            </div>
+          </div>
+          <div class="bill" data-bill="tv">
+            <label><input type="checkbox" name="bill_tv" value="1"> Cable or satellite TV</label>
+            <div class="more grid2">
+              <div><label for="prov_tv">Provider</label><input id="prov_tv" name="provider_tv" type="text" maxlength="60" placeholder="e.g. Spectrum"></div>
+              <div><label for="amt_tv">About how much per month?</label><input id="amt_tv" name="amount_tv" type="text" inputmode="decimal" maxlength="8" placeholder="$"></div>
+            </div>
+          </div>
+          <div class="bill" data-bill="home_security">
+            <label><input type="checkbox" name="bill_home_security" value="1"> Home security</label>
+            <div class="more grid2">
+              <div><label for="prov_home_security">Provider</label><input id="prov_home_security" name="provider_home_security" type="text" maxlength="60" placeholder="e.g. Spectrum"></div>
+              <div><label for="amt_home_security">About how much per month?</label><input id="amt_home_security" name="amount_home_security" type="text" inputmode="decimal" maxlength="8" placeholder="$"></div>
+            </div>
+          </div>
+          <div class="bill" data-bill="electric">
+            <label><input type="checkbox" name="bill_electric" value="1"> Electric (fees on the bill)</label>
+            <div class="more grid2">
+              <div><label for="prov_electric">Provider</label><input id="prov_electric" name="provider_electric" type="text" maxlength="60" placeholder="e.g. Spectrum"></div>
+              <div><label for="amt_electric">About how much per month?</label><input id="amt_electric" name="amount_electric" type="text" inputmode="decimal" maxlength="8" placeholder="$"></div>
+            </div>
+          </div>
+          <div class="bill" data-bill="gas">
+            <label><input type="checkbox" name="bill_gas" value="1"> Gas (fees on the bill)</label>
+            <div class="more grid2">
+              <div><label for="prov_gas">Provider</label><input id="prov_gas" name="provider_gas" type="text" maxlength="60" placeholder="e.g. Spectrum"></div>
+              <div><label for="amt_gas">About how much per month?</label><input id="amt_gas" name="amount_gas" type="text" inputmode="decimal" maxlength="8" placeholder="$"></div>
+            </div>
+          </div>
+          </fieldset>
+
+          <fieldset class="box">
+            <legend>Upload your bills (optional, but faster)</legend>
+            <p class="hint">A photo or PDF of your latest bill for each provider. Up to 5 files, 10 MB each. Never include passwords or PINs.</p>
+            <input id="files" name="files" type="file" multiple accept="image/jpeg,image/png,image/webp,image/heic,image/heif,application/pdf">
+          </fieldset>
+
+          <fieldset class="box">
+            <legend>Best time for a 20-minute call</legend>
+            <p class="hint">Pick all that work. We'll confirm by email.</p>
+            <div class="times">
+            <label><input type="checkbox" name="call_time" value="weekday_morning"> Weekday mornings (9am–12pm)</label>
+            <label><input type="checkbox" name="call_time" value="weekday_afternoon"> Weekday afternoons (12–5pm)</label>
+            <label><input type="checkbox" name="call_time" value="weekday_evening"> Weekday evenings (5–8pm)</label>
+            <label><input type="checkbox" name="call_time" value="saturday"> Saturday</label>
+            </div>
+            <div style="margin-top:14px"><label for="heard_from">How did you hear about us?</label>
+              <select id="heard_from" name="heard_from">
+              <option value="">Choose one (optional)</option>
+              <option value="youtube">YouTube</option>
+              <option value="instagram">Instagram</option>
+              <option value="tiktok">TikTok</option>
+              <option value="facebook">Facebook</option>
+              <option value="friend">Friend or family</option>
+              <option value="bill_rescue">Bill Rescue book</option>
+              <option value="google">Google search</option>
+              <option value="other">Other</option>
+              </select>
+            </div>
+            <div style="margin-top:14px"><label for="notes">Anything we should know? (optional)</label><textarea id="notes" name="notes" maxlength="500"></textarea></div>
+            <div style="margin-top:14px"><label for="promo_code">Promo code (optional)</label><input id="promo_code" name="promo_code" type="text" maxlength="20" autocapitalize="characters"></div>
+          </fieldset>
+
+          <label class="consent" for="sms_consent"><input id="sms_consent" name="sms_consent" type="checkbox" value="1"><span>Yes, FeeArmor may send me marketing and account text messages at the number above, including by automated means. Up to 4 msgs/month. Consent isn&#x27;t a condition of any purchase. Msg &amp; data rates may apply. Reply STOP to opt out, HELP for help.</span></label>
+          <div class="hp" aria-hidden="true"><label for="company">Company</label><input id="company" name="company" type="text" tabindex="-1" autocomplete="off"></div>
+
+          <div class="card" style="margin-top:6px">
+            <h3 style="margin-bottom:12px">What happens next</h3>
+            <ol class="next">
+          <li>We email you within one business day.</li>
+          <li>You e-sign a short service agreement and authorization. We don&#x27;t contact any provider until you sign.</li>
+          <li>We set up a 3-way call. You verify yourself with the provider and approve every change.</li>
+          <li>You pay only after the savings show up on your bill.</li>
+            </ol>
+          </div>
+
+          <p class="form-error" id="form-error" role="alert" hidden></p>
+          <button class="btn btn-block" type="submit" id="submit-btn">Send My Bills</button>
+          <p class="small" style="margin:0">By sending, you agree to our <a href="/privacy">Privacy Policy</a>. We never ask for your passwords or PINs.</p>
+        </form>
+      </div>
+      <div class="card success" id="success" hidden tabindex="-1">
+        <div class="check"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12l5 5 9-10" stroke="#2E7D32" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <h2 id="success-title"></h2>
+        <p class="muted">We'll email you within one business day with your agreement to e-sign and a time for your call. Questions? support@feearmor.com</p>
+      </div>
+    </div>
+  </section>
+</main>
+<footer>
+  <div class="wrap">
+    <nav aria-label="Footer"><a href="/">FeeArmor</a><a href="/blog">Blog</a><a href="/privacy">Privacy Policy</a><a href="mailto:support@feearmor.com">support@feearmor.com</a></nav>
+    <p style="margin:0">&copy; 2026 FeeArmor. All rights reserved.</p>
+  </div>
+</footer>
+<script>
+(function () {
+  var M = {"e_first": "Please add your first and last name.", "e_email": "Please enter a valid email address.", "e_phone": "Please enter a 10-digit mobile number.", "e_zip": "Please enter a 5-digit ZIP code.", "e_bills": "Check at least one bill.", "e_files": "Up to 5 files, each under 10 MB (photo or PDF).", "e_rate": "Too many tries. Please wait a bit and try again.", "e_gen": "Something went wrong. Please check your connection and try again.", "sending": "Sending…", "submit": "Send My Bills", "ok_h": "Got it, {name}."};
+  var form = document.getElementById('intake');
+  var btn = document.getElementById('submit-btn');
+  var err = document.getElementById('form-error');
+  var q = new URLSearchParams(location.search);
+  if (q.get('code')) form.promo_code.value = q.get('code').toUpperCase().slice(0, 20);
+  document.querySelectorAll('.bill input[type=checkbox]').forEach(function (cb) {
+    cb.addEventListener('change', function () { cb.closest('.bill').classList.toggle('on', cb.checked); });
+  });
+  function fail(msg, el) { err.textContent = msg; err.hidden = false; if (el) el.focus(); }
+  function ev(kind) { if (window.faEvent) window.faEvent(kind); }
+  form.addEventListener('submit', function (e) {
+    e.preventDefault(); err.hidden = true;
+    var f = form;
+    if (!f.first_name.value.trim() || !f.last_name.value.trim()) return fail(M.e_first, f.first_name);
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(f.email.value.trim())) return fail(M.e_email, f.email);
+    var digits = f.phone.value.replace(/\D/g, '');
+    if (!(digits.length === 10 || (digits.length === 11 && digits[0] === '1'))) return fail(M.e_phone, f.phone);
+    if (!/^\d{5}(-\d{4})?$/.test(f.zip.value.trim())) return fail(M.e_zip, f.zip);
+    if (!f.querySelector('.bill input[type=checkbox]:checked')) return fail(M.e_bills, f.querySelector('.bill input'));
+    var files = f.files.files;
+    if (files.length > 5) return fail(M.e_files, f.files);
+    for (var i = 0; i < files.length; i++) if (files[i].size > 10 * 1024 * 1024) return fail(M.e_files, f.files);
+    var data = new FormData(f);
+    ['utm_source', 'utm_medium', 'utm_campaign'].forEach(function (k) { data.append(k, q.get(k) || ''); });
+    data.append('page', location.pathname);
+    ev('submit');
+    btn.disabled = true; btn.textContent = M.sending;
+    fetch('/api/intake', { method: 'POST', body: data }).then(function (res) {
+      if (res.status === 429) throw new Error('rate');
+      if (res.status === 413 || res.status === 415) throw new Error('files');
+      if (!res.ok) throw new Error('fail');
+      ev('success');
+      document.getElementById('success-title').textContent = M.ok_h.replace('{name}', f.first_name.value.trim());
+      document.getElementById('intake-body').hidden = true;
+      var s = document.getElementById('success'); s.hidden = false; s.focus(); window.scrollTo(0, 0);
+    }).catch(function (e2) {
+      fail(e2.message === 'rate' ? M.e_rate : e2.message === 'files' ? M.e_files : M.e_gen);
+      btn.disabled = false; btn.textContent = M.submit;
+    });
+  });
+})();
+</script>
+<script>
+(function () {
+  var q = new URLSearchParams(location.search);
+  function ev(kind) {
+    try {
+      var d = JSON.stringify({ kind: kind, page: location.pathname, utm_source: q.get('utm_source') || '', utm_medium: q.get('utm_medium') || '', utm_campaign: q.get('utm_campaign') || '' });
+      if (navigator.sendBeacon) navigator.sendBeacon('/api/event', new Blob([d], { type: 'application/json' }));
+      else fetch('/api/event', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: d, keepalive: true });
+    } catch (e) {}
+  }
+  window.faEvent = ev;
+  ev('view');
+})();
+</script>
+</body>
+</html>

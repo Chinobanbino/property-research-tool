@@ -5,6 +5,7 @@ const crypto = require('crypto');
 const express = require('express');
 const compression = require('compression');
 const { Pool } = require('pg');
+const multer = require('multer');
 
 const PORT = process.env.PORT || 3000;
 const PUBLIC = path.join(__dirname, 'public');
@@ -15,6 +16,16 @@ const ADMIN_TOKEN = process.env.ADMIN_TOKEN || '';
 const SMS_CONSENT_TEXT = "Yes, FeeArmor may send me marketing and account text messages at the number above, including by automated means. Up to 4 msgs/month. Consent isn't a condition of any purchase. Msg & data rates may apply. Reply STOP to opt out, HELP for help.";
 const BILLS = ['Internet', 'Mobile phone', 'Cable or satellite TV', 'Electric', 'Gas', 'Water', 'Home security', 'Other'];
 const EVENT_KINDS = ['view', 'submit', 'success'];
+// Intake form options; keep in sync with tools/make_intake.py.
+const INTAKE_BILLS = ['internet', 'mobile', 'tv', 'home_security', 'electric', 'gas'];
+const CALL_TIMES = ['weekday_morning', 'weekday_afternoon', 'weekday_evening', 'saturday'];
+const HEARD_FROM = ['youtube', 'instagram', 'tiktok', 'facebook', 'friend', 'bill_rescue', 'google', 'other'];
+const UPLOAD_TYPES = ['image/jpeg', 'image/png', 'image/webp', 'image/heic', 'image/heif', 'application/pdf'];
+const upload = multer({
+  storage: multer.memoryStorage(),
+  limits: { fileSize: 10 * 1024 * 1024, files: 5, fields: 60, fieldSize: 2000 },
+  fileFilter: (req, file, cb) => (UPLOAD_TYPES.includes(file.mimetype) ? cb(null, true) : cb(Object.assign(new Error('bad file type'), { code: 'BAD_TYPE' }))),
+});
 
 const pool = process.env.DATABASE_URL
   ? new Pool({ connectionString: process.env.DATABASE_URL, ssl: process.env.PGSSL === 'true' ? { rejectUnauthorized: false } : false })
@@ -39,6 +50,37 @@ async function initDb() {
     ADD COLUMN IF NOT EXISTS phone TEXT,
     ADD COLUMN IF NOT EXISTS sms_consent_at TIMESTAMPTZ,
     ADD COLUMN IF NOT EXISTS sms_consent_text TEXT`);
+  await pool.query(`CREATE TABLE IF NOT EXISTS intake_requests (
+    id SERIAL PRIMARY KEY,
+    first_name TEXT NOT NULL,
+    last_name TEXT NOT NULL,
+    email TEXT NOT NULL,
+    phone TEXT NOT NULL,
+    zip TEXT,
+    preferred_language TEXT,
+    bills JSONB,
+    call_times TEXT,
+    heard_from TEXT,
+    notes TEXT,
+    promo_code TEXT,
+    sms_consent_at TIMESTAMPTZ,
+    sms_consent_text TEXT,
+    page TEXT,
+    utm_source TEXT,
+    utm_medium TEXT,
+    utm_campaign TEXT,
+    status TEXT DEFAULT 'new',
+    created_at TIMESTAMPTZ DEFAULT now()
+  )`);
+  await pool.query(`CREATE TABLE IF NOT EXISTS intake_files (
+    id SERIAL PRIMARY KEY,
+    intake_id INTEGER NOT NULL REFERENCES intake_requests(id) ON DELETE CASCADE,
+    filename TEXT,
+    mime TEXT,
+    size_bytes INTEGER,
+    data BYTEA NOT NULL,
+    created_at TIMESTAMPTZ DEFAULT now()
+  )`);
   await pool.query(`CREATE TABLE IF NOT EXISTS page_events (
     id SERIAL PRIMARY KEY,
     kind TEXT NOT NULL,
@@ -153,6 +195,65 @@ app.post('/api/waitlist', rateLimiter(5, 60 * 60 * 1000), async (req, res) => {
   }
 });
 
+const intakeLimiter = rateLimiter(5, 60 * 60 * 1000);
+app.post('/api/intake', intakeLimiter, (req, res, next) => {
+  upload.array('files', 5)(req, res, (err) => {
+    if (err) {
+      const status = err.code === 'BAD_TYPE' ? 415 : err.code === 'LIMIT_FILE_SIZE' || err.code === 'LIMIT_FILE_COUNT' ? 413 : 400;
+      return res.status(status).json({ ok: false });
+    }
+    next();
+  });
+}, async (req, res) => {
+  const b = req.body || {};
+  if (clip(b.company, 200)) return res.json({ ok: true }); // honeypot
+
+  const firstName = clip(b.first_name, 60);
+  const lastName = clip(b.last_name, 60);
+  const email = clip(b.email, 254).toLowerCase();
+  const phone = normalizePhone(b.phone);
+  const zip = clip(b.zip, 10);
+  if (!firstName || !lastName || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email) || !phone || !/^\d{5}(-\d{4})?$/.test(zip)) {
+    return res.status(400).json({ ok: false });
+  }
+  const bills = INTAKE_BILLS.filter((k) => b['bill_' + k] === '1').map((k) => ({
+    type: k,
+    provider: clip(b['provider_' + k], 60),
+    monthly: clip(b['amount_' + k], 8).replace(/[^\d.]/g, ''),
+  }));
+  if (!bills.length) return res.status(400).json({ ok: false });
+  if (!pool) return res.status(503).json({ ok: false });
+
+  const times = [].concat(b.call_time || []).filter((x) => CALL_TIMES.includes(x));
+  const smsConsent = b.sms_consent === '1';
+  const files = req.files || [];
+  const client = await pool.connect();
+  try {
+    await client.query('BEGIN');
+    const { rows } = await client.query(
+      `INSERT INTO intake_requests (first_name, last_name, email, phone, zip, preferred_language, bills, call_times,
+         heard_from, notes, promo_code, sms_consent_at, sms_consent_text, page, utm_source, utm_medium, utm_campaign)
+       VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15,$16,$17) RETURNING id`,
+      [firstName, lastName, email, phone, zip, b.preferred_language === 'es' ? 'es' : 'en', JSON.stringify(bills), times.join(','),
+       HEARD_FROM.includes(b.heard_from) ? b.heard_from : null, clip(b.notes, 500) || null,
+       clip(b.promo_code, 20).toUpperCase() || null, smsConsent ? new Date() : null, smsConsent ? SMS_CONSENT_TEXT : null,
+       clip(b.page, 100), clip(b.utm_source, 100), clip(b.utm_medium, 100), clip(b.utm_campaign, 100)]
+    );
+    for (const f of files) {
+      await client.query('INSERT INTO intake_files (intake_id, filename, mime, size_bytes, data) VALUES ($1,$2,$3,$4,$5)',
+        [rows[0].id, clip(f.originalname, 120), f.mimetype, f.size, f.buffer]);
+    }
+    await client.query('COMMIT');
+    res.json({ ok: true });
+  } catch (err) {
+    await client.query('ROLLBACK').catch(() => {});
+    console.error('intake insert failed:', err.message);
+    res.status(500).json({ ok: false });
+  } finally {
+    client.release();
+  }
+});
+
 app.post('/api/event', rateLimiter(300, 60 * 60 * 1000), async (req, res) => {
   const b = req.body || {};
   if (!pool || !EVENT_KINDS.includes(b.kind)) return res.status(204).end();
@@ -184,9 +285,39 @@ app.get('/admin/stats', async (req, res) => {
     `SELECT COALESCE(NULLIF(utm_source, ''), '(none)') AS source, kind, COUNT(*)::int AS n
        FROM page_events WHERE created_at > now() - ($1 || ' days')::interval
       GROUP BY 1, 2 ORDER BY 1, 2`, [String(days)]);
-  const [d7, d30, total] = await Promise.all([q(7), q(30), pool.query('SELECT COUNT(*)::int AS n FROM waitlist')]);
+  const [d7, d30, total, intake] = await Promise.all([q(7), q(30), pool.query('SELECT COUNT(*)::int AS n FROM waitlist'), pool.query('SELECT COUNT(*)::int AS n FROM intake_requests')]);
   res.set('Cache-Control', 'no-store');
-  res.json({ signups_total: total.rows[0].n, last_7_days: d7.rows, last_30_days: d30.rows });
+  res.json({ signups_total: total.rows[0].n, intake_total: intake.rows[0].n, last_7_days: d7.rows, last_30_days: d30.rows });
+});
+
+app.get('/admin/intake.csv', async (req, res) => {
+  if (!tokenOk(req.query.token) || !pool) return res.status(404).send('Not found');
+  const { rows } = await pool.query(
+    `SELECT r.*, COALESCE(json_agg(json_build_object('id', f.id, 'name', f.filename)) FILTER (WHERE f.id IS NOT NULL), '[]') AS files
+       FROM intake_requests r LEFT JOIN intake_files f ON f.intake_id = r.id GROUP BY r.id ORDER BY r.id`);
+  const cols = ['id', 'created_at', 'status', 'first_name', 'last_name', 'email', 'phone', 'zip', 'preferred_language', 'bills',
+    'call_times', 'heard_from', 'notes', 'promo_code', 'sms_consent_at', 'page', 'utm_source', 'utm_medium', 'utm_campaign', 'file_links'];
+  const host = 'https://' + (CANONICAL_HOST || req.get('host'));
+  const lines = rows.map((r) => cols.map((c) => {
+    if (c === 'bills') return csvCell((r.bills || []).map((x) => `${x.type}: ${x.provider || '?'} $${x.monthly || '?'}`).join('; '));
+    if (c === 'file_links') return csvCell(r.files.map((f) => `${host}/admin/intake-file/${f.id}?token=TOKEN`).join(' '));
+    return csvCell(r[c]);
+  }).join(','));
+  res.set('Content-Type', 'text/csv; charset=utf-8');
+  res.set('Content-Disposition', 'attachment; filename="feearmor-intake.csv"');
+  res.set('Cache-Control', 'no-store');
+  res.send([cols.join(',')].concat(lines).join('\n'));
+});
+
+app.get('/admin/intake-file/:id', async (req, res) => {
+  if (!tokenOk(req.query.token) || !pool || !/^\d+$/.test(req.params.id)) return res.status(404).send('Not found');
+  const { rows } = await pool.query('SELECT filename, mime, data FROM intake_files WHERE id = $1', [req.params.id]);
+  if (!rows.length) return res.status(404).send('Not found');
+  const name = (rows[0].filename || 'bill').replace(/[^\w.\- ]/g, '_');
+  res.set('Content-Type', rows[0].mime);
+  res.set('Content-Disposition', `attachment; filename="${name}"`);
+  res.set('Cache-Control', 'no-store');
+  res.send(rows[0].data);
 });
 
 // ---- Pages (clean URLs) ----
@@ -198,6 +329,8 @@ const PAGES = {
   '/es/privacidad': 'es-privacidad.html',
   '/blog': 'blog/index.html',
   '/es/blog': 'blog/es/index.html',
+  '/intake': 'intake.html',
+  '/es/intake': 'es-intake.html',
 };
 const sendPage = (res, file) => {
   res.set('Cache-Control', 'no-cache');

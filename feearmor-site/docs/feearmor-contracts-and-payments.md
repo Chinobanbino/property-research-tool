@@ -53,7 +53,7 @@ Between [CONFIRM: legal entity name], doing business as FeeArmor, [CONFIRM: Texa
 You must be 18 or older. You must be the account holder for each account you list, or legally allowed to act for the account holder.
 
 ### 2. What we do
-We review the recurring bills you send us (internet, mobile phone, cable and satellite TV, and fees on electric and gas bills). We look for fees, expired promotions, price increases and billing errors. Then we contact your providers to ask for charges to be removed, credits applied or prices lowered. Each successful change is a "**Fix**."
+We review the recurring bills you send us (internet, mobile phone, cable and satellite TV, home security, and fees on electric and gas bills). We look for fees, expired promotions, price increases and billing errors. Then we contact your providers to ask for charges to be removed, credits applied or prices lowered. Each successful change is a "**Fix**."
 
 ### 3. What we don't do
 - We don't choose, recommend or switch your electricity plan or provider.

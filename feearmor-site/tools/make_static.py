@@ -23,7 +23,7 @@ PRIVACY = {
 <li><b>From our signup forms:</b> your first name, email address and preferred language. On our Bill Rescue reader page we also ask which bill bugs you most, and, only if you choose, your mobile number with your consent to receive texts.</li>
 <li><b>How you found us:</b> the campaign tags in the link you clicked (for example "utm_source=youtube") and the page you came from.</li>
 <li><b>Simple visit counts:</b> we count page views, form submits and signups by campaign. We don't use advertising trackers or tracking cookies, and we don't store your IP address with these counts.</li>
-<li><b>When you become a customer:</b> copies of the bills you send us and the details needed to contact your providers. We never ask for your account passwords.</li>
+<li><b>When you request service:</b> your name, email, mobile number, ZIP code, which bills you have and about how much you pay, the best times to call, and any bill copies you upload. Bills can include your account numbers and service address. We never ask for your account passwords or PINs.</li>
 </ul>
 <h2>Why we use it</h2>
 <ul>
@@ -65,7 +65,7 @@ PRIVACY = {
 <li><b>De nuestros formularios:</b> su nombre, su correo electrónico y su idioma preferido. En nuestra página para lectores de Bill Rescue también preguntamos qué factura le molesta más y, solo si usted quiere, su número de celular con su permiso para recibir mensajes de texto.</li>
 <li><b>Cómo nos encontró:</b> las etiquetas de campaña del enlace que usó (por ejemplo "utm_source=youtube") y la página de donde venía.</li>
 <li><b>Conteos simples de visitas:</b> contamos vistas de página, envíos de formulario y registros por campaña. No usamos rastreadores de publicidad ni cookies de rastreo, y no guardamos su dirección IP con estos conteos.</li>
-<li><b>Cuando se hace cliente:</b> copias de las facturas que nos envía y los datos necesarios para contactar a sus compañías. Nunca le pedimos las contraseñas de sus cuentas.</li>
+<li><b>Cuando pide el servicio:</b> su nombre, correo, celular, código postal, qué facturas tiene y cuánto paga más o menos, los mejores horarios para llamarle y las copias de facturas que suba. Las facturas pueden incluir sus números de cuenta y su dirección. Nunca le pedimos contraseñas ni PIN.</li>
 </ul>
 <h2>Para qué la usamos</h2>
 <ul>
@@ -170,7 +170,7 @@ open(os.path.join(SITE, '404.html'), 'w').write(shell('en', 'Page not found', 'P
 open(os.path.join(SITE, 'robots.txt'), 'w').write(f'User-agent: *\nAllow: /\nDisallow: /admin/\nDisallow: /api/\n\nSitemap: {BASE}/sitemap.xml\n')
 
 # Sitemap: home + privacy + blog pairs, each English/Spanish pair linked with hreflang.
-pairs = [('/', '/es'), ('/privacy', '/es/privacidad'), ('/blog', '/es/blog')]
+pairs = [('/', '/es'), ('/intake', '/es/intake'), ('/privacy', '/es/privacidad'), ('/blog', '/es/blog')]
 pairs += [(f"/blog/{p['slug']}", f"/es/blog/{p['es_slug']}") for p in POSTS]
 urls = []
 for en, es in pairs:
