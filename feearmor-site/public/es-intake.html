@@ -15,25 +15,65 @@
 <link rel="icon" href="/logo.svg" type="image/svg+xml">
 <link rel="stylesheet" href="/site.css">
 <style>
-  .intake h1 { font-size: clamp(32px, 7vw, 46px); }
-  .intake fieldset.box { background: var(--surface); border: 1.5px solid var(--border); border-radius: var(--radius); padding: 20px; margin: 0 0 18px; }
-  .intake fieldset.box > legend { font-size: 18px; font-weight: 800; padding: 0 6px; }
-  .grid2 { display: grid; gap: 14px; }
+  .strip { background: linear-gradient(160deg, #0D1B2A 0%, #162640 100%); padding: 48px 0 76px; text-align: center; }
+  .strip .pill-top { display: inline-block; background: rgba(78,201,76,.1); border: 1px solid rgba(78,201,76,.25); color: var(--green); font-size: 12px; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; padding: 6px 16px; border-radius: 20px; margin-bottom: 18px; }
+  .strip h1 { font-size: clamp(28px, 6vw, 40px); max-width: 640px; margin: 0 auto 12px; }
+  .strip h1 .lime { color: var(--green); }
+  .strip p { color: #A9B6C6; max-width: 500px; margin: 0 auto 14px; }
+  .strip .fee-badge { display: inline-block; background: rgba(78,201,76,.1); border: 1px solid rgba(78,201,76,.25); color: var(--green); font-size: 14px; font-weight: 700; padding: 8px 18px; border-radius: 8px; max-width: 100%; }
+  .wizard-wrap { max-width: 660px; margin: -44px auto 60px; padding: 0 16px; position: relative; }
+  .wcard { scroll-margin-top: 84px; background: #fff; color: #1A2332; border-radius: 16px; box-shadow: 0 8px 40px rgba(13,27,42,.14); overflow: hidden; }
+  .wcard-head { background: var(--navy); color: #fff; padding: 20px 28px; display: flex; gap: 12px; align-items: center; }
+  .wcard-head img { width: 30px; height: 30px; }
+  .wcard-head h2 { font-size: 18px; margin: 0; color: #fff; }
+  .wcard-head p { font-size: 13px; color: #A9B6C6; margin: 2px 0 0; }
+  .wbody { padding: 28px; }
+  .prog-labels { display: flex; justify-content: space-between; margin-bottom: 8px; gap: 8px; }
+  .prog-labels span { font-size: 12px; font-weight: 800; letter-spacing: .06em; text-transform: uppercase; color: var(--muted); }
+  .prog-labels span.on { color: var(--accent); }
+  .prog-track { height: 4px; background: var(--border); border-radius: 4px; overflow: hidden; margin-bottom: 26px; }
+  .prog-fill { height: 100%; background: var(--green); border-radius: 4px; transition: width .4s ease; }
+  .step-page[hidden] { display: none; }
+  .field { margin-bottom: 18px; }
+  .grid2 { display: grid; gap: 0 14px; }
   @media (min-width: 560px) { .grid2 { grid-template-columns: 1fr 1fr; } }
-  .hint { font-size: 14px; color: var(--muted); margin: -2px 0 12px; }
-  .bill { border: 1.5px solid var(--border); border-radius: 12px; padding: 12px 14px; margin-bottom: 10px; background: var(--bg); }
-  .bill > label { display: flex; align-items: center; gap: 10px; margin: 0; font-weight: 700; min-height: 32px; cursor: pointer; }
-  .bill input[type=checkbox], .times input { width: 20px; height: 20px; accent-color: #2E7D32; }
+  .hint { font-size: 13px; color: var(--muted); margin: 6px 0 0; }
+  .q { font-size: 16px; font-weight: 800; margin-bottom: 10px; display: block; }
+  .bill { border: 1.5px solid var(--border); border-radius: 10px; padding: 12px 14px; margin-bottom: 10px; background: #F5F7FA; transition: .15s; }
+  .bill > label { display: flex; align-items: center; gap: 10px; margin: 0; font-weight: 700; min-height: 30px; cursor: pointer; }
+  .bill input[type=checkbox] { width: 20px; height: 20px; accent-color: #2E7D32; }
   .bill .more { display: none; margin-top: 12px; }
-  .bill.on { border-color: var(--green); }
+  .bill.on { border-color: var(--green); background: #EBF9EB; }
   .bill.on .more { display: grid; }
-  .times { display: grid; gap: 8px; }
-  .times label { display: flex; align-items: center; gap: 10px; font-weight: 500; margin: 0; min-height: 40px; }
-  input[type=file] { width: 100%; padding: 12px; border: 1.5px dashed #9FB0C3; border-radius: 10px; background: var(--bg); font: inherit; font-size: 15px; }
+  .opt-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  .opt-grid label { display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; min-height: 64px; padding: 10px 8px; margin: 0; background: #F5F7FA; border: 1.5px solid var(--border); border-radius: 10px; cursor: pointer; font-weight: 700; font-size: 15px; position: relative; transition: .15s; }
+  .opt-grid label small { font-weight: 500; color: var(--muted); font-size: 13px; }
+  .opt-grid input { position: absolute; opacity: 0; pointer-events: none; }
+  .opt-grid label:has(input:checked) { background: #EBF9EB; border-color: var(--green); }
+  .opt-grid label:has(input:focus-visible) { outline: 3px solid var(--green); outline-offset: 2px; }
+  input[type=file] { width: 100%; padding: 12px; border: 1.5px dashed #9FB0C3; border-radius: 10px; background: #F5F7FA; font: inherit; font-size: 15px; }
   textarea { width: 100%; min-height: 90px; padding: 12px 16px; border: 1.5px solid #CBD6E2; border-radius: 10px; font: inherit; font-size: 17px; resize: vertical; }
-  .next { counter-reset: n; list-style: none; padding: 0; margin: 0; }
-  .next li { counter-increment: n; position: relative; padding-left: 38px; margin-bottom: 12px; }
-  .next li::before { content: counter(n); position: absolute; left: 0; top: 0; width: 26px; height: 26px; border-radius: 50%; background: var(--navy); color: var(--green); font-weight: 900; font-size: 14px; display: flex; align-items: center; justify-content: center; }
+  .fee-note { background: #EBF9EB; border: 1px solid rgba(78,201,76,.35); border-radius: 8px; padding: 14px 16px; font-size: 14px; line-height: 1.6; margin: 0 0 18px; }
+  .fee-note strong { color: #1a6e19; }
+  .btn-row { display: flex; gap: 12px; margin-top: 22px; }
+  .btn-row .btn { flex: 1; }
+  .btn-back { min-height: 54px; padding: 0 20px; background: #F5F7FA; color: var(--muted); border: 1.5px solid var(--border); border-radius: 10px; font: inherit; font-weight: 700; cursor: pointer; }
+  .btn-back:hover { color: #1A2332; border-color: #1A2332; }
+  .wbody .form-error { margin-top: 14px; }
+  .pills { display: flex; flex-wrap: wrap; gap: 10px 18px; margin-top: 24px; padding-top: 20px; border-top: 1px solid var(--border); }
+  .pills span { display: flex; align-items: center; gap: 6px; font-size: 13px; font-weight: 600; color: var(--muted); }
+  .pills i { width: 16px; height: 16px; background: var(--green); border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; flex: none; }
+  .ty { padding: 44px 28px; text-align: center; }
+  .ty h2 { font-size: 26px; margin: 0 0 10px; }
+  .ty > p { color: var(--muted); max-width: 420px; margin: 0 auto 24px; }
+  .ty-steps { background: #F5F7FA; border-radius: 12px; padding: 22px; text-align: left; counter-reset: n; list-style: none; margin: 0; }
+  .ty-steps li { counter-increment: n; position: relative; padding-left: 42px; margin-bottom: 16px; }
+  .ty-steps li:last-child { margin-bottom: 0; }
+  .ty-steps li::before { content: counter(n); position: absolute; left: 0; top: 2px; width: 28px; height: 28px; border-radius: 50%; background: var(--navy); color: var(--green); font-weight: 900; font-size: 13px; display: flex; align-items: center; justify-content: center; }
+  .ty-steps h3 { font-size: 15px; margin: 0 0 3px; }
+  .ty-steps p { font-size: 14px; color: var(--muted); margin: 0; }
+  @media (max-width: 480px) { .wbody { padding: 22px 18px; } .wcard-head { padding: 18px; } .prog-labels span { font-size: 11px; letter-spacing: .03em; } }
+  @media (prefers-reduced-motion: reduce) { .prog-fill { transition: none; } }
 </style>
 </head>
 <body>
@@ -46,136 +86,163 @@
     </div>
   </div>
 </header>
-<main class="intake">
-  <section class="off">
+<main>
+  <section class="strip">
     <div class="wrap">
-      <div id="intake-body">
-        <p class="eyebrow">Empezar</p>
-        <h1>Díganos sus facturas.</h1>
-        <p class="muted">Unos 2 minutos. Sin cobro hasta que usted ahorre. Nada cambia en sus cuentas sin su SÍ.</p>
-        <form id="intake" novalidate>
-          <fieldset class="box">
-            <legend>Sus datos</legend>
-            <div class="grid2">
-              <div><label for="first_name">Nombre</label><input id="first_name" name="first_name" type="text" autocomplete="given-name" required maxlength="60"></div>
-              <div><label for="last_name">Apellido</label><input id="last_name" name="last_name" type="text" autocomplete="family-name" required maxlength="60"></div>
-              <div><label for="email">Correo electrónico</label><input id="email" name="email" type="email" autocomplete="email" inputmode="email" required maxlength="254"></div>
-              <div><label for="phone">Celular</label><input id="phone" name="phone" type="tel" autocomplete="tel" inputmode="tel" required maxlength="20"><p class="hint" style="margin:6px 0 0">Para su llamada de 3 personas con la compañía</p></div>
-              <div><label for="zip">Código postal</label><input id="zip" name="zip" type="text" autocomplete="postal-code" inputmode="numeric" required maxlength="10"></div>
-              <fieldset>
-                <legend>Idioma preferido</legend>
-                <div class="lang-choice">
-                  <label><input type="radio" name="preferred_language" value="en"> English</label>
-                  <label lang="es"><input type="radio" name="preferred_language" value="es" checked> Español</label>
-                </div>
-              </fieldset>
-            </div>
-          </fieldset>
-
-          <fieldset class="box">
-            <legend>Sus facturas</legend>
-            <p class="hint">Marque cada factura que quiere que revisemos.</p>
-          <div class="bill" data-bill="internet">
-            <label><input type="checkbox" name="bill_internet" value="1"> Internet</label>
-            <div class="more grid2">
-              <div><label for="prov_internet">Compañía</label><input id="prov_internet" name="provider_internet" type="text" maxlength="60" placeholder="ej. Spectrum"></div>
-              <div><label for="amt_internet">¿Cuánto paga al mes, más o menos?</label><input id="amt_internet" name="amount_internet" type="text" inputmode="decimal" maxlength="8" placeholder="$"></div>
-            </div>
-          </div>
-          <div class="bill" data-bill="mobile">
-            <label><input type="checkbox" name="bill_mobile" value="1"> Celular</label>
-            <div class="more grid2">
-              <div><label for="prov_mobile">Compañía</label><input id="prov_mobile" name="provider_mobile" type="text" maxlength="60" placeholder="ej. Spectrum"></div>
-              <div><label for="amt_mobile">¿Cuánto paga al mes, más o menos?</label><input id="amt_mobile" name="amount_mobile" type="text" inputmode="decimal" maxlength="8" placeholder="$"></div>
-            </div>
-          </div>
-          <div class="bill" data-bill="tv">
-            <label><input type="checkbox" name="bill_tv" value="1"> TV por cable o satélite</label>
-            <div class="more grid2">
-              <div><label for="prov_tv">Compañía</label><input id="prov_tv" name="provider_tv" type="text" maxlength="60" placeholder="ej. Spectrum"></div>
-              <div><label for="amt_tv">¿Cuánto paga al mes, más o menos?</label><input id="amt_tv" name="amount_tv" type="text" inputmode="decimal" maxlength="8" placeholder="$"></div>
-            </div>
-          </div>
-          <div class="bill" data-bill="home_security">
-            <label><input type="checkbox" name="bill_home_security" value="1"> Seguridad del hogar</label>
-            <div class="more grid2">
-              <div><label for="prov_home_security">Compañía</label><input id="prov_home_security" name="provider_home_security" type="text" maxlength="60" placeholder="ej. Spectrum"></div>
-              <div><label for="amt_home_security">¿Cuánto paga al mes, más o menos?</label><input id="amt_home_security" name="amount_home_security" type="text" inputmode="decimal" maxlength="8" placeholder="$"></div>
-            </div>
-          </div>
-          <div class="bill" data-bill="electric">
-            <label><input type="checkbox" name="bill_electric" value="1"> Luz (cargos en la factura)</label>
-            <div class="more grid2">
-              <div><label for="prov_electric">Compañía</label><input id="prov_electric" name="provider_electric" type="text" maxlength="60" placeholder="ej. Spectrum"></div>
-              <div><label for="amt_electric">¿Cuánto paga al mes, más o menos?</label><input id="amt_electric" name="amount_electric" type="text" inputmode="decimal" maxlength="8" placeholder="$"></div>
-            </div>
-          </div>
-          <div class="bill" data-bill="gas">
-            <label><input type="checkbox" name="bill_gas" value="1"> Gas (cargos en la factura)</label>
-            <div class="more grid2">
-              <div><label for="prov_gas">Compañía</label><input id="prov_gas" name="provider_gas" type="text" maxlength="60" placeholder="ej. Spectrum"></div>
-              <div><label for="amt_gas">¿Cuánto paga al mes, más o menos?</label><input id="amt_gas" name="amount_gas" type="text" inputmode="decimal" maxlength="8" placeholder="$"></div>
-            </div>
-          </div>
-          </fieldset>
-
-          <fieldset class="box">
-            <legend>Suba sus facturas (opcional, pero más rápido)</legend>
-            <p class="hint">Una foto o PDF de su factura más reciente de cada compañía. Hasta 5 archivos de 10 MB cada uno. Nunca incluya contraseñas ni PIN.</p>
-            <input id="files" name="files" type="file" multiple accept="image/jpeg,image/png,image/webp,image/heic,image/heif,application/pdf">
-          </fieldset>
-
-          <fieldset class="box">
-            <legend>Mejor horario para una llamada de 20 minutos</legend>
-            <p class="hint">Elija todos los que le funcionen. Le confirmamos por correo.</p>
-            <div class="times">
-            <label><input type="checkbox" name="call_time" value="weekday_morning"> Mañanas entre semana (9am–12pm)</label>
-            <label><input type="checkbox" name="call_time" value="weekday_afternoon"> Tardes entre semana (12–5pm)</label>
-            <label><input type="checkbox" name="call_time" value="weekday_evening"> Noches entre semana (5–8pm)</label>
-            <label><input type="checkbox" name="call_time" value="saturday"> Sábado</label>
-            </div>
-            <div style="margin-top:14px"><label for="heard_from">¿Cómo nos conoció?</label>
-              <select id="heard_from" name="heard_from">
-              <option value="">Elija una (opcional)</option>
-              <option value="youtube">YouTube</option>
-              <option value="instagram">Instagram</option>
-              <option value="tiktok">TikTok</option>
-              <option value="facebook">Facebook</option>
-              <option value="friend">Amigo o familiar</option>
-              <option value="bill_rescue">Libro Bill Rescue</option>
-              <option value="google">Búsqueda en Google</option>
-              <option value="other">Otro</option>
-              </select>
-            </div>
-            <div style="margin-top:14px"><label for="notes">¿Algo que debamos saber? (opcional)</label><textarea id="notes" name="notes" maxlength="500"></textarea></div>
-            <div style="margin-top:14px"><label for="promo_code">Código de promoción (opcional)</label><input id="promo_code" name="promo_code" type="text" maxlength="20" autocapitalize="characters"></div>
-          </fieldset>
-
-          <label class="consent" for="sms_consent"><input id="sms_consent" name="sms_consent" type="checkbox" value="1"><span>Sí, FeeArmor puede enviarme mensajes de texto de mercadeo y sobre mi cuenta al número de arriba, incluso por medios automáticos. Hasta 4 mensajes al mes. Este permiso no es condición de ninguna compra. Pueden aplicar tarifas de mensajes y datos. Responda STOP para cancelar, HELP para ayuda.</span></label>
-          <div class="hp" aria-hidden="true"><label for="company">Company</label><input id="company" name="company" type="text" tabindex="-1" autocomplete="off"></div>
-
-          <div class="card" style="margin-top:6px">
-            <h3 style="margin-bottom:12px">Lo que sigue</h3>
-            <ol class="next">
-          <li>Le escribimos en un día hábil.</li>
-          <li>Usted firma electrónicamente un acuerdo de servicio corto y una autorización. No contactamos a ninguna compañía hasta que firme.</li>
-          <li>Hacemos una llamada de 3 personas. Usted se verifica con la compañía y aprueba cada cambio.</li>
-          <li>Solo paga cuando el ahorro aparece en su factura.</li>
-            </ol>
-          </div>
-
-          <p class="form-error" id="form-error" role="alert" hidden></p>
-          <button class="btn btn-block" type="submit" id="submit-btn">Enviar Mis Facturas</button>
-          <p class="small" style="margin:0">Al enviar, acepta nuestra <a href="/es/privacidad">Política de privacidad</a>. Nunca le pedimos contraseñas ni PIN.</p>
-        </form>
-      </div>
-      <div class="card success" id="success" hidden tabindex="-1">
-        <div class="check"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12l5 5 9-10" stroke="#2E7D32" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-        <h2 id="success-title"></h2>
-        <p class="muted">Le escribimos en un día hábil con su acuerdo para firmar y un horario para su llamada. ¿Preguntas? support@feearmor.com</p>
-      </div>
+      <p class="pill-top">Revisión gratis de facturas</p>
+      <h1>Empiece a <span class="lime">ahorrar</span> en sus facturas hoy.</h1>
+      <p>Cuéntenos sobre sus facturas en unos 2 minutos. Nuestro equipo bilingüe las revisa y le llama con un plan.</p>
+      <p class="fee-badge">Tarifa única: 40% de sus primeros 12 meses de ahorro. $0 si no le ahorramos dinero.</p>
     </div>
   </section>
+  <div class="wizard-wrap off">
+    <div class="wcard" id="main-card">
+      <div class="wcard-head">
+        <img src="/logo.svg" alt="" width="30" height="30">
+        <div><h2>Su revisión gratis de facturas</h2><p>Sin cobro hasta que ahorre. Usted aprueba cada cambio.</p></div>
+      </div>
+      <div class="wbody">
+        <div class="prog-labels" aria-hidden="true">
+          <span id="pl1" class="on">Sus datos</span>
+          <span id="pl2">Sus facturas</span>
+          <span id="pl3">Mejor hora</span>
+        </div>
+        <div class="prog-track" role="progressbar" aria-valuemin="1" aria-valuemax="3" aria-valuenow="1" aria-label="Paso 1 de 3" id="prog-bar"><div class="prog-fill" id="prog" style="width:33%"></div></div>
+
+        <form id="intake" novalidate>
+          <div class="step-page" id="s1">
+            <div class="grid2">
+              <div class="field"><label for="first_name">Nombre</label><input id="first_name" name="first_name" type="text" autocomplete="given-name" required maxlength="60"></div>
+              <div class="field"><label for="last_name">Apellido</label><input id="last_name" name="last_name" type="text" autocomplete="family-name" required maxlength="60"></div>
+            </div>
+            <div class="field"><label for="phone">Celular</label><input id="phone" name="phone" type="tel" autocomplete="tel" inputmode="tel" required maxlength="20" placeholder="(555) 000-0000"><p class="hint">Le llamamos a este número para su llamada de 3 personas con la compañía.</p></div>
+            <div class="grid2">
+              <div class="field"><label for="email">Correo electrónico</label><input id="email" name="email" type="email" autocomplete="email" inputmode="email" required maxlength="254"></div>
+              <div class="field"><label for="zip">Código postal</label><input id="zip" name="zip" type="text" autocomplete="postal-code" inputmode="numeric" required maxlength="10"></div>
+            </div>
+            <fieldset class="field">
+              <legend>Idioma preferido para la llamada</legend>
+              <div class="lang-choice">
+                <label><input type="radio" name="preferred_language" value="en"> English</label>
+                <label lang="es"><input type="radio" name="preferred_language" value="es" checked> Español</label>
+              </div>
+            </fieldset>
+          </div>
+
+          <div class="step-page" id="s2" hidden>
+            <fieldset class="field">
+              <legend class="q">¿Qué facturas revisamos?</legend>
+              <div class="bill" data-bill="internet">
+                <label><input type="checkbox" name="bill_internet" value="1"> Internet</label>
+                <div class="more grid2">
+                  <div class="field"><label for="prov_internet">Compañía</label><input id="prov_internet" name="provider_internet" type="text" maxlength="60" placeholder="ej. Spectrum"></div>
+                  <div class="field"><label for="amt_internet">¿Cuánto paga al mes, más o menos?</label><input id="amt_internet" name="amount_internet" type="text" inputmode="decimal" maxlength="8" placeholder="$"></div>
+                </div>
+              </div>
+              <div class="bill" data-bill="mobile">
+                <label><input type="checkbox" name="bill_mobile" value="1"> Celular</label>
+                <div class="more grid2">
+                  <div class="field"><label for="prov_mobile">Compañía</label><input id="prov_mobile" name="provider_mobile" type="text" maxlength="60" placeholder="ej. Spectrum"></div>
+                  <div class="field"><label for="amt_mobile">¿Cuánto paga al mes, más o menos?</label><input id="amt_mobile" name="amount_mobile" type="text" inputmode="decimal" maxlength="8" placeholder="$"></div>
+                </div>
+              </div>
+              <div class="bill" data-bill="tv">
+                <label><input type="checkbox" name="bill_tv" value="1"> TV por cable o satélite</label>
+                <div class="more grid2">
+                  <div class="field"><label for="prov_tv">Compañía</label><input id="prov_tv" name="provider_tv" type="text" maxlength="60" placeholder="ej. Spectrum"></div>
+                  <div class="field"><label for="amt_tv">¿Cuánto paga al mes, más o menos?</label><input id="amt_tv" name="amount_tv" type="text" inputmode="decimal" maxlength="8" placeholder="$"></div>
+                </div>
+              </div>
+              <div class="bill" data-bill="home_security">
+                <label><input type="checkbox" name="bill_home_security" value="1"> Seguridad del hogar</label>
+                <div class="more grid2">
+                  <div class="field"><label for="prov_home_security">Compañía</label><input id="prov_home_security" name="provider_home_security" type="text" maxlength="60" placeholder="ej. Spectrum"></div>
+                  <div class="field"><label for="amt_home_security">¿Cuánto paga al mes, más o menos?</label><input id="amt_home_security" name="amount_home_security" type="text" inputmode="decimal" maxlength="8" placeholder="$"></div>
+                </div>
+              </div>
+              <div class="bill" data-bill="electric">
+                <label><input type="checkbox" name="bill_electric" value="1"> Luz (cargos en la factura)</label>
+                <div class="more grid2">
+                  <div class="field"><label for="prov_electric">Compañía</label><input id="prov_electric" name="provider_electric" type="text" maxlength="60" placeholder="ej. Spectrum"></div>
+                  <div class="field"><label for="amt_electric">¿Cuánto paga al mes, más o menos?</label><input id="amt_electric" name="amount_electric" type="text" inputmode="decimal" maxlength="8" placeholder="$"></div>
+                </div>
+              </div>
+              <div class="bill" data-bill="gas">
+                <label><input type="checkbox" name="bill_gas" value="1"> Gas (cargos en la factura)</label>
+                <div class="more grid2">
+                  <div class="field"><label for="prov_gas">Compañía</label><input id="prov_gas" name="provider_gas" type="text" maxlength="60" placeholder="ej. Spectrum"></div>
+                  <div class="field"><label for="amt_gas">¿Cuánto paga al mes, más o menos?</label><input id="amt_gas" name="amount_gas" type="text" inputmode="decimal" maxlength="8" placeholder="$"></div>
+                </div>
+              </div>
+            </fieldset>
+            <div class="field"><label for="files">Suba sus facturas (opcional, pero más rápido)</label>
+              <input id="files" name="files" type="file" multiple accept="image/jpeg,image/png,image/webp,image/heic,image/heif,application/pdf">
+              <p class="hint">Una foto o PDF de su factura más reciente de cada compañía. Hasta 5 archivos de 10 MB cada uno. Nunca incluya contraseñas ni PIN.</p>
+            </div>
+            <p class="fee-note"><strong>Cómo funciona nuestra tarifa:</strong> Primero encontramos su ahorro. Su tarifa es un pago único del 40% de sus primeros 12 meses de ahorro, en 3 pagos sin intereses si prefiere. Solo paga cuando el ahorro aparece en su factura.</p>
+            <div class="field"><label for="notes">¿Algo que debamos saber? (opcional)</label><textarea id="notes" name="notes" maxlength="500" placeholder="ej. Mi factura de internet subió $40 el mes pasado."></textarea></div>
+          </div>
+
+          <div class="step-page" id="s3" hidden>
+            <fieldset class="field">
+              <legend class="q">Mejor horario para una llamada de 20 minutos</legend>
+              <p class="hint" style="margin:-4px 0 10px">Elija todos los que le funcionen. Hora de Texas.</p>
+              <div class="opt-grid">
+                <label><input type="checkbox" name="call_time" value="weekday_morning">Mañanas<small>9am–12pm</small></label>
+                <label><input type="checkbox" name="call_time" value="weekday_afternoon">Tardes<small>12–5pm</small></label>
+                <label><input type="checkbox" name="call_time" value="weekday_evening">Noches<small>5–8pm</small></label>
+                <label><input type="checkbox" name="call_time" value="saturday">Sábado<small>De día</small></label>
+              </div>
+            </fieldset>
+            <div class="grid2">
+              <div class="field"><label for="heard_from">¿Cómo nos conoció?</label>
+                <select id="heard_from" name="heard_from">
+                <option value="">Elija una (opcional)</option>
+                <option value="youtube">YouTube</option>
+                <option value="instagram">Instagram</option>
+                <option value="tiktok">TikTok</option>
+                <option value="facebook">Facebook</option>
+                <option value="friend">Amigo o familiar</option>
+                <option value="bill_rescue">Libro Bill Rescue</option>
+                <option value="google">Búsqueda en Google</option>
+                <option value="other">Otro</option>
+                </select>
+              </div>
+              <div class="field"><label for="promo_code">Código de promoción (opcional)</label><input id="promo_code" name="promo_code" type="text" maxlength="20" autocapitalize="characters"></div>
+            </div>
+            <label class="consent field" for="sms_consent"><input id="sms_consent" name="sms_consent" type="checkbox" value="1"><span>Sí, FeeArmor puede enviarme mensajes de texto de mercadeo y sobre mi cuenta al número de arriba, incluso por medios automáticos. Hasta 4 mensajes al mes. Este permiso no es condición de ninguna compra. Pueden aplicar tarifas de mensajes y datos. Responda STOP para cancelar, HELP para ayuda.</span></label>
+            <p class="fee-note"><strong>Antes de cobrar cualquier cosa:</strong> Le enviamos un acuerdo corto para firmar electrónicamente y agregar una tarjeta. No se cobra nada hasta que el ahorro aparezca en su factura. No contactamos a ninguna compañía hasta que firme, y usted aprueba cada cambio en la llamada.</p>
+          </div>
+
+          <div class="hp" aria-hidden="true"><label for="company">Company</label><input id="company" name="company" type="text" tabindex="-1" autocomplete="off"></div>
+          <p class="form-error" id="form-error" role="alert" hidden></p>
+          <div class="btn-row">
+            <button class="btn-back" type="button" id="back-btn" hidden>&larr; Atrás</button>
+            <button class="btn" type="submit" id="submit-btn">Siguiente &rarr;</button>
+          </div>
+          <p class="small" id="fine" style="margin:14px 0 0;text-align:center" hidden>Al enviar, acepta nuestra <a href="/es/privacidad">Política de privacidad</a>. Nunca vendemos su información ni le pedimos contraseñas o PIN.</p>
+          <div class="pills">
+            <span><i><svg viewBox="0 0 8 8" width="8" height="8" fill="none" aria-hidden="true"><path d="M1 4l2 2 4-3" stroke="#0D1B2A" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></i>Sin cobro hasta que ahorre</span>
+            <span><i><svg viewBox="0 0 8 8" width="8" height="8" fill="none" aria-hidden="true"><path d="M1 4l2 2 4-3" stroke="#0D1B2A" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></i>Nunca vendemos sus datos</span>
+            <span><i><svg viewBox="0 0 8 8" width="8" height="8" fill="none" aria-hidden="true"><path d="M1 4l2 2 4-3" stroke="#0D1B2A" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></i>Español e inglés</span>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <div class="wcard" id="success" hidden tabindex="-1">
+      <div class="ty">
+        <div class="success"><div class="check"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12l5 5 9-10" stroke="#2E7D32" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div>
+        <h2 id="success-title"></h2>
+        <p>Recibimos sus facturas. Espere un correo de support@feearmor.com en 1 día hábil.</p>
+        <ol class="ty-steps">
+          <li><h3>Revisamos sus facturas</h3><p>Buscamos dónde podría estar pagando de más y le enviamos un acuerdo para firmar.</p></li>
+          <li><h3>Llamada de 3 personas con su compañía</h3><p>Usted se verifica, nosotros negociamos y usted aprueba cada cambio.</p></li>
+          <li><h3>Solo paga cuando ahorra</h3><p>Pago único del 40% de sus primeros 12 meses de ahorro, cuando aparece en su factura. $0 si no le ahorramos dinero.</p></li>
+        </ol>
+      </div>
+    </div>
+  </div>
 </main>
 <footer>
   <div class="wrap">
@@ -185,45 +252,81 @@
 </footer>
 <script>
 (function () {
-  var M = {"e_first": "Por favor escriba su nombre y apellido.", "e_email": "Por favor escriba un correo electrónico válido.", "e_phone": "Por favor escriba un celular de 10 dígitos.", "e_zip": "Por favor escriba un código postal de 5 dígitos.", "e_bills": "Marque al menos una factura.", "e_files": "Hasta 5 archivos, cada uno de menos de 10 MB (foto o PDF).", "e_rate": "Demasiados intentos. Espere un momento y vuelva a intentarlo.", "e_gen": "Algo salió mal. Revise su conexión y vuelva a intentarlo.", "sending": "Enviando…", "submit": "Enviar Mis Facturas", "ok_h": "Recibido, {name}."};
+  var M = {"e_first": "Por favor escriba su nombre y apellido.", "e_email": "Por favor escriba un correo electrónico válido.", "e_phone": "Por favor escriba un celular de 10 dígitos.", "e_zip": "Por favor escriba un código postal de 5 dígitos.", "e_bills": "Marque al menos una factura.", "e_files": "Hasta 5 archivos, cada uno de menos de 10 MB (foto o PDF).", "e_time": "Elija al menos un horario.", "e_rate": "Demasiados intentos. Espere un momento y vuelva a intentarlo.", "e_gen": "Algo salió mal. Revise su conexión y vuelva a intentarlo.", "sending": "Enviando…", "submit": "Activar Mi Armadura", "ok_h": "¡Ya está protegido, {name}!", "step_of": "Paso {n} de 3"};
+  var NEXT = "Siguiente →";
   var form = document.getElementById('intake');
   var btn = document.getElementById('submit-btn');
+  var back = document.getElementById('back-btn');
   var err = document.getElementById('form-error');
+  var cur = 1;
   var q = new URLSearchParams(location.search);
   if (q.get('code')) form.promo_code.value = q.get('code').toUpperCase().slice(0, 20);
   document.querySelectorAll('.bill input[type=checkbox]').forEach(function (cb) {
     cb.addEventListener('change', function () { cb.closest('.bill').classList.toggle('on', cb.checked); });
   });
-  function fail(msg, el) { err.textContent = msg; err.hidden = false; if (el) el.focus(); }
+  function fail(msg, el) { err.textContent = msg; err.hidden = false; if (el) el.focus(); return false; }
   function ev(kind) { if (window.faEvent) window.faEvent(kind); }
+  function check(step) {
+    var f = form;
+    if (step === 1) {
+      if (!f.first_name.value.trim() || !f.last_name.value.trim()) return fail(M.e_first, f.first_name.value.trim() ? f.last_name : f.first_name);
+      var digits = f.phone.value.replace(/\D/g, '');
+      if (!(digits.length === 10 || (digits.length === 11 && digits[0] === '1'))) return fail(M.e_phone, f.phone);
+      if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(f.email.value.trim())) return fail(M.e_email, f.email);
+      if (!/^\d{5}(-\d{4})?$/.test(f.zip.value.trim())) return fail(M.e_zip, f.zip);
+    }
+    if (step === 2) {
+      if (!f.querySelector('.bill input[type=checkbox]:checked')) return fail(M.e_bills, f.querySelector('.bill input'));
+      var files = f.files.files;
+      if (files.length > 5) return fail(M.e_files, f.files);
+      for (var i = 0; i < files.length; i++) if (files[i].size > 10 * 1024 * 1024) return fail(M.e_files, f.files);
+    }
+    if (step === 3) {
+      if (!f.querySelector('input[name=call_time]:checked')) return fail(M.e_time, f.querySelector('input[name=call_time]'));
+    }
+    return true;
+  }
+  function go(n) {
+    document.getElementById('s' + cur).hidden = true;
+    cur = n;
+    var page = document.getElementById('s' + n);
+    page.hidden = false;
+    document.getElementById('prog').style.width = [33, 66, 100][n - 1] + '%';
+    var bar = document.getElementById('prog-bar');
+    bar.setAttribute('aria-valuenow', n); bar.setAttribute('aria-label', M.step_of.replace('{n}', n));
+    for (var k = 1; k <= 3; k++) document.getElementById('pl' + k).classList.toggle('on', k <= n);
+    back.hidden = n === 1;
+    document.getElementById('fine').hidden = n !== 3;
+    btn.textContent = n === 3 ? M.submit : NEXT;
+    err.hidden = true;
+    document.getElementById('main-card').scrollIntoView({ behavior: 'smooth', block: 'start' });
+    var first = page.querySelector('input:not([type=hidden])');
+    if (first) first.focus({ preventScroll: true });
+  }
+  form.addEventListener('change', function () { err.hidden = true; });
+  back.addEventListener('click', function () { if (cur > 1) go(cur - 1); });
   form.addEventListener('submit', function (e) {
     e.preventDefault(); err.hidden = true;
+    if (!check(cur)) return;
+    if (cur < 3) return go(cur + 1);
     var f = form;
-    if (!f.first_name.value.trim() || !f.last_name.value.trim()) return fail(M.e_first, f.first_name);
-    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(f.email.value.trim())) return fail(M.e_email, f.email);
-    var digits = f.phone.value.replace(/\D/g, '');
-    if (!(digits.length === 10 || (digits.length === 11 && digits[0] === '1'))) return fail(M.e_phone, f.phone);
-    if (!/^\d{5}(-\d{4})?$/.test(f.zip.value.trim())) return fail(M.e_zip, f.zip);
-    if (!f.querySelector('.bill input[type=checkbox]:checked')) return fail(M.e_bills, f.querySelector('.bill input'));
-    var files = f.files.files;
-    if (files.length > 5) return fail(M.e_files, f.files);
-    for (var i = 0; i < files.length; i++) if (files[i].size > 10 * 1024 * 1024) return fail(M.e_files, f.files);
     var data = new FormData(f);
     ['utm_source', 'utm_medium', 'utm_campaign'].forEach(function (k) { data.append(k, q.get(k) || ''); });
     data.append('page', location.pathname);
     ev('submit');
-    btn.disabled = true; btn.textContent = M.sending;
+    btn.disabled = true; back.disabled = true; btn.textContent = M.sending;
     fetch('/api/intake', { method: 'POST', body: data }).then(function (res) {
       if (res.status === 429) throw new Error('rate');
       if (res.status === 413 || res.status === 415) throw new Error('files');
       if (!res.ok) throw new Error('fail');
       ev('success');
       document.getElementById('success-title').textContent = M.ok_h.replace('{name}', f.first_name.value.trim());
-      document.getElementById('intake-body').hidden = true;
-      var s = document.getElementById('success'); s.hidden = false; s.focus(); window.scrollTo(0, 0);
+      document.getElementById('main-card').hidden = true;
+      var s = document.getElementById('success'); s.hidden = false; s.focus(); s.scrollIntoView({ block: 'start' });
     }).catch(function (e2) {
-      fail(e2.message === 'rate' ? M.e_rate : e2.message === 'files' ? M.e_files : M.e_gen);
-      btn.disabled = false; btn.textContent = M.submit;
+      if (e2.message === 'files') { go(2); fail(M.e_files, f.files); }
+      else fail(e2.message === 'rate' ? M.e_rate : M.e_gen);
+      btn.disabled = false; back.disabled = false; btn.textContent = cur === 3 ? M.submit : NEXT;
     });
   });
 })();
