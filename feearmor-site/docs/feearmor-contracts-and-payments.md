@@ -2,11 +2,13 @@
 *Draft for Gio · Oct 21, 2026 · Not legal advice*
 
 > **Before any customer signs:** have a Texas attorney review these. It's a one-time cost, usually a few hundred dollars for a review of templates like these [ESTIMATE].
-> The attorney should check four things:
-> 1. The consumer-protection rules (Texas DTPA limits what a consumer contract can waive)
-> 2. The fee and refund wording
-> 3. The dispute section
-> 4. Which language version controls for Spanish-speaking customers
+> Updated Oct 21, 2026 to follow the contracts research brief (`contracts-research-2026-10-21.md`). The attorney should decide the six open questions at the end of that brief, mainly:
+> 1. Arbitration or no arbitration (section 15)
+> 2. The liability limit and its Texas "fair notice" format (section 12)
+> 3. The customer-indemnity clause (section 13)
+> 4. Whether the consent-only texting approach avoids Texas telemarketing registration
+> 5. The "verified savings" and recalculation wording (sections 6–7)
+> 6. Texas sales tax on the fee
 >
 > After review, PANDA can turn each document into a PandaDoc template with e-signature.
 
@@ -18,193 +20,257 @@
 
 | Step | Document | Notes |
 |---|---|---|
-| Signup | **FeeArmor Service Agreement** (§2) | One price for everyone |
-| Signup | **Card on file** ($0 now, card saved for the fee once savings post) | Required before any calls |
-| Before the first call | **Authorization to Act** (§3), one per customer, listing their providers | |
-| Before any change | **Change Approval** (§4), a quick yes by e-sign, email or text | |
+| Signup | **E-signature consent** (§2, section 18) | Separate checkbox, shown before the agreement. Required by the federal e-signature law (ESIGN) |
+| Signup | **FeeArmor Service Agreement** (§2) | Clickwrap: the customer must scroll and tick "I agree". Keep the evidence (below) |
+| Signup | **Card on file** ($0 now; card saved for the fee once savings post) | Required before any calls |
+| Signup (optional) | **Text-message consent** (§5) | Separate, unchecked box. Never required |
+| Before the first call | **Authorization to Act** (§3), one per customer, listing their accounts | Not a power of attorney; no notary needed |
+| Before any change | **Change Approval** (§4): the customer's YES to that specific change | Live on the recorded 3-way call, or by reply to a text or email |
 | After each fix | **Savings Record**, the before/after proof | The fee is calculated from it |
 
-All documents come in English and Spanish. The customer signs in the language they choose.
+**Every document comes in English and Spanish.** The customer picks a language at signup and signs that version.
+
+**Clickwrap evidence to keep for every customer:**
+- the exact version of the agreement shown, and its language
+- date and time of the "I agree" click, and the IP address
+- the email and phone used
+- the e-sign consent
+- the one-time code sent to their phone
+- the signed Authorization
+
+PandaDoc or a similar tool keeps most of this in its audit trail.
 
 ---
 
 ## 2. FeeArmor Service Agreement (draft)
 
 **FeeArmor Service Agreement**
-Between [CONFIRM: legal entity name], doing business as FeeArmor ("**FeeArmor**," "**we**"), and the customer named below ("**you**").
+Between [CONFIRM: legal entity name], doing business as FeeArmor, [CONFIRM: Texas mailing address], support@feearmor.com ("**FeeArmor**," "**we**"), and the customer named below ("**you**").
 
-### 1. What we do
-We review the recurring household bills you send us (internet, mobile phone, TV, and fees on electric and gas bills). We find fees, expired promotions, price increases and billing errors. Then we contact your providers to get charges removed, credits applied or prices lowered. Each successful change is a "**Fix**."
+**PLEASE READ SECTION 15 (DISPUTES) AND SECTION 12 (LIMITS ON OUR RESPONSIBILITY). THEY AFFECT YOUR RIGHTS.**
 
-### 2. What we don't do
-- We don't switch your electricity provider or sell, shop or recommend insurance policies.
+### 1. Who can sign
+You must be 18 or older. You must be the account holder for each account you list, or legally allowed to act for the account holder.
+
+### 2. What we do
+We review the recurring bills you send us (internet, mobile phone, cable and satellite TV, and fees on electric and gas bills). We look for fees, expired promotions, price increases and billing errors. Then we contact your providers to ask for charges to be removed, credits applied or prices lowered. Each successful change is a "**Fix**."
+
+### 3. What we don't do
+- We don't choose, recommend or switch your electricity plan or provider.
+- We don't sell, shop or recommend insurance.
+- We don't negotiate past-due balances, debts or settlements, and we don't offer anything to do with your credit.
 - We don't give legal, tax or financial advice.
 - We don't pay your bills. You stay responsible for paying your providers on time.
 
-### 3. What we can do without asking, and what needs your OK
-- **Pre-approved:** by signing, you let us accept an offer **only if all of these are true**:
-  - it lowers your bill
-  - it keeps the same services and features (or better)
-  - it adds no contract, no contract extension and no new fees
-  - it doesn't buy equipment
+### 4. You approve every change
+We never accept an offer or change your account without your approval of that specific change. Before you approve, we tell you:
+- the new monthly price
+- how long it lasts
+- whether it adds a contract or extends one, or adds any fee
+- whether it changes your services, features or equipment
 
-  We tell you about every change the same day.
-- **Needs your OK first:** anything else. That includes a contract or extension, fewer features, new equipment, or a different provider. Approval can be by e-signature, email, text reply or on a recorded call. We keep a record of each approval.
+You can approve on the call (our calls are recorded), or by replying YES to our text or email. If you don't approve, nothing changes and you owe nothing for that offer.
 
-### 4. Our fee
+### 5. Our fee
 - **$0 upfront.** If we make no Fixes, you owe nothing.
-- **One-time fee:** 40% of the Verified Savings from each Fix over its first 12 months. Verified Savings for a Fix = Verified Monthly Savings (Section 5) × 12. **We never count more than 12 months, even if the lower price lasts longer.**
-- **One-time credits** (for example, a refunded late fee): 40% of the credit.
-- **Shorter savings:** if a lower price is set to last fewer than 12 months (for example, a 6-month promotion), we count only the months it applies.
-- **When we bill:** only after the lower price or credit appears on your provider bill. We email you a statement showing the before and after amounts and the fee at least 3 days before we charge.
-- **Split payments:** you may pay the fee at once, or in 3 equal monthly payments at no extra cost.
-- **After the first 12 months,** 100% of the savings are yours.
-- **If a provider doesn't honor a Fix:** if the provider raises the price back or removes the credit during those 12 months, tell us. We contact the provider to restore the deal. If we can't, we refund the fee for that Fix in full (or the part already paid, if you were paying in 3 payments, and cancel the rest).
-- **Promotion-end reminders:** we email you before a promotion we secured is about to end. If you ask us to negotiate again, a new lower price is a new Fix with its own fee, and you approve it first.
+- **One-time fee:** 40% of the Verified Savings (Section 6) from each Fix during its first 12 months. We never count more than 12 months, even if the lower price lasts longer. *Example: if a Fix lowers your bill by $20 a month for 12 months, your savings are $240 and our fee is $96.*
+- **One-time credits** (for example, a refunded late fee): 40% of the credit, counted once.
+- **Shorter promotions:** if a lower price lasts fewer than 12 months, we count only the months it actually applies.
+- **When we bill:** only after the lower price or credit appears on a provider bill. We email you a statement showing the before and after amounts and the fee at least 3 days before we charge your card.
+- **Ways to pay:** pay at once, or in 3 equal monthly payments on the dates in your statement. No interest, no finance charge, no extra cost.
+- **No other fees:** no late fees, no returned-payment fees, no card surcharges.
+- **New negotiations:** we'll email you before a promotion we got you ends. We never negotiate again unless you ask us to. A new lower price is a new Fix with its own fee, and you approve it first.
 
-### 5. How savings are measured
-- **Verified Monthly Savings** = your old monthly price for a service minus your new monthly price for the same service. Taxes and fees count as shown on your bill.
-- If you choose to add or drop services, we compare like for like.
-- **"Verified"** means the change appears on your provider bill. If you don't send us that bill within 10 days of its date, we may use the provider's written confirmation (confirmation number and new price) instead.
-- You can dispute any savings amount within 14 days by sending us the bill. We correct any error before charging, or refund it if it was already charged.
+### 6. How savings are measured
+- **Starting bill:** your last provider bill before you signed up, for the same services. If your services change, we compare like for like.
+- **Verified Monthly Savings:** how much your regular monthly charges go down, as shown on a provider bill. Regular monthly charges include the provider's recurring fees (for example a "Broadcast TV fee" or equipment rental). They don't include taxes or one-time charges.
+- **"Verified"** means the change shows on your provider bill. If you don't send us that bill within 10 days of its date, we may use the provider's written confirmation (confirmation number and new price), and we'll show it to you.
+- **Disputes:** you can dispute any savings amount within 30 days of a statement by sending us the bill. We correct any error and refund anything overcharged.
 
-### 6. Billing and payments
+### 7. If savings go away (recalculation and refund)
+During the 12 months, if your provider reverses a Fix or doesn't honor it:
+- Tell us, and send the bill if you have it.
+- We contact the provider to restore the deal at no charge.
+- If we can't restore it, we recalculate your fee on the savings you actually received. We refund the difference, or cancel payments you haven't made yet.
+
+If you cancel or change the service yourself during the 12 months (for example, you move or switch providers), we recalculate on the savings you received up to that date, once you show us the bill.
+
+### 8. Billing and payments
 - **Card on file:** a payment card is required before we contact any provider. Nothing is charged until savings post.
-- **Statements:** we email a statement at least 3 days before every charge.
-- **Failed payments:** if a charge fails, we retry and notify you (see Section 8).
+- By adding your card, you authorize us to charge the amounts and dates shown in each statement (one payment or 3 payments).
+- **Failed payments:** if a charge fails, we'll let you know and retry (Section 10).
 
-### 7. Cancelling and ending this agreement
-- Cancel anytime, and we stop all new work.
-- If you cancel before any Fix appears on your bill, you owe nothing.
-- Fees for Fixes already made stay due, because you keep those savings.
-- **We may also end this agreement** if you give us false information, misuse our service, or don't pay a fee that is due. We tell you by email. Fees for Fixes already made stay due.
+### 9. Cancelling and ending this agreement
+- **Cancel anytime** by emailing support@feearmor.com or replying CANCEL to our email. We stop all new work.
+- **Free cancellation:** if you cancel within 3 days of signing, or at any time before we contact a provider for you, you owe nothing.
+- **After that:** you owe fees only on Fixes you approved, and only on savings that actually appear on your bills (Sections 5–7).
+- **We may end this agreement** if you give us false information, misuse our service, or don't pay a fee that is due. We'll tell you by email. Fees for Fixes already made stay due.
 
-### 8. If a payment is not made
-- **Notice and retries:** if a charge fails, we email you (and text you, if you agreed to texts) and retry the card over 14 days.
-- **Pause:** if the payment is still unpaid after 14 days, we pause all work on your account.
-- **Unpaid amounts stay owed:** we may refer them for collection or file in justice court.
-- **No late fees and no interest.**
-- **We never undo your savings** or contact your providers to reverse a Fix because of non-payment.
+### 10. If a payment is not made
+- If a charge fails, we email you (and text you, only if you agreed to texts) and retry the card over 14 days.
+- If it's still unpaid after 14 days, we pause new work on your account.
+- Unpaid amounts stay owed. We may file a claim in justice court.
+- We never undo your savings or contact your providers to reverse a Fix because of non-payment.
 
-### 9. Your responsibilities
-- You are the account holder, or allowed to act for the account holder.
-- If you sign up for an account that isn't yours (for example, a parent's), you confirm the account holder agreed, and you and the account holder are both responsible for the fee.
-- Information you give us is accurate.
-- You join a short three-way call when a provider requires the account holder on the line.
+### 11. Your responsibilities
+- You are the account holder, or legally allowed to act for the account holder.
+- If you sign up for someone else's account (for example, a parent's), you confirm the account holder agreed. You and the account holder are both responsible for the fee.
+- The information you give us is accurate.
+- **You verify your own identity with providers.** When a provider asks for a PIN, passcode or one-time code, you give it to the provider directly on a 3-way call. We never ask for it.
 
-### 10. Your information
+### 12. Limits on our responsibility
+**WE DON'T GUARANTEE ANY SAVINGS. PROVIDERS DECIDE WHETHER TO REMOVE FEES OR LOWER PRICES. AFTER A CHANGE, YOUR PROVIDER MAY NOT LET YOU GO BACK TO YOUR OLD PLAN.**
+
+**TO THE EXTENT THE LAW ALLOWS, OUR TOTAL RESPONSIBILITY TO YOU FOR ANY CLAIM, INCLUDING A CLAIM THAT COMES FROM FEEARMOR'S OWN NEGLIGENCE, IS LIMITED TO THE FEES YOU PAID US IN THE 12 MONTHS BEFORE THE CLAIM. WE ARE NOT RESPONSIBLE FOR INDIRECT OR CONSEQUENTIAL LOSSES.**
+
+**THIS LIMIT DOES NOT APPLY TO OUR GROSS NEGLIGENCE, FRAUD OR WILLFUL MISCONDUCT. IT DOES NOT LIMIT ANY RIGHT THE LAW DOESN'T ALLOW YOU TO GIVE UP, INCLUDING YOUR RIGHTS UNDER THE TEXAS DECEPTIVE TRADE PRACTICES ACT.**
+
+[ATTORNEY: confirm this meets Texas "fair notice" rules (express negligence + conspicuousness) and keep identical bold formatting in the Spanish version.]
+
+### 13. Your responsibility to us
+If you give us false information, or sign up for an account you aren't allowed to act on, and that causes a claim against FeeArmor, you agree to cover our reasonable costs from that claim. [ATTORNEY: confirm wording, or remove.]
+
+### 14. Calls, messages and recording
+- **Recording:** calls we make or join for you, including 3-way calls with your providers, are recorded for quality and to prove what was agreed. We announce this at the start of every call.
+- **Email:** we send account emails about your service.
+- **Texts:** we send texts only if you separately agreed to them. Reply STOP to stop at any time.
+
+### 15. Disputes
+- **Talk to us first.** Email support@feearmor.com and give us 30 days to fix it. Most issues are fixed in a few days.
+- **Small claims court:** either of us may bring a claim in justice court in the county where you live.
+- [ATTORNEY DECISION: either (a) no arbitration, or (b) individual arbitration with a class-action waiver. If (b), include all of these:
+  - a 30-day opt-out by email
+  - a small-claims exception
+  - FeeArmor pays arbitration fees beyond what a court filing would cost
+  - hearings in your county
+  - mass-arbitration batching
+  - the same notice in Spanish]
+- **Governing law:** this agreement follows Texas law.
+- Nothing in this agreement waives your rights under the Texas Deceptive Trade Practices Act.
+
+### 16. Your information
 - We use your bills and account details only to provide this service.
-- **We never ask for your account passwords.** We never sell your information, and we don't share it with marketing or referral partners.
+- **We never ask for your account passwords, PINs or one-time codes.** We never sell your information, and we don't share it with marketing or referral partners.
+- Members of our team, including contractors who work outside the United States, may see your bills and account details to make calls for you. They work under written confidentiality agreements and only through our access-controlled systems.
 - We delete bill copies 90 days after your last fee is paid or your account closes, unless the law requires us to keep them longer.
 - Details are in our Privacy Policy at feearmor.com/privacy.
 
-### 11. No guaranteed results
-- Providers decide whether to remove fees or lower prices. We don't promise any amount of savings. If we save you nothing, you pay nothing.
-- After a change, your provider may not let you go back to your old plan.
-- We're not responsible for what your provider does, including price increases that apply to all customers, outages, or changes you make yourself.
-- Examples and estimates on our website are illustrations, not promises.
+### 17. Language
+This agreement is provided in English and Spanish. You choose the version you read and sign. Both versions have the same meaning. **If they ever differ, the version you selected and signed controls.**
 
-### 12. Limits
-To the extent the law allows, our total responsibility to you is limited to the fees you paid us in the 12 months before the claim. [ATTORNEY: confirm wording under Texas DTPA.]
+### 18. Electronic signature and records
+Before you sign, you agree separately to receive this agreement and related records electronically. You can:
+- ask for a free paper copy at any time by emailing support@feearmor.com
+- withdraw your consent to electronic records at any time (we'll then send records by mail)
+- update your email address in your account or by emailing us
 
-### 13. Your responsibility to us
-If you give us false information, or sign up for an account you're not allowed to act on, and that causes a claim against FeeArmor, you agree to cover our reasonable costs from that claim. [ATTORNEY: confirm wording; keep it narrow for consumers.]
+To view records, you need a device that can open PDF files and an email account. If we change these requirements, we'll tell you.
 
-### 14. Messages
-- **Email:** we send account emails about your service.
-- **Texts:** we send texts only if you separately agreed to them. Reply STOP to end texts anytime.
-
-### 15. Disputes
-- Please contact us first at support@feearmor.com. Most issues can be fixed in a few days.
-- This agreement follows Texas law.
-- Either of us may bring a claim in justice court (small claims) in the county where you live. [ATTORNEY: decide whether to add arbitration.]
-
-### 16. Language and e-signature
-- This agreement is available in English and Spanish. [ATTORNEY: which version controls.]
-- You agree to sign electronically.
-
-### 17. Discounts and promotions
-- Promo codes and perks (for example, the Bill Rescue reader code RESCUE for $19 off) apply only as described in the offer.
+### 19. Discounts and promotions
+- Promo codes and perks (for example, the Bill Rescue reader code RESCUE for $19 off your first fee) apply only as described in the offer.
 - One code per customer unless the offer says otherwise. Codes have no cash value and can't be combined unless the offer says so.
 - If we offer referral rewards, we'll post the rules with the offer.
 
-### 18. Using our website and accounts
-- You may use the FeeArmor website and any customer account only for your own household bills.
-- Keep your login private. Tell us right away if you think someone else is using it.
-- Don't copy, scrape, resell or interfere with our website, or upload anything harmful.
-- FeeArmor's name, logo, website content and materials belong to us.
-- **Linking to us is welcome.** Anyone may link to feearmor.com or feearmor.com/es. Please don't copy our pages, use our logo without asking, or suggest we partner with or endorse you unless we've agreed in writing.
+### 20. Using our website
+- Use the FeeArmor website and any account only for your own household bills.
+- Keep your login private.
+- Don't copy, scrape, resell or interfere with our website.
+- FeeArmor's name, logo and content belong to us. Linking to us is welcome, but don't suggest we partner with or endorse you unless we've agreed in writing.
+- We never post your name, bill or savings without your written permission.
 
-### 19. Comments, reviews and social media
-- If you post about FeeArmor (reviews, comments, messages to our social pages), don't post other people's personal or account information.
-- We may remove posts on our pages that are abusive, misleading, or share private information.
-- We will never post your name, bill or savings without your written permission.
-
-### 20. Links to other websites
-Our website or emails may link to provider websites or other sites. We don't control them and aren't responsible for their content or privacy practices.
-
-### 21. Changes to these terms
-We may update these terms. We'll email you at least 30 days before a change takes effect. Changes never apply to Fixes already made or to disputes that started before the change.
+### 21. Changes to this agreement
+We won't change the terms of this agreement after you sign it. If we update our terms, the new version applies only to new sign-ups, or to you only if you agree to it again by clicking "I agree."
 
 ### 22. The whole agreement
 - This agreement, your Authorization to Act and our Privacy Policy are the whole agreement between us.
 - If a court finds one part can't be enforced, the rest still applies.
-- You can't transfer this agreement to someone else. We may transfer it if FeeArmor is sold or merged, and we'll tell you if that happens.
+- You can't transfer this agreement. We may transfer it if FeeArmor is sold or merged, and we'll tell you.
 
 ### 23. Contact
 [CONFIRM: legal entity name], [CONFIRM: mailing address], support@feearmor.com, [CONFIRM: phone]. Hablamos español.
 
-**Customer:** ______________________ **Date:** __________
+**☐ I have read and agree to the FeeArmor Service Agreement** (unchecked)
 **Payment option:** ☐ Pay the fee at once  ☐ Split into 3 monthly payments
 
 ---
 
-## 3. Authorization to Act on Your Behalf (draft)
+## 3. Authorization to Act (draft)
 
-> I, **[customer name]**, authorize **[legal entity] d/b/a FeeArmor** and its staff to contact the providers listed below about my accounts. FeeArmor may:
-> - discuss my account
-> - request removal of fees
-> - request credits, promotions, price matches and lower prices
-> - receive information about my account needed to do this
->
-> **FeeArmor may accept an offer for me without asking first only if it lowers my bill, keeps the same services and features, adds no contract, extension or new fees, and buys no equipment.** FeeArmor will tell me the same day.
->
-> **FeeArmor may NOT, without my separate approval:**
-> - accept any other offer or change my service
-> - add lines or services, or buy equipment
-> - agree to a contract or early-termination fee
-> - change account ownership
-> - make payments
->
-> FeeArmor will not pretend to be me. I will join a three-way call if a provider requires it.
->
-> | Provider | Service | Account number (last 4 only) |
-> |---|---|---|
-> | | | |
-> | | | |
->
-> This authorization lasts 12 months from the date I sign it, or until I cancel it in writing, whichever comes first.
->
-> Signature: ____________ Date: ________ Phone: ____________
+**Authorization to Act on My Behalf (Limited)**
 
-**Why "last 4 only":** the VA gets the full account number from the bill inside your system, so the signed letter itself doesn't hold sensitive data.
+1. **Who.** I, **[full legal name exactly as on my accounts]**, of [service address], [phone], [email], authorize **[legal entity] d/b/a FeeArmor**, [Texas address], and its named representatives to act as my agent for the accounts listed below.
+
+2. **Accounts.**
+
+   | Provider | Account holder name | Account number (last 4) | Services |
+   |---|---|---|---|
+   | | | | |
+
+   Accounts can be added only by a signed amendment.
+
+3. **What FeeArmor may do:**
+   - review my bills and plans
+   - discuss my account with the provider
+   - ask for fee removals, credits, promotions, price matches, retention offers and lower prices
+   - receive account information needed to do this
+
+   **This is my affirmative written request under 47 U.S.C. §222(c)(2) that each provider listed disclose my account information to FeeArmor.**
+
+4. **Changes need my approval.** FeeArmor may accept an offer only after I approve that specific change (on a recorded call or by written reply).
+
+5. **FeeArmor may never:**
+   - change my SIM or eSIM, or port or transfer my number
+   - change my passwords, PINs, security questions, account lock, or contact details
+   - add or remove authorized users
+   - cancel service, or open new lines or accounts
+   - make payments or change my payment method
+   - request my call-detail records
+
+6. **Honest identification.** FeeArmor's representatives will identify themselves by name as representatives of FeeArmor acting on my behalf, and will never say they are me. FeeArmor will never ask for my passwords, PINs or one-time codes. If a provider needs to verify me, I'll do it directly on a 3-way call.
+
+7. **My authority.** I am the account holder, or legally authorized to act for the account holder (proof attached if needed).
+
+8. **How long it lasts.** This authorization lasts 12 months from the date I sign or until FeeArmor finishes the work, whichever comes first. I can cancel it at any time by emailing support@feearmor.com. It also ends if I die or become incapacitated.
+
+9. **Recording and data.** I consent to the recording of calls FeeArmor makes or joins for me. I understand that FeeArmor team members, including contractors outside the United States, may see my account information to do this work.
+
+10. **Copies.** An electronic or photocopy of this authorization is as valid as the original.
+
+Signature: ____________ Date: ________ Verified by one-time code to phone ending in ____
+
+*A one-page provider-facing summary, with name, accounts, scope and exclusions, goes with this when a provider asks for it in writing. Most carriers will still want the customer on a live 3-way call.*
 
 ---
 
 ## 4. Change Approval + Savings Record
 
-**Approval request** (sent by text or email, answered with YES):
-> "[Provider] offered: remove the $15/mo modem fee and lower the price from $85 to $70/mo for 12 months. No contract, no new fees. Reply YES to accept or NO to decline."
-> *(Example only.)*
+**Approval request** (said on the recorded call, or sent by text or email; the customer answers YES):
+> "[Provider] offered: [what changes]. New price: $[x]/month for [y] months, then $[z]. Contract: [none / x months, early-termination fee $___]. New fees: [none / list]. Equipment or service changes: [none / list]. Reply YES to accept or NO to decline."
+
+Fill in every blank. If anything is "unknown," don't send it; go back to the provider.
 
 **Savings Record** (one row per Fix, shown to the customer and kept for billing):
 
-| Date | Provider | What changed | Old $/mo | New $/mo | Savings/mo | Confirmation # | Approved (date/how) | Shown on bill dated |
-|---|---|---|---|---|---|---|---|---|
+| Date | Provider | What changed | Starting $/mo | New $/mo | Savings/mo | Months it lasts | Confirmation # | Rep name | Approved (date/how) | Shown on bill dated |
+|---|---|---|---|---|---|---|---|---|---|---|
 
 ---
 
-## 5. If someone stops paying: the plan
+## 5. Text-message consent (signup form, optional)
+
+> ☐ Yes, FeeArmor may send me marketing and account text messages at the number above, including by automated means. Up to 4 msgs/month. Consent isn't a condition of any purchase. Msg & data rates may apply. Reply STOP to opt out, HELP for help.
+
+(This exact sentence is on feearmor.com/rescue and is saved with each phone number as proof of consent. Keep the page and `server.js` in sync if it ever changes.)
+
+- The box is **unchecked** by default.
+- Store with the number: the date and time, the page, and the exact wording.
+- Before sending any text, register your brand and campaigns for business texting (A2P 10DLC) with your texting provider. Use separate campaigns for account notices and marketing.
+- Send only 9am–9pm Monday–Saturday and noon–9pm Sunday, in the recipient's time zone.
+- No cold texts or calls, and no bought lists. That keeps FeeArmor inside the consent-based position on Texas telephone-solicitation registration (Bus. & Com. Code ch. 302).
+
+---
+
+## 6. If someone stops paying: the plan
 
 ### Who's at risk
 Every customer gets their savings before they pay. So the risk is the customer who has the savings and then doesn't pay the fee. Everything below is about that.
@@ -263,7 +329,7 @@ Plan for **5–10% of fee revenue going unpaid** [ESTIMATE]. Replace it with the
 
 ---
 
-## 6. Payments setup (for the build, at launch, not now)
+## 7. Payments setup (for the build, at launch, not now)
 
 The current site only collects waitlist signups. When you're ready to take money, FORGE adds:
 - **Stripe:**
@@ -278,7 +344,7 @@ The current site only collects waitlist signups. When you're ready to take money
 
 ---
 
-## 7. Decisions for Gio
+## 8. Decisions for Gio
 
 | # | Decision | My default |
 |---|---|---|
@@ -288,12 +354,16 @@ The current site only collects waitlist signups. When you're ready to take money
 | 4 | Small-claims line | Over $250 |
 | 5 | Free promotion-end reminder emails | Yes |
 | 6 | Book a Texas attorney review before the first paid customer | Yes |
+| 7 | Free cancellation within 3 days of signing | Yes |
+| 8 | Recalculate the fee if the customer cancels or changes the service mid-year | Yes (research recommends; small risk of customers gaming it) |
 
 ## Calls I made
 - **No late fees or interest:** they'd cost more in trust than they'd bring in.
 - **Never undo savings:** customers can stop paying, but we never reverse their savings. That would be retaliation and a legal risk.
 - **Fees after cancelling:** fees for Fixes already made stay owed, because the customer keeps the savings.
 - **Billed only after savings post on the bill,** not when the provider agrees. That's fairer than charging on promised savings, which is the #1 complaint about bill services.
-- **Refund if a provider doesn't honor a Fix:** same promise BillShark makes, so we don't look weaker.
+- **Recalculate and refund if a provider reverses a Fix:** no competitor found offers this. It keeps "no savings, no fee" true in edge cases and wins disputes.
+- **Every change needs a YES:** replaced the earlier "pre-approved changes" clause, per the research (opt-in per change is safer and a selling point).
+- **No changes to a signed agreement:** Texas courts can treat change-at-will clauses as illusory.
 - **Started fresh on the authorization letter:** the Bill Rescue version (br7) has no saved output in the office.
 - **Reused the measuring rules** from the earlier Bill Rescue guarantee: like-for-like comparison, only months the lower price applies.

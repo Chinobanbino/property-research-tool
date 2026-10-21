@@ -12,7 +12,7 @@ const CANONICAL_HOST = process.env.CANONICAL_HOST || ''; // e.g. www.feearmor.co
 const ADMIN_TOKEN = process.env.ADMIN_TOKEN || '';
 
 // Exact consent sentence shown on /rescue; stored with each phone number as the TCPA record.
-const SMS_CONSENT_TEXT = 'Yes, FeeArmor may text me about my Fee Scan and FeeArmor updates. Up to 4 msgs/month. Msg & data rates may apply. Reply STOP to opt out. Consent is not required to use FeeArmor.';
+const SMS_CONSENT_TEXT = "Yes, FeeArmor may send me marketing and account text messages at the number above, including by automated means. Up to 4 msgs/month. Consent isn't a condition of any purchase. Msg & data rates may apply. Reply STOP to opt out, HELP for help.";
 const BILLS = ['Internet', 'Mobile phone', 'Cable or satellite TV', 'Electric', 'Gas', 'Water', 'Home security', 'Other'];
 const EVENT_KINDS = ['view', 'submit', 'success'];
 
