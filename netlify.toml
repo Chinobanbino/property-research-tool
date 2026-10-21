@@ -1,0 +1,5 @@
+# Netlify builds the static FeeArmor site from feearmor-site/ on every push.
+[build]
+  base = "feearmor-site"
+  command = "python3 tools/make_netlify.py netlify-build"
+  publish = "netlify-build"
