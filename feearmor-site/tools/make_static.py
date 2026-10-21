@@ -47,14 +47,14 @@ PRIVACY = {
 <h2>Your choices</h2>
 <ul>
 <li>Unsubscribe from emails using the link in any email.</li>
-<li>Ask us to see, correct or delete your information by emailing <a href="mailto:support@feearmor.com">support@feearmor.com</a> (or help@feearmor.com). We'll reply within 30 days.</li>
+<li>Ask us to see, correct or delete your information by emailing <a href="mailto:help@feearmor.com">help@feearmor.com</a>. We'll reply within 30 days.</li>
 </ul>
 <h2>Children</h2>
 <p>FeeArmor is for adults 18 and older. We don't knowingly collect information from children.</p>
 <h2>Changes</h2>
 <p>If we change this policy, we'll update the date above. If the change is important, we'll email people on our list.</p>
 <h2>Contact</h2>
-<p>Questions? Email <a href="mailto:support@feearmor.com">support@feearmor.com</a>. Hablamos español: <a href="/es/privacidad">lea esta política en español</a>.</p>
+<p>Questions? Email <a href="mailto:help@feearmor.com">help@feearmor.com</a>. Hablamos español: <a href="/es/privacidad">lea esta política en español</a>.</p>
 '''),
  'es': ('Política de privacidad', 'Cómo FeeArmor recopila, usa y protege su información.', '/es/privacidad', '''
 <h1>Política de privacidad</h1>
@@ -89,14 +89,14 @@ PRIVACY = {
 <h2>Sus opciones</h2>
 <ul>
 <li>Dese de baja de los correos con el enlace que aparece en cada correo.</li>
-<li>Pídanos ver, corregir o borrar su información escribiendo a <a href="mailto:support@feearmor.com">support@feearmor.com</a> (o help@feearmor.com). Le respondemos en un máximo de 30 días.</li>
+<li>Pídanos ver, corregir o borrar su información escribiendo a <a href="mailto:help@feearmor.com">help@feearmor.com</a>. Le respondemos en un máximo de 30 días.</li>
 </ul>
 <h2>Menores de edad</h2>
 <p>FeeArmor es para adultos de 18 años o más. No recopilamos a sabiendas información de menores.</p>
 <h2>Cambios</h2>
 <p>Si cambiamos esta política, actualizaremos la fecha de arriba. Si el cambio es importante, enviaremos un correo a las personas de nuestra lista.</p>
 <h2>Contacto</h2>
-<p>¿Preguntas? Escriba a <a href="mailto:support@feearmor.com">support@feearmor.com</a>. <a href="/privacy" lang="en">Read this policy in English</a>.</p>
+<p>¿Preguntas? Escriba a <a href="mailto:help@feearmor.com">help@feearmor.com</a>. <a href="/privacy" lang="en">Read this policy in English</a>.</p>
 '''),
 }
 NAV = {

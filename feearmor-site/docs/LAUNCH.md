@@ -39,7 +39,7 @@ PART C: CHECK
 ```
 
 ### Email
-The site lists **support@feearmor.com** (help@feearmor.com is also mentioned in the privacy pages). Gio is setting up both inboxes. Make sure the email provider's MX and TXT records are added in GoDaddy DNS alongside the Railway records, and don't delete them later.
+The site lists **help@feearmor.com** only. That inbox is set up and working. Make sure the email provider's MX and TXT records are added in GoDaddy DNS alongside the Railway records, and don't delete them later.
 
 ## Step 7: After it's live (5-minute phone check)
 
@@ -55,7 +55,7 @@ The site lists **support@feearmor.com** (help@feearmor.com is also mentioned in 
 - [ ] The intake form works on your phone, and your row is in intake.csv
 - [ ] The QR codes in the Bill Rescue PDF open feearmor.com/rescue
 - [ ] Your Spanish-speaking VA has read /es and the Spanish blog posts
-- [ ] support@feearmor.com and help@feearmor.com receive mail (send a test to each)
+- [x] help@feearmor.com receives mail
 - [ ] Add the site to Google Search Console and submit https://www.feearmor.com/sitemap.xml
 
 ## UTM links per channel

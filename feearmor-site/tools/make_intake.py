@@ -48,7 +48,7 @@ T = {
    next='Next', back='Back', submit='Activate My FeeArmor', sending='Sending…',
    fine='By sending, you agree to our <a href="/privacy">Privacy Policy</a>. We never sell your information and never ask for passwords or PINs.',
    pills=['No charge until you save', 'We never sell your info', 'English &amp; Spanish'],
-   ok_h='You\'re armored up, {name}!', ok_p='We got your bills. Expect an email from support@feearmor.com within 1 business day.',
+   ok_h='You\'re armored up, {name}!', ok_p='We got your bills. Expect an email from help@feearmor.com within 1 business day.',
    ok_steps=[('We review your bills', 'We look for where you may be overpaying and email you an agreement to e-sign.'),
              ('3-way call with your provider', 'You verify yourself, we negotiate, and you approve every change.'),
              ('You pay only after you save', 'One-time 40% of your first 12 months of savings, once it shows on your bill. $0 if we don\'t save you money.')],
@@ -74,7 +74,7 @@ T = {
    next='Siguiente', back='Atrás', submit='Activar Mi Armadura', sending='Enviando…',
    fine='Al enviar, acepta nuestra <a href="/es/privacidad">Política de privacidad</a>. Nunca vendemos su información ni le pedimos contraseñas o PIN.',
    pills=['Sin cobro hasta que ahorre', 'Nunca vendemos sus datos', 'Español e inglés'],
-   ok_h='¡Ya está protegido, {name}!', ok_p='Recibimos sus facturas. Espere un correo de support@feearmor.com en 1 día hábil.',
+   ok_h='¡Ya está protegido, {name}!', ok_p='Recibimos sus facturas. Espere un correo de help@feearmor.com en 1 día hábil.',
    ok_steps=[('Revisamos sus facturas', 'Buscamos dónde podría estar pagando de más y le enviamos un acuerdo para firmar.'),
              ('Llamada de 3 personas con su compañía', 'Usted se verifica, nosotros negociamos y usted aprueba cada cambio.'),
              ('Solo paga cuando ahorra', 'Pago único del 40% de sus primeros 12 meses de ahorro, cuando aparece en su factura. $0 si no le ahorramos dinero.')],
@@ -297,7 +297,7 @@ def page(lang):
 </main>
 <footer>
   <div class="wrap">
-    <nav aria-label="Footer"><a href="{t['home']}">FeeArmor</a><a href="{t['blog']}">Blog</a><a href="{t['privacy']}">{t['privacy_l']}</a><a href="mailto:support@feearmor.com">support@feearmor.com</a></nav>
+    <nav aria-label="Footer"><a href="{t['home']}">FeeArmor</a><a href="{t['blog']}">Blog</a><a href="{t['privacy']}">{t['privacy_l']}</a><a href="mailto:help@feearmor.com">help@feearmor.com</a></nav>
     <p style="margin:0">&copy; 2026 FeeArmor. {t['rights']}</p>
   </div>
 </footer>

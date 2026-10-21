@@ -45,7 +45,7 @@ PandaDoc or a similar tool keeps most of this in its audit trail.
 ## 2. FeeArmor Service Agreement (draft)
 
 **FeeArmor Service Agreement**
-Between [CONFIRM: legal entity name], doing business as FeeArmor, [CONFIRM: Texas mailing address], support@feearmor.com ("**FeeArmor**," "**we**"), and the customer named below ("**you**").
+Between [CONFIRM: legal entity name], doing business as FeeArmor, [CONFIRM: Texas mailing address], help@feearmor.com ("**FeeArmor**," "**we**"), and the customer named below ("**you**").
 
 **PLEASE READ SECTION 15 (DISPUTES) AND SECTION 12 (LIMITS ON OUR RESPONSIBILITY). THEY AFFECT YOUR RIGHTS.**
 
@@ -101,7 +101,7 @@ If you cancel or change the service yourself during the 12 months (for example, 
 - **Failed payments:** if a charge fails, we'll let you know and retry (Section 10).
 
 ### 9. Cancelling and ending this agreement
-- **Cancel anytime** by emailing support@feearmor.com or replying CANCEL to our email. We stop all new work.
+- **Cancel anytime** by emailing help@feearmor.com or replying CANCEL to our email. We stop all new work.
 - **Free cancellation:** if you cancel within 3 days of signing, or at any time before we contact a provider for you, you owe nothing.
 - **After that:** you owe fees only on Fixes you approved, and only on savings that actually appear on your bills (Sections 5–7).
 - **We may end this agreement** if you give us false information, misuse our service, or don't pay a fee that is due. We'll tell you by email. Fees for Fixes already made stay due.
@@ -136,7 +136,7 @@ If you give us false information, or sign up for an account you aren't allowed t
 - **Texts:** we send texts only if you separately agreed to them. Reply STOP to stop at any time.
 
 ### 15. Disputes
-- **Talk to us first.** Email support@feearmor.com and give us 30 days to fix it. Most issues are fixed in a few days.
+- **Talk to us first.** Email help@feearmor.com and give us 30 days to fix it. Most issues are fixed in a few days.
 - **Small claims court:** either of us may bring a claim in justice court in the county where you live.
 - [ATTORNEY DECISION: either (a) no arbitration, or (b) individual arbitration with a class-action waiver. If (b), include all of these:
   - a 30-day opt-out by email
@@ -160,7 +160,7 @@ This agreement is provided in English and Spanish. You choose the version you re
 
 ### 18. Electronic signature and records
 Before you sign, you agree separately to receive this agreement and related records electronically. You can:
-- ask for a free paper copy at any time by emailing support@feearmor.com
+- ask for a free paper copy at any time by emailing help@feearmor.com
 - withdraw your consent to electronic records at any time (we'll then send records by mail)
 - update your email address in your account or by emailing us
 
@@ -187,7 +187,7 @@ We won't change the terms of this agreement after you sign it. If we update our 
 - You can't transfer this agreement. We may transfer it if FeeArmor is sold or merged, and we'll tell you.
 
 ### 23. Contact
-[CONFIRM: legal entity name], [CONFIRM: mailing address], support@feearmor.com, [CONFIRM: phone]. Hablamos español.
+[CONFIRM: legal entity name], [CONFIRM: mailing address], help@feearmor.com, [CONFIRM: phone]. Hablamos español.
 
 **☐ I have read and agree to the FeeArmor Service Agreement** (unchecked)
 **Payment option:** ☐ Pay the fee at once  ☐ Split into 3 monthly payments
@@ -230,7 +230,7 @@ We won't change the terms of this agreement after you sign it. If we update our 
 
 7. **My authority.** I am the account holder, or legally authorized to act for the account holder (proof attached if needed).
 
-8. **How long it lasts.** This authorization lasts 12 months from the date I sign or until FeeArmor finishes the work, whichever comes first. I can cancel it at any time by emailing support@feearmor.com. It also ends if I die or become incapacitated.
+8. **How long it lasts.** This authorization lasts 12 months from the date I sign or until FeeArmor finishes the work, whichever comes first. I can cancel it at any time by emailing help@feearmor.com. It also ends if I die or become incapacitated.
 
 9. **Recording and data.** I consent to the recording of calls FeeArmor makes or joins for me. I understand that FeeArmor team members, including contractors outside the United States, may see my account information to do this work.
 
