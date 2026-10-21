@@ -85,6 +85,12 @@
       "skillPath": "skills/caveman-stats/SKILL.md",
       "computedHash": "cc9fcd21f2a30cff5596b3cbb197fe0f4b1b30b58084a864350853c217ad301a"
     },
+    "hypit": {
+      "source": "hypit-ai/hypit",
+      "sourceType": "github",
+      "skillPath": "skills/hypit/SKILL.md",
+      "computedHash": "5a691fe8a3e14d5d52df5f80dfb820296676b6aa8fe9ecdda68fe76450498c90"
+    },
     "investigate-first": {
       "source": "JuliusBrussee/caveman",
       "sourceType": "github",
