@@ -4,7 +4,8 @@
   "description": "Property research and pre-qualification tool",
   "main": "server.js",
   "scripts": {
-    "start": "node server.js"
+    "start": "node server.js",
+    "test": "node --test"
   },
   "author": "Giovanni Morado",
   "license": "MIT",
@@ -12,7 +13,8 @@
     "express": "^4.18.2",
     "cors": "^2.8.5",
     "node-fetch": "^2.6.7",
-    "dotenv": "^16.0.3"
+    "dotenv": "^16.0.3",
+    "unzipper": "^0.12.5"
   },
   "engines": {
     "node": "18.x"

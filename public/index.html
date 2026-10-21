@@ -30,6 +30,11 @@ h1 { font-size:26px; margin-bottom:4px; }
 .card button { margin-top:10px; padding:7px 12px; font-size:13px; background:#f2f2f2; border:1px solid #ddd; border-radius:6px; color:#2f6fed; cursor:pointer; }
 .pts div { font-size:14px; color:#555; margin:7px 0; }
 .note { margin-top:20px; background:#fff; border:1px solid #e0e0e0; border-radius:12px; padding:16px; font-size:14px; color:#555; }
+.leads { background:#fff; padding:16px 20px; border-radius:12px; border:1px solid #e0e0e0; margin-top:20px; display:flex; flex-wrap:wrap; gap:10px; align-items:center; font-size:14px; }
+.leads h3 { width:100%; font-size:11px; letter-spacing:.6px; text-transform:uppercase; color:#888; }
+.leads select, .leads input { padding:8px 10px; border:1px solid #ddd; border-radius:6px; font-size:14px; width:120px; }
+.leads button { padding:9px 16px; background:#2f6fed; color:#fff; border:none; border-radius:6px; font-size:14px; font-weight:600; cursor:pointer; }
+.leads .lbl { width:100%; margin-top:0; }
 .empty { text-align:center; padding:50px 20px; color:#999; background:#fff; border-radius:12px; border:1px solid #e0e0e0; }
 </style>
 </head>
@@ -45,6 +50,16 @@ h1 { font-size:26px; margin-bottom:4px; }
 
 <div id="err"></div>
 <div id="out"><div class="empty">Enter an address to start</div></div>
+
+<div class="leads">
+<h3>Delinquent tax lead list</h3>
+<select id="lcounty"><option value="dallas">Dallas</option><option value="tarrant">Tarrant</option></select>
+<input type="number" id="lowed" placeholder="Min owed $" min="0" />
+<input type="number" id="lyears" placeholder="Min years" min="0" />
+<input type="text" id="lzip" placeholder="Zip (optional)" />
+<button onclick="downloadLeads()">Download CSV</button>
+<div class="lbl" id="lstatus"></div>
+</div>
 </div>
 
 <script>
@@ -93,6 +108,26 @@ async function run() {
     if (d.netrUrl) { links += '<a href="' + d.netrUrl + '" target="_blank">All county records (NETR)</a>'; }
     var countyCard = '<div class="val">' + d.county + '</div>' + (links || '<div class="lbl">No links configured</div>');
 
+    var t = d.taxStatus;
+    var taxCard;
+    if (!t) {
+      taxCard = '<span class="pill unk">Not available for this county</span>'
+        + '<div class="lbl">' + (d.approximate ? 'Approximate location - check the tax office by hand' : 'Use the tax collector link in County records') + '</div>';
+    } else if (!t.available) {
+      taxCard = '<span class="pill unk">Tax data not loaded</span><div class="lbl">' + t.reason + '</div>';
+    } else if (!t.matchAttempted) {
+      taxCard = '<span class="pill unk">Match not attempted</span><div class="lbl">' + t.reason + '</div>';
+    } else if (t.delinquent) {
+      var rec = t.record;
+      taxCard = '<span class="pill hi">Delinquent - $' + rec.totalOwed.toLocaleString('en-US') + ' / ' + rec.yearsOwed + ' yr' + (rec.yearsOwed === 1 ? '' : 's') + '</span>'
+        + '<div class="lbl">Owner</div><div class="val">' + rec.owner + '</div>'
+        + '<div class="lbl">Mailing address</div><div class="val">' + rec.mailingAddress + ' ' + rec.mailCity + ' ' + rec.mailState + ' ' + rec.mailZip + '</div>'
+        + '<div class="lbl">Account / tax years</div><div class="val">' + rec.account + ' / ' + rec.years.join(', ') + '</div>';
+    } else {
+      taxCard = '<span class="pill lo">Current</span><div class="lbl">Not on the county delinquent list</div>';
+    }
+    if (t && t.dataAsOf) { taxCard += '<div class="lbl">Tax roll loaded ' + new Date(t.dataAsOf).toLocaleDateString() + '</div>'; }
+
     out.innerHTML =
       '<div class="grid">'
       + '<div class="card"><h3>Location</h3>'
@@ -110,6 +145,8 @@ async function run() {
 
       + '<div class="card"><h3>County records</h3>' + countyCard + '</div>'
 
+      + '<div class="card"><h3>Tax status</h3>' + taxCard + '</div>'
+
       + '<div class="card"><h3>Leverage points</h3><div class="pts">'
       + d.leveragePoints.map(function(p){ return '<div>- ' + p + '</div>'; }).join('')
       + '</div></div>'
@@ -122,6 +159,27 @@ async function run() {
     btn.textContent = 'Research';
   }
 }
+
+function downloadLeads() {
+  var q = new URLSearchParams({
+    county: document.getElementById('lcounty').value,
+    minOwed: document.getElementById('lowed').value,
+    minYears: document.getElementById('lyears').value,
+    zip: document.getElementById('lzip').value.trim()
+  });
+  window.location = '/api/delinquent.csv?' + q.toString();
+}
+
+async function loadTaxStatus() {
+  try {
+    var s = await (await fetch('/api/taxroll/status')).json();
+    document.getElementById('lstatus').textContent = Object.keys(s).map(function(k) {
+      var c = s[k];
+      return c.county + ': ' + (c.loadedAt ? c.delinquentAccounts.toLocaleString('en-US') + ' delinquent accounts' : (c.error || 'loading'));
+    }).join(' | ');
+  } catch (e) {}
+}
+loadTaxStatus();
 
 function cp(t) {
   navigator.clipboard.writeText(t);
