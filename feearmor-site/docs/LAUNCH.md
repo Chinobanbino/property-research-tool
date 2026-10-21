@@ -43,15 +43,16 @@ The site lists **support@feearmor.com** (help@feearmor.com is also mentioned in 
 
 ## Step 7: After it's live (5-minute phone check)
 
-1. **Open www.feearmor.com on your phone.** The page loads with the padlock. Tap "Español" and the Spanish site opens. Tap "Get Early Access" and it scrolls to the form.
-2. **Sign up with your real email.** You see "You're on the list, Gio."
-3. **On your laptop, open the export:** `https://www.feearmor.com/admin/waitlist.csv?token=` plus the ADMIN_TOKEN from Railway → feearmor-web → Variables. Your row is there.
+1. **Open www.feearmor.com on your phone.** The page loads with the padlock. Tap "Español" and the Spanish site opens.
+2. **Tap "Get Started" and fill out the 3-step form with your own info.** You see "You're armored up, Gio!"
+3. **On your laptop, open the export:** `https://www.feearmor.com/admin/intake.csv?token=` plus the ADMIN_TOKEN from Railway → feearmor-web → Variables. Your row is there.
+4. **Send the family test link:** `https://www.feearmor.com/intake?code=FAMILY` (Spanish: `/es/intake?code=FAMILY`).
 
 ## Launch checklist
 - [ ] www.feearmor.com loads over HTTPS, and feearmor.com forwards to it
 - [ ] Text the link to yourself in iMessage: the preview shows the FeeArmor image and title
 - [ ] /es, /rescue, /blog, /privacy and /es/privacidad all load
-- [ ] Signup works on your phone, and your row is in the CSV
+- [ ] The intake form works on your phone, and your row is in intake.csv
 - [ ] The QR codes in the Bill Rescue PDF open feearmor.com/rescue
 - [ ] Your Spanish-speaking VA has read /es and the Spanish blog posts
 - [ ] support@feearmor.com and help@feearmor.com receive mail (send a test to each)
