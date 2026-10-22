@@ -1,4 +1,4 @@
-// FeeArmor website: static pages + waitlist signup, first-party analytics and admin export.
+// FeeArmor website: static pages, waitlist + intake signup, first-party analytics, admin export and the staff dashboard.
 require('dotenv').config();
 const path = require('path');
 const crypto = require('crypto');
@@ -72,6 +72,15 @@ async function initDb() {
     status TEXT DEFAULT 'new',
     created_at TIMESTAMPTZ DEFAULT now()
   )`);
+  await pool.query(`ALTER TABLE intake_requests
+    ADD COLUMN IF NOT EXISTS assigned_to TEXT,
+    ADD COLUMN IF NOT EXISTS appointment_at TIMESTAMPTZ,
+    ADD COLUMN IF NOT EXISTS reminded_at TIMESTAMPTZ,
+    ADD COLUMN IF NOT EXISTS old_monthly NUMERIC(10,2),
+    ADD COLUMN IF NOT EXISTS new_monthly NUMERIC(10,2),
+    ADD COLUMN IF NOT EXISTS confirmation TEXT,
+    ADD COLUMN IF NOT EXISTS staff_notes TEXT,
+    ADD COLUMN IF NOT EXISTS updated_at TIMESTAMPTZ`);
   await pool.query(`CREATE TABLE IF NOT EXISTS intake_files (
     id SERIAL PRIMARY KEY,
     intake_id INTEGER NOT NULL REFERENCES intake_requests(id) ON DELETE CASCADE,
@@ -152,6 +161,9 @@ app.use((req, res, next) => {
 });
 
 app.get('/healthz', (req, res) => res.json({ ok: true }));
+
+// Staff dashboard (/dashboard) for appointments, plus Twilio texts to staff.
+const staff = require('./staff')(app, { pool, clip, rateLimiter, siteUrl: CANONICAL_HOST ? 'https://' + CANONICAL_HOST : '' });
 
 // ---- API ----
 app.use('/api', express.json({ limit: '10kb', type: ['application/json', 'text/plain'] }));
@@ -245,6 +257,7 @@ app.post('/api/intake', intakeLimiter, (req, res, next) => {
     }
     await client.query('COMMIT');
     res.json({ ok: true });
+    staff.newIntake({ first_name: firstName, last_name: lastName, preferred_language: b.preferred_language === 'es' ? 'es' : 'en', bills });
   } catch (err) {
     await client.query('ROLLBACK').catch(() => {});
     console.error('intake insert failed:', err.message);
