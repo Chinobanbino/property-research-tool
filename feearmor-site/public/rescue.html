@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bill Rescue Readers | FeeArmor</title>
+<meta name="description" content="FeeArmor finds junk fees, expired promos and billing mistakes on your internet, phone, TV, utility and insurance bills, and fights to get them removed.">
+<link rel="canonical" href="https://www.feearmor.com/rescue">
+<meta name="robots" content="noindex">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://www.feearmor.com/">
+<meta property="og:title" content="FeeArmor | Stop paying fees you never agreed to">
+<meta property="og:description" content="We find the junk fees hiding in your monthly bills and fight to get them removed. Get early access.">
+<meta property="og:image" content="https://www.feearmor.com/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="FeeArmor | Stop paying fees you never agreed to">
+<meta name="twitter:description" content="We find the junk fees hiding in your monthly bills and fight to get them removed.">
+<meta name="twitter:image" content="https://www.feearmor.com/og-image.png">
+<meta name="theme-color" content="#0B1120">
+<link rel="icon" href="/logo.svg" type="image/svg+xml">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "FeeArmor",
+  "url": "https://www.feearmor.com/",
+  "slogan": "Defend your wallet against hidden fees."
+}
+</script>
+<link rel="stylesheet" href="/site.css">
+<style>
+  .perk { border: 2px dashed var(--green); border-radius: var(--radius); padding: 16px 18px; margin: 22px auto 0; max-width: 620px; text-align: left; color: #F5F7FA; }
+  .perk b { color: var(--green); font-size: 13px; letter-spacing: .1em; display: block; margin-bottom: 4px; }
+  .compare { display: grid; gap: 12px; margin-top: 20px; }
+  .compare .card small { display: block; font-size: 12px; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); margin-bottom: 4px; }
+  .compare .us { border: 2px solid var(--green); }
+  .badge-es { display: inline-flex; gap: 8px; border: 1px solid rgba(78,201,76,.4); background: rgba(78,201,76,.1); color: #F5F7FA; border-radius: 999px; padding: 6px 14px; font-size: 14px; font-weight: 700; margin-bottom: 16px; }
+  .badge-es b { color: var(--green); }
+  @media (min-width: 640px) { .compare { grid-template-columns: 1fr 1fr; } }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <a class="wordmark" href="/" aria-label="FeeArmor home"><img src="/logo.svg" alt="" width="34" height="34">
+      <span>Fee<span class="lime">Armor</span></span>
+    </a>
+    <a class="btn btn-sm" href="#signup">Claim Perk</a>
+  </div>
+</header>
+
+<main>
+  <section class="hero" style="padding-bottom:56px;text-align:center">
+    <div class="wrap">
+      <span class="badge-es"><b>Hablamos español</b></span>
+      <p class="eyebrow">For Bill Rescue readers</p>
+      <h1>You read the book. <span class="lime">Let us make the calls.</span></h1>
+      <p class="sub">FeeArmor is the done-for-you side of Bill Rescue. Same playbook, same scripts. We find the fees you shouldn't be paying and fight to get them removed. You approve every change.</p>
+      <div class="perk">
+        <b>READER PERK · CODE RESCUE</b>
+        Your first Fee Scan is free, you go to the front of the line, and we take $19 off your FeeArmor fee. Your book pays for itself.
+      </div>
+      <p style="margin-top:20px"><a class="btn" href="#signup">Claim My Reader Perk</a></p>
+      <p class="note">About 60 seconds. No card needed.</p>
+    </div>
+  </section>
+
+  <section class="light">
+    <div class="wrap">
+      <p class="eyebrow">What it costs</p>
+      <h2>No savings, no fee.</h2>
+      <div class="compare">
+        <div class="card us"><small class="lime">One simple fee</small><strong>40% of your first year of savings, one time. $0 upfront. Billed only after the lower price shows up on your bill.</strong></div>
+        <div class="card"><small>Reader perk</small><strong>$19 off your fee, plus a free first Fee Scan. Split your fee into 3 payments if you like.</strong></div>
+      </div>
+      <p class="small" style="margin-top:12px">Example: if we save you $25 a month, your fee is $120 once ($101 with your reader perk), and you keep the rest, plus every month after the first year. Examples only, not a promise of savings.</p>
+    </div>
+  </section>
+
+  <section id="signup" class="off">
+    <div class="wrap">
+      <div class="card" style="padding:28px 24px">
+        <div id="signup-body">
+          <p class="eyebrow">Claim your perk</p>
+          <h2>Save your spot and your free Fee Scan.</h2>
+          <form id="waitlist" novalidate>
+            <div>
+              <label for="first_name">First name</label>
+              <input id="first_name" name="first_name" type="text" autocomplete="given-name" required maxlength="60">
+            </div>
+            <div>
+              <label for="email">Email</label>
+              <input id="email" name="email" type="email" autocomplete="email" inputmode="email" required maxlength="254" placeholder="you@example.com">
+            </div>
+            <div>
+              <label for="biggest_bill">Which bill bugs you most?</label>
+              <select id="biggest_bill" name="biggest_bill" required>
+                <option value="">Pick one</option>
+                <option>Internet</option>
+                <option>Mobile phone</option>
+                <option>Cable or satellite TV</option>
+                <option>Electric</option>
+                <option>Gas</option>
+                <option>Water</option>
+                <option>Home security</option>
+                <option>Other</option>
+              </select>
+            </div>
+            <fieldset>
+              <legend>Preferred language</legend>
+              <div class="lang-choice">
+                <label><input type="radio" name="preferred_language" value="en" checked> English</label>
+                <label lang="es"><input type="radio" name="preferred_language" value="es"> Español</label>
+              </div>
+            </fieldset>
+            <div>
+              <label for="phone">Mobile number <span class="optional">(optional, for a text when your scan is ready)</span></label>
+              <input id="phone" name="phone" type="tel" autocomplete="tel" inputmode="tel" maxlength="20">
+            </div>
+            <label class="consent" for="sms_consent">
+              <input id="sms_consent" name="sms_consent" type="checkbox">
+              <span>Yes, FeeArmor may send me marketing and account text messages at the number above, including by automated means. Up to 4 msgs/month. Consent isn't a condition of any purchase. Msg &amp; data rates may apply. Reply STOP to opt out, HELP for help.</span>
+            </label>
+            <div class="hp" aria-hidden="true">
+              <label for="company">Company</label>
+              <input id="company" name="company" type="text" tabindex="-1" autocomplete="off">
+            </div>
+            <p class="form-error" id="form-error" role="alert" hidden></p>
+            <button class="btn btn-block" type="submit" id="submit-btn">Claim My Reader Perk</button>
+            <p class="small" style="margin:0">We'll email you about your Fee Scan and FeeArmor. Unsubscribe anytime. See our <a href="/privacy">Privacy Policy</a>.</p>
+          </form>
+        </div>
+        <div class="success" id="success" hidden tabindex="-1">
+          <div class="check"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12l5 5 9-10" stroke="#A3E635" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+          <h2 id="success-title">Your reader perk is saved.</h2>
+          <p class="muted">Want to skip ahead? Reply to the welcome email with a photo of your <span id="bill-name">bill</span>. Cover the account number if you like. We'll tell you what we spot.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="faq" class="light">
+    <div class="wrap">
+      <h2>Quick answers</h2>
+      <details><summary>Do I need to have made any calls first?</summary><p>No. Whether you made zero calls or ten, we start from your latest bill.</p></details>
+      <details><summary>Do you need my passwords?</summary><p>No. We start with a copy of your bill. If we need to contact a provider for you, we ask your permission first, and we never pretend to be you.</p></details>
+      <details><summary>Can you guarantee savings?</summary><p>No. Some bills are already clean, and providers decide whether to remove a fee. If we save you nothing, you pay nothing. If a provider doesn't honor a deal we got you, we fix it or refund that fee in full.</p></details>
+      <details><summary>Is FeeArmor open?</summary><p>Yes, in early access. Bill Rescue readers go to the front of the line, and we'll email you within one business day to start your free bill scan.</p></details>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <nav aria-label="Footer"><a href="/">FeeArmor home</a><a href="/privacy">Privacy Policy</a><a href="mailto:help@feearmor.com">Contact</a></nav>
+    <p style="margin:0">&copy; 2026 FeeArmor. All rights reserved.</p>
+  </div>
+</footer>
+
+<script>
+(function () {
+  var form = document.getElementById('waitlist');
+  var btn = document.getElementById('submit-btn');
+  var err = document.getElementById('form-error');
+  var params = new URLSearchParams(location.search);
+  function showError(msg) { err.textContent = msg; err.hidden = false; }
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    err.hidden = true;
+    var firstName = form.first_name.value.trim();
+    var email = form.email.value.trim().toLowerCase();
+    var bill = form.biggest_bill.value;
+    var phone = form.phone.value.trim();
+    var smsConsent = form.sms_consent.checked;
+    if (!firstName) { showError('Please add your first name.'); form.first_name.focus(); return; }
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { showError('Please enter a valid email address.'); form.email.focus(); return; }
+    if (!bill) { showError('Pick the bill that bugs you most.'); form.biggest_bill.focus(); return; }
+    if (smsConsent && phone.replace(/\D/g, '').length < 10) { showError('Add your mobile number, or uncheck the text box.'); form.phone.focus(); return; }
+    if (window.faEvent) faEvent('submit');
+    btn.disabled = true; btn.textContent = 'Saving…';
+    fetch('/api/waitlist', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        first_name: firstName, email: email, biggest_bill: bill, preferred_language: form.preferred_language.value,
+        phone: smsConsent ? phone : '', sms_consent: smsConsent,
+        promo_code: 'RESCUE', company: form.company.value,
+        utm_source: params.get('utm_source') || 'billrescue',
+        utm_medium: params.get('utm_medium') || 'typed-url',
+        utm_campaign: params.get('utm_campaign') || 'lastpage',
+        source: 'rescue'
+      })
+    }).then(function (res) {
+      if (res.status === 429) throw new Error('Too many tries. Please wait a bit and try again.');
+      if (!res.ok) throw new Error('fail');
+      document.getElementById('success-title').textContent = 'Your reader perk is saved, ' + firstName + '.';
+      document.getElementById('bill-name').textContent = bill.toLowerCase() + ' bill';
+      if (window.faEvent) faEvent('success');
+      document.getElementById('signup-body').hidden = true;
+      var s = document.getElementById('success'); s.hidden = false; s.focus();
+    }).catch(function (e2) {
+      showError(e2.message.indexOf('Too many') === 0 ? e2.message : 'Something went wrong. Please check your connection and try again.');
+      btn.disabled = false; btn.textContent = 'Claim My Reader Perk';
+    });
+  });
+})();
+</script>
+<script>
+(function () {
+  var q = new URLSearchParams(location.search);
+  function ev(kind) {
+    try {
+      var d = JSON.stringify({ kind: kind, page: location.pathname, utm_source: q.get('utm_source') || '', utm_medium: q.get('utm_medium') || '', utm_campaign: q.get('utm_campaign') || '' });
+      if (navigator.sendBeacon) navigator.sendBeacon('/api/event', new Blob([d], { type: 'application/json' }));
+      else fetch('/api/event', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: d, keepalive: true });
+    } catch (e) {}
+  }
+  window.faEvent = ev;
+  ev('view');
+})();
+</script>
+</body>
+</html>

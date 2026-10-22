@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <url>
+    <loc>https://www.feearmor.com/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.feearmor.com/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.feearmor.com/es"/>
+  </url>
+  <url>
+    <loc>https://www.feearmor.com/es</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.feearmor.com/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.feearmor.com/es"/>
+  </url>
+  <url>
+    <loc>https://www.feearmor.com/intake</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.feearmor.com/intake"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.feearmor.com/es/intake"/>
+  </url>
+  <url>
+    <loc>https://www.feearmor.com/es/intake</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.feearmor.com/intake"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.feearmor.com/es/intake"/>
+  </url>
+  <url>
+    <loc>https://www.feearmor.com/privacy</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.feearmor.com/privacy"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.feearmor.com/es/privacidad"/>
+  </url>
+  <url>
+    <loc>https://www.feearmor.com/es/privacidad</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.feearmor.com/privacy"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.feearmor.com/es/privacidad"/>
+  </url>
+  <url>
+    <loc>https://www.feearmor.com/blog</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.feearmor.com/blog"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.feearmor.com/es/blog"/>
+  </url>
+  <url>
+    <loc>https://www.feearmor.com/es/blog</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.feearmor.com/blog"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.feearmor.com/es/blog"/>
+  </url>
+  <url>
+    <loc>https://www.feearmor.com/blog/remove-modem-rental-fee</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.feearmor.com/blog/remove-modem-rental-fee"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.feearmor.com/es/blog/quitar-renta-de-modem"/>
+  </url>
+  <url>
+    <loc>https://www.feearmor.com/es/blog/quitar-renta-de-modem</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.feearmor.com/blog/remove-modem-rental-fee"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.feearmor.com/es/blog/quitar-renta-de-modem"/>
+  </url>
+  <url>
+    <loc>https://www.feearmor.com/blog/internet-promo-ending</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.feearmor.com/blog/internet-promo-ending"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.feearmor.com/es/blog/se-acaba-mi-promocion"/>
+  </url>
+  <url>
+    <loc>https://www.feearmor.com/es/blog/se-acaba-mi-promocion</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.feearmor.com/blog/internet-promo-ending"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.feearmor.com/es/blog/se-acaba-mi-promocion"/>
+  </url>
+  <url>
+    <loc>https://www.feearmor.com/blog/broadcast-tv-fee</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.feearmor.com/blog/broadcast-tv-fee"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.feearmor.com/es/blog/cargo-tv-local"/>
+  </url>
+  <url>
+    <loc>https://www.feearmor.com/es/blog/cargo-tv-local</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.feearmor.com/blog/broadcast-tv-fee"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.feearmor.com/es/blog/cargo-tv-local"/>
+  </url>
+</urlset>

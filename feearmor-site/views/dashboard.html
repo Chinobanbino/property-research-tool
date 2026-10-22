@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Calls | FeeArmor</title>
+<link rel="icon" href="/logo.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/site.css">
+<style>
+  main { padding: 20px 0 60px; min-height: calc(100vh - 68px); background: #F5F7FA; color: #1A2332; }
+  .wrap { max-width: 1000px; }
+  .who { color: #A9B6C6; font-size: 14px; display: flex; gap: 12px; align-items: center; }
+  .who button { background: none; border: 1px solid #22344B; color: #A9B6C6; border-radius: 8px; padding: 6px 10px; font: inherit; cursor: pointer; }
+  .tabs { display: flex; gap: 8px; flex-wrap: wrap; margin: 0 0 14px; }
+  .tabs button { border: 1.5px solid var(--border); background: #fff; border-radius: 999px; padding: 8px 14px; font: inherit; font-weight: 700; font-size: 14px; cursor: pointer; color: #1A2332; }
+  .tabs button.on { background: var(--navy); color: #fff; border-color: var(--navy); }
+  .tabs .n { color: var(--accent); margin-left: 4px; }
+  .tabs button.on .n { color: var(--green); }
+  .day { font-size: 13px; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); margin: 18px 0 8px; }
+  .lead { background: #fff; border: 1.5px solid var(--border); border-radius: 12px; padding: 16px; margin-bottom: 12px; color: #1A2332; }
+  .lead h2 { font-size: 18px; margin: 0; display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+  .pill { font-size: 12px; font-weight: 800; border-radius: 999px; padding: 3px 9px; background: #EEF2F6; color: #1A2332; }
+  .pill.es { background: #FFF4D6; }
+  .pill.when { background: #EBF9EB; color: #1a6e19; }
+  .meta { font-size: 14px; color: var(--muted); margin: 6px 0 10px; display: flex; flex-wrap: wrap; gap: 4px 14px; }
+  .meta a { color: var(--accent); }
+  .bills { font-size: 15px; margin: 0 0 8px; }
+  .note { font-size: 14px; background: #F5F7FA; border-radius: 8px; padding: 8px 10px; margin: 0 0 10px; }
+  .grid { display: grid; gap: 10px; grid-template-columns: 1fr 1fr; }
+  @media (min-width: 760px) { .grid { grid-template-columns: repeat(4, 1fr); } }
+  .grid > div { min-width: 0; }
+  .grid input, .grid select { width: 100%; }
+  .grid label { font-size: 13px; margin-bottom: 4px; }
+  .grid input, .grid select { min-height: 44px; font-size: 15px; padding: 0 10px; }
+  .wide { grid-column: 1 / -1; }
+  .lead textarea { width: 100%; min-height: 60px; border: 1.5px solid #CBD6E2; border-radius: 10px; font: inherit; font-size: 15px; padding: 8px 10px; }
+  .math { font-size: 14px; color: #1a6e19; font-weight: 700; margin: 8px 0 0; }
+  .row-end { display: flex; gap: 10px; align-items: center; justify-content: flex-end; margin-top: 10px; }
+  .row-end .btn { min-height: 44px; font-size: 15px; padding: 0 18px; box-shadow: none; }
+  .saved { font-size: 14px; color: var(--accent); }
+  .empty { color: var(--muted); padding: 30px 0; text-align: center; }
+  .bar { display: flex; justify-content: space-between; align-items: center; gap: 10px; flex-wrap: wrap; margin-bottom: 12px; }
+  .bar h1 { font-size: 26px; margin: 0; color: #1A2332; }
+  .bar input { flex: 1 1 200px; max-width: 320px; padding: 0 14px; border: 1.5px solid #CBD6E2; border-radius: 10px; font: inherit; min-height: 44px; font-size: 15px; }
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <a class="wordmark" href="/dashboard" aria-label="FeeArmor"><img src="/logo.svg" alt="" width="34" height="34"><span>Fee<span class="lime">Armor</span></span></a>
+    <div class="who"><span id="me"></span><form method="POST" action="/dashboard/logout" style="margin:0"><button type="submit">Sign out</button></form></div>
+  </div>
+</header>
+<main class="off">
+  <div class="wrap">
+    <div class="bar"><h1>Calls</h1><input id="q" type="search" placeholder="Search name, phone, provider"></div>
+    <div class="tabs" id="tabs"></div>
+    <p class="small" id="tw" hidden>Twilio isn't set up yet, so texts are not being sent.</p>
+    <div id="list"></div>
+  </div>
+</main>
+<script>
+(function () {
+  var TZ = 'America/Chicago';
+  var LABEL = { new: 'New', contacted: 'Contacted', booked: 'Booked', signed: 'Signed + card', called: 'Called', saved: 'Savings on bill', paid: 'Paid',
+    reviewed: 'Reviewed', no_savings: 'No savings', no_show: 'No-show', lost: 'Lost' };
+  var BILL = { internet: 'Internet', mobile: 'Mobile', tv: 'TV', home_security: 'Security', electric: 'Electric', gas: 'Gas' };
+  var TIMES = { weekday_morning: 'Weekday AM', weekday_afternoon: 'Weekday PM', weekday_evening: 'Weekday eve', saturday: 'Saturday' };
+  var DONE = ['paid', 'reviewed', 'no_savings', 'lost'];
+  var me = null, rows = [], tab = 'today', dirty = false;
+
+  function el(tag, attrs, kids) {
+    var e = document.createElement(tag);
+    Object.keys(attrs || {}).forEach(function (k) {
+      if (k === 'text') e.textContent = attrs[k];
+      else if (k === 'on') Object.keys(attrs.on).forEach(function (t) { e.addEventListener(t, attrs.on[t]); });
+      else e.setAttribute(k, attrs[k]);
+    });
+    (kids || []).forEach(function (c) { if (c) e.appendChild(typeof c === 'string' ? document.createTextNode(c) : c); });
+    return e;
+  }
+  function parts(d) {
+    var p = {}; new Intl.DateTimeFormat('en-US', { timeZone: TZ, hourCycle: 'h23', year: 'numeric', month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit' })
+      .formatToParts(d).forEach(function (x) { p[x.type] = x.value; });
+    return p;
+  }
+  function naive(iso) { if (!iso) return ''; var p = parts(new Date(iso)); return p.year + '-' + p.month + '-' + p.day + 'T' + p.hour + ':' + p.minute; }
+  function dayKey(d) { var p = parts(d); return p.year + p.month + p.day; }
+  function when(iso) { var d = new Date(iso); return d.toLocaleString('en-US', { timeZone: TZ, weekday: 'short', month: 'short', day: 'numeric', hour: 'numeric', minute: '2-digit' }) + ' CT'; }
+  function dayTitle(iso) { return new Date(iso).toLocaleDateString('en-US', { timeZone: TZ, weekday: 'long', month: 'long', day: 'numeric' }); }
+  function money(n) { return '$' + n.toFixed(2).replace(/\.00$/, ''); }
+
+  function filtered() {
+    var q = document.getElementById('q').value.trim().toLowerCase();
+    var today = dayKey(new Date());
+    return rows.filter(function (r) {
+      if (q) {
+        var hay = [r.first_name, r.last_name, r.phone, r.email, (r.bills || []).map(function (b) { return b.provider; }).join(' ')].join(' ').toLowerCase();
+        if (hay.indexOf(q) < 0) return false;
+      }
+      if (tab === 'today') return r.appointment_at && dayKey(new Date(r.appointment_at)) === today;
+      if (tab === 'upcoming') return r.appointment_at && new Date(r.appointment_at) > new Date(Date.now() - 2 * 3600e3) && DONE.indexOf(r.status) < 0;
+      if (tab === 'new') return !r.appointment_at && ['new', 'contacted', 'no_show'].indexOf(r.status) > -1;
+      if (tab === 'mine') return r.assigned_to === me.name && DONE.indexOf(r.status) < 0;
+      if (tab === 'billing') return ['called', 'saved'].indexOf(r.status) > -1;
+      return true;
+    });
+  }
+
+  function tabs() {
+    var defs = [['today', 'Today'], ['upcoming', 'Upcoming'], ['new', 'Needs a call booked'], ['mine', 'Mine'], ['billing', 'Waiting on bill / charge'], ['all', 'Everyone']];
+    var box = document.getElementById('tabs'); box.textContent = '';
+    defs.forEach(function (d) {
+      var keep = tab; tab = d[0]; var n = filtered().length; tab = keep;
+      box.appendChild(el('button', { type: 'button', class: tab === d[0] ? 'on' : '', on: { click: function () { tab = d[0]; draw(); } } }, [d[1], el('span', { class: 'n', text: String(n) })]));
+    });
+  }
+
+  function card(r) {
+    var bills = (r.bills || []).map(function (b) { return (BILL[b.type] || b.type) + (b.provider ? ' · ' + b.provider : '') + (b.monthly ? ' · $' + b.monthly + '/mo' : ''); }).join('   |   ');
+    var times = (r.call_times || '').split(',').filter(Boolean).map(function (t) { return TIMES[t] || t; }).join(', ');
+    var st = el('select', { 'aria-label': 'Status' }, me.statuses.map(function (s) { var o = el('option', { value: s, text: LABEL[s] || s }); if (s === r.status) o.selected = true; return o; }));
+    var who = el('select', { 'aria-label': 'Assigned to' }, [el('option', { value: '', text: 'Nobody yet' })].concat(me.staff.map(function (s) { var o = el('option', { value: s, text: s }); if (s === r.assigned_to) o.selected = true; return o; })));
+    var appt = el('input', { type: 'datetime-local', value: naive(r.appointment_at), step: '900' });
+    var oldM = el('input', { type: 'number', min: '0', step: '0.01', inputmode: 'decimal', value: r.old_monthly == null ? '' : r.old_monthly });
+    var newM = el('input', { type: 'number', min: '0', step: '0.01', inputmode: 'decimal', value: r.new_monthly == null ? '' : r.new_monthly });
+    var conf = el('input', { type: 'text', maxlength: '80', value: r.confirmation || '' });
+    var notes = el('textarea', { maxlength: '2000' }); notes.value = r.staff_notes || '';
+    var math = el('p', { class: 'math' });
+    function calc() {
+      var o = parseFloat(oldM.value), n = parseFloat(newM.value);
+      if (!(o >= 0) || !(n >= 0) || n >= o) { math.textContent = ''; return; }
+      var m = o - n, fee = m * 12 * 0.4;
+      math.textContent = 'Saves ' + money(m) + '/mo = ' + money(m * 12) + '/yr. Fee (40%): ' + money(fee) + ', or 3 payments of ' + money(fee / 3) + '.';
+    }
+    oldM.addEventListener('input', calc); newM.addEventListener('input', calc); calc();
+    [st, who, appt, oldM, newM, conf, notes].forEach(function (x) { x.addEventListener('input', function () { dirty = true; }); x.addEventListener('change', function () { dirty = true; }); });
+    var msg = el('span', { class: 'saved', role: 'status' });
+    var save = el('button', { class: 'btn', type: 'button', text: 'Save', on: { click: function () {
+      save.disabled = true; msg.textContent = '';
+      if (appt.value && ['new', 'contacted', 'no_show'].indexOf(st.value) > -1) st.value = 'booked';
+      fetch('/api/staff/requests/' + r.id, { method: 'PATCH', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({
+        status: st.value, assigned_to: who.value, appointment: appt.value, old_monthly: oldM.value, new_monthly: newM.value, confirmation: conf.value, staff_notes: notes.value
+      }) }).then(function (res) {
+        if (res.status === 401) { location.href = '/dashboard/login'; return; }
+        if (!res.ok) throw new Error();
+        msg.textContent = (appt.value && who.value && (appt.value !== naive(r.appointment_at) || who.value !== r.assigned_to)) ? 'Saved. ' + who.value + ' gets a text.' : 'Saved.';
+        dirty = false;
+        return load(true);
+      }).catch(function () { msg.textContent = 'Could not save. Try again.'; }).then(function () { save.disabled = false; });
+    } } });
+    function field(label, input, cls) { return el('div', { class: cls || '' }, [el('label', { text: label }), input]); }
+    return el('article', { class: 'lead' }, [
+      el('h2', {}, [r.first_name + ' ' + r.last_name,
+        el('span', { class: 'pill' + (r.preferred_language === 'es' ? ' es' : ''), text: r.preferred_language === 'es' ? 'Español' : 'English' }),
+        el('span', { class: 'pill', text: LABEL[r.status] || r.status }),
+        r.appointment_at ? el('span', { class: 'pill when', text: when(r.appointment_at) + (r.assigned_to ? ' · ' + r.assigned_to : '') }) : null]),
+      el('div', { class: 'meta' }, [el('a', { href: 'tel:' + r.phone, text: r.phone }), el('a', { href: 'mailto:' + r.email, text: r.email }), el('span', { text: 'ZIP ' + (r.zip || '?') }),
+        times ? el('span', { text: 'Prefers: ' + times }) : null, r.promo_code ? el('span', { text: 'Code: ' + r.promo_code }) : null,
+        el('span', { text: r.sms_consent_at ? 'Texts OK' : 'No texts' }), el('span', { text: 'Signed up ' + new Date(r.created_at).toLocaleDateString('en-US', { timeZone: TZ }) })]),
+      el('p', { class: 'bills', text: bills || 'No bills listed' }),
+      r.notes ? el('p', { class: 'note', text: 'Customer: ' + r.notes }) : null,
+      r.files && r.files.length ? el('p', { class: 'meta' }, ['Bills: '].concat(r.files.map(function (f) { return el('a', { href: '/dashboard/file/' + f.id, text: f.name || 'file' }); }))) : null,
+      el('div', { class: 'grid' }, [field('Status', st), field('Who calls', who), field('Call time (Central)', appt), field('Confirmation #', conf),
+        field('Old $/mo', oldM), field('New $/mo', newM), field('Notes', notes, 'wide')]),
+      math,
+      el('div', { class: 'row-end' }, [msg, save]),
+    ]);
+  }
+
+  function draw() {
+    tabs();
+    var list = document.getElementById('list'); list.textContent = '';
+    var items = filtered();
+    if (!items.length) { list.appendChild(el('p', { class: 'empty', text: 'Nothing here.' })); return; }
+    var lastDay = '';
+    items.forEach(function (r) {
+      if ((tab === 'upcoming' || tab === 'today' || tab === 'mine') && r.appointment_at) {
+        var d = dayKey(new Date(r.appointment_at));
+        if (d !== lastDay) { lastDay = d; list.appendChild(el('p', { class: 'day', text: dayTitle(r.appointment_at) })); }
+      }
+      list.appendChild(card(r));
+    });
+  }
+
+  function load(keepTab) {
+    return fetch('/api/staff/requests', { cache: 'no-store' }).then(function (res) {
+      if (res.status === 401) { location.href = '/dashboard/login'; throw new Error('auth'); }
+      return res.json();
+    }).then(function (data) { rows = data; if (!keepTab && !filtered().length) tab = 'new'; draw(); });
+  }
+
+  fetch('/api/staff/me').then(function (res) { if (res.status === 401) { location.href = '/dashboard/login'; throw new Error('auth'); } return res.json(); })
+    .then(function (m) { me = m; document.getElementById('me').textContent = m.name; document.getElementById('tw').hidden = m.twilio; return load(false); });
+  document.getElementById('q').addEventListener('input', draw);
+  setInterval(function () { if (!dirty && !document.querySelector('.lead :focus')) load(true); }, 60000);
+})();
+</script>
+</body>
+</html>
