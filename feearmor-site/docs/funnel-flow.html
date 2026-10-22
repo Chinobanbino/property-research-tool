@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>FeeArmor Customer Flow</title>
+<style>
+  :root { --bg: #F5F7FA; --card: #FFFFFF; --text: #1A2332; --muted: #55657A; --line: #9FB0C3; --navy: #0D1B2A; --green: #4EC94C; --greenbg: #EBF9EB; --warn: #FFF4D6; --warnline: #E0B400; --stop: #FDECEC; --stopline: #D35454; }
+  @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) { --bg: #0D1B2A; --card: #112035; --text: #F5F7FA; --muted: #A9B6C6; --line: #3A5170; --greenbg: #143222; --warn: #3A3214; --stop: #3A1C1C; } }
+  :root[data-theme="dark"] { --bg: #0D1B2A; --card: #112035; --text: #F5F7FA; --muted: #A9B6C6; --line: #3A5170; --greenbg: #143222; --warn: #3A3214; --stop: #3A1C1C; }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--text); font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif; line-height: 1.45; }
+  .wrap { max-width: 980px; margin: 0 auto; padding: 28px 16px 60px; }
+  h1 { font-size: 28px; margin: 0 0 6px; letter-spacing: -.02em; }
+  .sub { color: var(--muted); margin: 0 0 24px; }
+  .stage { display: grid; grid-template-columns: 54px 1fr; gap: 14px; position: relative; }
+  .num { width: 44px; height: 44px; border-radius: 50%; background: var(--navy); color: var(--green); font-weight: 900; display: flex; align-items: center; justify-content: center; font-size: 18px; z-index: 1; border: 2px solid var(--green); }
+  .stage:not(:last-child)::before { content: ""; position: absolute; left: 21px; top: 44px; bottom: -14px; width: 2px; background: var(--line); }
+  .body { padding-bottom: 26px; }
+  .body h2 { font-size: 19px; margin: 9px 0 10px; }
+  .row { display: flex; flex-wrap: wrap; gap: 10px; align-items: stretch; }
+  .box { background: var(--card); border: 1.5px solid var(--line); border-radius: 12px; padding: 10px 12px; font-size: 14px; flex: 1 1 180px; min-width: 0; }
+  .box b { display: block; font-size: 15px; margin-bottom: 2px; }
+  .box.go { background: var(--greenbg); border-color: var(--green); }
+  .box.ask { background: var(--warn); border-color: var(--warnline); }
+  .box.no { background: var(--stop); border-color: var(--stopline); }
+  .arrow { color: var(--muted); font-weight: 900; align-self: center; flex: 0 0 auto; }
+  .tag { display: inline-block; font-size: 11px; font-weight: 800; letter-spacing: .06em; text-transform: uppercase; padding: 2px 7px; border-radius: 999px; background: var(--navy); color: var(--green); margin-bottom: 4px; }
+  .legend { display: flex; flex-wrap: wrap; gap: 8px 16px; font-size: 13px; color: var(--muted); margin: 0 0 22px; }
+  .legend span::before { content: ""; display: inline-block; width: 12px; height: 12px; border-radius: 3px; margin-right: 6px; vertical-align: -2px; border: 1.5px solid var(--line); background: var(--card); }
+  .legend .g::before { background: var(--greenbg); border-color: var(--green); }
+  .legend .y::before { background: var(--warn); border-color: var(--warnline); }
+  .legend .r::before { background: var(--stop); border-color: var(--stopline); }
+  .backend { margin-top: 10px; border-top: 2px dashed var(--line); padding-top: 18px; }
+  .backend h2 { font-size: 19px; margin: 0 0 10px; }
+  @media (max-width: 560px) { .arrow { display: none; } .stage { grid-template-columns: 44px 1fr; gap: 10px; } .num { width: 38px; height: 38px; font-size: 16px; } .stage:not(:last-child)::before { left: 18px; top: 38px; } }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>FeeArmor customer flow</h1>
+  <p class="sub">From first contact to review and referral. We auto-text only people who opted in.</p>
+  <p class="legend"><span>Step</span><span class="g">Good outcome</span><span class="y">Decision / wait</span><span class="r">Stop or fallback</span></p>
+
+  <section class="stage"><div class="num">1</div><div class="body">
+    <h2>Who we target</h2>
+    <div class="row">
+      <div class="box go"><b>Primary</b>Texas, Spanish-preferred, ages 45–75, homeowners, 2+ services (internet + TV / phones)</div>
+      <div class="box"><b>Secondary</b>English-speaking 55+ with cable + internet bundles</div>
+      <div class="box no"><b>Never by category</b>No disability, income, benefits or family-status lists</div>
+    </div>
+  </div></section>
+
+  <section class="stage"><div class="num">2</div><div class="body">
+    <h2>How they find us</h2>
+    <div class="row">
+      <div class="box"><span class="tag">Paid</span><b>Bilingual postcards</b>PropStream / Data Axle homeowner lists. QR + "Text AHORRO"</div>
+      <div class="box"><span class="tag">Paid</span><b>Spanish FB / IG ads</b>Texas, 45+, Spanish</div>
+      <div class="box"><span class="tag">Free</span><b>Community + Bill Rescue</b>Churches, centers, radio, the free guide</div>
+      <div class="box"><span class="tag">Free</span><b>Referrals</b>From saved customers</div>
+    </div>
+  </div></section>
+
+  <section class="stage"><div class="num">3</div><div class="body">
+    <h2>They opt in, and we text</h2>
+    <div class="row">
+      <div class="box"><b>Opt-in</b>Text AHORRO / SAVE, the site checkbox, or the /rescue form</div><span class="arrow">→</span>
+      <div class="box"><b>Text #1 (ClickSend)</b>Free bill review, $0 unless you save. Reply YES</div><span class="arrow">→</span>
+      <div class="box ask"><b>Replied YES?</b>No: one follow-up after 2 days, then stop. STOP = removed at once</div>
+    </div>
+  </div></section>
+
+  <section class="stage"><div class="num">4</div><div class="body">
+    <h2>Quick sign-up (no bills needed yet)</h2>
+    <div class="row">
+      <div class="box"><b>2-minute form</b>Name, phone, ZIP, which bills, provider, rough $/mo, call times</div><span class="arrow">→</span>
+      <div class="box go"><b>Estimate text + booking link</b>"Similar bills often save $X–$Y/mo (estimate)"</div><span class="arrow">→</span>
+      <div class="box"><b>Team texted</b>Dashboard shows the new signup; Gio + Jaime get a text</div>
+    </div>
+  </div></section>
+
+  <section class="stage"><div class="num">5</div><div class="body">
+    <h2>Before the call</h2>
+    <div class="row">
+      <div class="box ask"><b>E-sign + card saved</b>Required before any call. Card saved, not charged</div><span class="arrow">→</span>
+      <div class="box"><b>Reminders</b>24 hours (reply C / R, bill photo) and 1 hour before. Staff get the 1-hour text + 8am list</div><span class="arrow">→</span>
+      <div class="box no"><b>No-show</b>Reschedule text right away. 2 misses = mark lost</div>
+    </div>
+  </div></section>
+
+  <section class="stage"><div class="num">6</div><div class="body">
+    <h2>The 3-way call (~45 minutes, mostly hold)</h2>
+    <div class="row">
+      <div class="box"><b>Customer verifies themselves</b>VA negotiates; customer approves every change</div><span class="arrow">→</span>
+      <div class="box ask"><b>Savings found?</b>No: $0, thank them, recheck in 6 months</div><span class="arrow">→</span>
+      <div class="box go"><b>Yes</b>Log old/new $/mo + confirmation # in the dashboard</div>
+    </div>
+  </div></section>
+
+  <section class="stage"><div class="num">7</div><div class="body">
+    <h2>Get paid</h2>
+    <div class="row">
+      <div class="box ask"><b>Next bill arrives</b>Customer texts a photo; we confirm the lower amount</div><span class="arrow">→</span>
+      <div class="box go"><b>Charge the saved card (Stripe)</b>40% of 12 months of savings, or 3 payments</div><span class="arrow">→</span>
+      <div class="box no"><b>Card fails / no reply</b>Follow the written non-payment plan (reminders, then payment plan)</div>
+    </div>
+  </div></section>
+
+  <section class="stage"><div class="num">8</div><div class="body">
+    <h2>Review + referral</h2>
+    <div class="row">
+      <div class="box go"><b>Google review</b>2 days after payment</div><span class="arrow">→</span>
+      <div class="box go"><b>Referral link</b>1 week later; reward when the friend saves</div><span class="arrow">→</span>
+      <div class="box"><b>Check-in in 12 months</b>Promos expire; offer another review</div>
+    </div>
+  </div></section>
+
+  <div class="backend">
+    <h2>Behind the scenes</h2>
+    <div class="row">
+      <div class="box"><b>Website + forms</b>Netlify now; Railway server later</div>
+      <div class="box"><b>Staff dashboard</b>/dashboard: calls, assignments, savings, fee math</div>
+      <div class="box"><b>Twilio</b>Texts to Gio + Jaime only</div>
+      <div class="box"><b>ClickSend</b>Customer texts (opt-in only, 10DLC registered)</div>
+      <div class="box"><b>E-sign</b>PandaDoc agreement + authorization</div>
+      <div class="box"><b>Stripe</b>Save card at signup, charge after savings show</div>
+    </div>
+  </div>
+</div>
+</body>
+</html>
