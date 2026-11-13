@@ -193,3 +193,6 @@ footer a:hover { color: #fff; }
   .btn-sm { padding: 0 12px; font-size: 14px; }
 }
 @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } .btn, .step { transition: none; } }
+
+/* Hide Netlify free-plan badge */
+#nl-badge-frame{display:none!important}
