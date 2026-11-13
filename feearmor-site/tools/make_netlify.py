@@ -78,6 +78,9 @@ REDIRECTS = '''# Old .html addresses -> clean ones
 /es/intake             /es-intake.html          200
 /es/privacidad         /es-privacidad.html      200
 /es/blog               /blog/es/index.html      200
+/es/blog/remove-modem-rental-fee  /es/blog/quitar-renta-de-modem  301!
+/es/blog/internet-promo-ending    /es/blog/se-acaba-mi-promocion  301!
+/es/blog/broadcast-tv-fee         /es/blog/cargo-tv-local         301!
 /es/blog/:slug         /blog/es/:slug.html      200
 '''
 

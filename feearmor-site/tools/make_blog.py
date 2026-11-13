@@ -27,6 +27,12 @@ style = style.replace('</style>', '''  .nav-link { color: var(--text); font-weig
 FAVICON = '<link rel="icon" href="/logo.svg" type="image/svg+xml">'
 LOGO = '<img src="/logo.svg" alt="" width="34" height="34">'
 DATE_ISO, DATE = '2026-10-21', {'en': 'October 21, 2026', 'es': '21 de octubre de 2026'}
+MONTHS = {'en': ['January','February','March','April','May','June','July','August','September','October','November','December'],
+          'es': ['enero','febrero','marzo','abril','mayo','junio','julio','agosto','septiembre','octubre','noviembre','diciembre']}
+def nice_date(iso, lang):
+    y, m, d = (int(x) for x in iso.split('-'))
+    return f"{MONTHS['en'][m-1]} {d}, {y}" if lang == 'en' else f"{d} de {MONTHS['es'][m-1]} de {y}"
+
 BASE = 'https://www.feearmor.com'
 T = {
  'en': dict(home='/', blog='/blog', other='English', other_lang='es', other_label='Español', cta='Get Started', signup='/#signup',
@@ -117,14 +123,14 @@ for lang in ('en', 'es'):
         url_en, url_es = f"/blog/{p['slug']}", f"/es/blog/{p['es_slug']}"
         canon = url_en if lang == 'en' else url_es
         ld = {"@context": "https://schema.org", "@type": "BlogPosting", "headline": c['title'], "description": c['desc'],
-              "inLanguage": lang, "datePublished": DATE_ISO, "dateModified": DATE_ISO,
+              "inLanguage": lang, "datePublished": p.get('date', DATE_ISO), "dateModified": p.get('date', DATE_ISO),
               "author": {"@type": "Person", "name": "Giovanni Morado"},
               "publisher": {"@type": "Organization", "name": "FeeArmor", "url": BASE + "/"},
               "mainEntityOfPage": BASE + canon}
         body = f'''      <article>
         <p class="crumb"><a href="{t['blog']}">Blog</a></p>
-        <h1 style="font-size:clamp(30px,7vw,44px)">{html.escape(c['title'])}</h1>
-        <p class="byline">{t['by']} · {DATE[lang]}</p>
+        <h1 style="font-size:clamp(30px,7vw,44px)">{html.escape(c.get('h1', c['title']))}</h1>
+        <p class="byline">{t['by']} · {nice_date(p.get('date', DATE_ISO), lang)}</p>
 {c['body']}
 {cta(lang)}
       </article>'''
