@@ -1,5 +1,6 @@
 # Netlify builds the static FeeArmor site from feearmor-site/ on every push.
+# make_blog.py rebuilds blog pages from tools/blog_content.py first.
 [build]
-  base = "feearmor-site"
-  command = "python3 tools/make_netlify.py netlify-build"
-  publish = "netlify-build"
+base = "feearmor-site"
+command = "python3 tools/make_blog.py && python3 tools/make_netlify.py netlify-build"
+publish = "netlify-build"
