@@ -41,6 +41,16 @@
     <xhtml:link rel="alternate" hreflang="es" href="https://www.feearmor.com/es/blog"/>
   </url>
   <url>
+    <loc>https://www.feearmor.com/blog/retention-department-script</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.feearmor.com/blog/retention-department-script"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.feearmor.com/es/blog/guion-departamento-de-retencion"/>
+  </url>
+  <url>
+    <loc>https://www.feearmor.com/es/blog/guion-departamento-de-retencion</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.feearmor.com/blog/retention-department-script"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.feearmor.com/es/blog/guion-departamento-de-retencion"/>
+  </url>
+  <url>
     <loc>https://www.feearmor.com/blog/remove-modem-rental-fee</loc>
     <xhtml:link rel="alternate" hreflang="en" href="https://www.feearmor.com/blog/remove-modem-rental-fee"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://www.feearmor.com/es/blog/quitar-renta-de-modem"/>
