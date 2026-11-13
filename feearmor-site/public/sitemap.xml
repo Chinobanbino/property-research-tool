@@ -41,6 +41,16 @@
     <xhtml:link rel="alternate" hreflang="es" href="https://www.feearmor.com/es/blog"/>
   </url>
   <url>
+    <loc>https://www.feearmor.com/blog/verizon-economic-adjustment-charge</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.feearmor.com/blog/verizon-economic-adjustment-charge"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.feearmor.com/es/blog/verizon-cargo-ajuste-economico"/>
+  </url>
+  <url>
+    <loc>https://www.feearmor.com/es/blog/verizon-cargo-ajuste-economico</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.feearmor.com/blog/verizon-economic-adjustment-charge"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.feearmor.com/es/blog/verizon-cargo-ajuste-economico"/>
+  </url>
+  <url>
     <loc>https://www.feearmor.com/blog/t-mobile-telco-recovery-fee</loc>
     <xhtml:link rel="alternate" hreflang="en" href="https://www.feearmor.com/blog/t-mobile-telco-recovery-fee"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://www.feearmor.com/es/blog/t-mobile-telco-recovery-fee"/>
