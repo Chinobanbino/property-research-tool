@@ -38,13 +38,13 @@ T = {
  'en': dict(home='/', blog='/blog', other='English', other_lang='es', other_label='Español', cta='Get Started', signup='/#signup',
             blog_title='The FeeArmor Blog', blog_sub='Plain-English guides to the fees hiding in your monthly bills.',
             blog_desc='Guides to removing junk fees, expired promos and billing mistakes from your internet, phone and TV bills.',
-            by='By Giovanni Morado', read='Read the guide →',
+            by='By Ryan Forman', read='Read the guide →',
             box_h='Rather not make the call?', box_p='FeeArmor makes these calls for you, in English or Spanish. $0 upfront: no savings, no fee.',
             privacy='/privacy', privacy_l='Privacy Policy', footer='All rights reserved.', entity='FeeArmor'),
  'es': dict(home='/es', blog='/es/blog', other='Español', other_lang='en', other_label='English', cta='Empezar', signup='/es#signup',
             blog_title='El blog de FeeArmor', blog_sub='Guías sencillas sobre los cargos escondidos en sus facturas.',
             blog_desc='Guías para quitar cargos basura, promociones vencidas y errores de cobro de sus facturas de internet, teléfono y TV.',
-            by='Por Giovanni Morado', read='Leer la guía →',
+            by='Por Ryan Forman', read='Leer la guía →',
             box_h='¿Prefiere no hacer la llamada?', box_p='FeeArmor hace estas llamadas por usted, en español. $0 por adelantado: si no ahorra, no paga.',
             privacy='/es/privacidad', privacy_l='Política de privacidad', footer='Todos los derechos reservados.', entity='FeeArmor'),
 }
@@ -124,7 +124,7 @@ for lang in ('en', 'es'):
         canon = url_en if lang == 'en' else url_es
         ld = {"@context": "https://schema.org", "@type": "BlogPosting", "headline": c['title'], "description": c['desc'],
               "inLanguage": lang, "datePublished": p.get('date', DATE_ISO), "dateModified": p.get('date', DATE_ISO),
-              "author": {"@type": "Person", "name": "Giovanni Morado"},
+              "author": {"@type": "Person", "name": "Ryan Forman"},
               "publisher": {"@type": "Organization", "name": "FeeArmor", "url": BASE + "/"},
               "mainEntityOfPage": BASE + canon}
         body = f'''      <article>
