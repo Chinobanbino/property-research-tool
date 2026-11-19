@@ -41,6 +41,16 @@
     <xhtml:link rel="alternate" hreflang="es" href="https://www.feearmor.com/es/blog"/>
   </url>
   <url>
+    <loc>https://www.feearmor.com/blog/winter-heating-bills-2026</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.feearmor.com/blog/winter-heating-bills-2026"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.feearmor.com/es/blog/factura-calefaccion-invierno-2026"/>
+  </url>
+  <url>
+    <loc>https://www.feearmor.com/es/blog/factura-calefaccion-invierno-2026</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.feearmor.com/blog/winter-heating-bills-2026"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.feearmor.com/es/blog/factura-calefaccion-invierno-2026"/>
+  </url>
+  <url>
     <loc>https://www.feearmor.com/blog/how-to-read-internet-bill</loc>
     <xhtml:link rel="alternate" hreflang="en" href="https://www.feearmor.com/blog/how-to-read-internet-bill"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://www.feearmor.com/es/blog/como-leer-factura-de-internet"/>

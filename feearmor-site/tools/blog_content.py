@@ -1,6 +1,153 @@
 # Blog post content (EN + ES). Body HTML only; the page shell is added by make_blog.py.
 POSTS = [
  {
+  "slug": "winter-heating-bills-2026", "es_slug": "factura-calefaccion-invierno-2026", "date": "2026-11-18",
+  "en": {
+   "title": "Winter Heating Bills 2026-27: What to Expect and Cut",
+   "desc": "Winter 2026-27 heating bills: EIA expects electric heat costs up 4% and gas down 9%. See what to check on your bill and how to cut what you pay.",
+   "summary": "Winter 2026-27 heating bills: EIA expects electric heat costs up 4% and gas down 9%. See what to check on your bill and how to cut what you pay.",
+   "body": """
+<h2>Quick answer</h2>
+<p>It depends on how you heat. In its October 2026 Winter Fuels Outlook, the U.S. Energy Information Administration (EIA) expects homes that heat mainly with electricity to spend about 4% more this winter than last, and homes heating with natural gas to spend about 9% less. Heating oil homes could see the biggest jump, around 21%. Whatever your fuel, the fastest wins are the same: check for estimated meter reads, the wrong rate plan and fees you can get waived, then trim usage with a thermostat schedule.</p>
+<p><b>Want us to handle it? No savings, no fee.</b> → <a href="https://www.feearmor.com/intake">Send us your bill</a></p>
+<h2>Why winter bills are moving in different directions</h2>
+<p>EIA's forecast covers November through March. For electric heat, it expects residential electricity prices to rise about 3%, and with slightly higher use, bills to rise about 4%. The West could see the largest electric increase, about 9%, mainly because EIA assumes a much colder winter there than last year. On average, EIA estimates electric-heat households will spend about $1,196 this winter on electricity.</p>
+<p>Natural gas homes get better news: lower prices push average winter spending down about 9% nationally, to roughly $640. The West is the exception, at about +7%, again because of colder weather. Propane spending is forecast down about 3%, and heating oil up about 21%.</p>
+<p>One catch: weather drives all of this. EIA notes that NOAA has identified a strong El Niño pattern this winter, which could cause large swings from the forecast. And a lower gas price doesn't always show up on your bill right away. EIA explains that retail gas prices lag wholesale prices, and part of what you pay covers utility operating and delivery costs that aren't tied to the price of gas itself.</p>
+<h2>How to check your heating bill</h2>
+<ol>
+<li><b>Find your billing period and days of service.</b> A 34-day bill will look higher than a 28-day bill even if nothing changed.</li>
+<li><b>Check for "estimated" or "E" next to the meter reading.</b> If the utility guessed your usage, the number can be high. Read your meter, take a dated photo and ask for a corrected bill.</li>
+<li><b>Compare usage, not just dollars.</b> Find kWh (electric) or therms/CCF (gas) and compare them with the same month last year. Many bills show a 13-month usage chart.</li>
+<li><b>Find your rate plan or rate class.</b> Make sure it matches your home (for example, residential, not commercial) and any plan you signed up for.</li>
+<li><b>Read the fixed charges.</b> Look for a monthly customer or base charge and delivery charges. These are usually set by regulators and stay the same no matter how much you use.</li>
+<li><b>Look for one-time fees.</b> Late fees, reconnection fees and deposit charges are easy to miss.</li>
+<li><b>In states with energy choice, check your contract end date.</b> When a fixed-rate plan expires, some plans roll to a higher variable rate. (Same idea as an <a href="https://www.feearmor.com/blog/internet-promo-ending">internet promo ending</a>.)</li>
+</ol>
+<p>New to reading bills line by line? Start with Monday's guide: <a href="https://www.feearmor.com/blog/how-to-read-internet-bill">How to Read Your Internet Bill Line by Line</a>. The same method works for utilities.</p>
+<h2>Electric and gas bill fee table</h2>
+<div style="overflow-x:auto;margin:0 0 16px">
+<table style="width:100%;border-collapse:collapse;font-size:15px">
+<thead><tr><th style="text-align:left;border-bottom:2px solid var(--lime);padding:8px">Line item</th><th style="text-align:left;border-bottom:2px solid var(--lime);padding:8px">Typical amount</th><th style="text-align:left;border-bottom:2px solid var(--lime);padding:8px">Can it be removed?</th><th style="text-align:left;border-bottom:2px solid var(--lime);padding:8px">What to ask for</th></tr></thead>
+<tbody>
+<tr><td style="border-bottom:1px solid rgba(127,127,127,.3);padding:8px;vertical-align:top">Customer / base charge</td><td style="border-bottom:1px solid rgba(127,127,127,.3);padding:8px;vertical-align:top">Fixed monthly amount, set by your utility's approved rates</td><td style="border-bottom:1px solid rgba(127,127,127,.3);padding:8px;vertical-align:top">No</td><td style="border-bottom:1px solid rgba(127,127,127,.3);padding:8px;vertical-align:top">Confirm you're in the right rate class</td></tr>
+<tr><td style="border-bottom:1px solid rgba(127,127,127,.3);padding:8px;vertical-align:top">Energy or supply charge</td><td style="border-bottom:1px solid rgba(127,127,127,.3);padding:8px;vertical-align:top">EIA forecasts about 18¢/kWh U.S. average for electricity this winter</td><td style="border-bottom:1px solid rgba(127,127,127,.3);padding:8px;vertical-align:top">Sometimes, by changing plans (in energy-choice areas)</td><td style="border-bottom:1px solid rgba(127,127,127,.3);padding:8px;vertical-align:top">A lower-rate plan you qualify for</td></tr>
+<tr><td style="border-bottom:1px solid rgba(127,127,127,.3);padding:8px;vertical-align:top">Delivery / distribution charge</td><td style="border-bottom:1px solid rgba(127,127,127,.3);padding:8px;vertical-align:top">Varies by utility</td><td style="border-bottom:1px solid rgba(127,127,127,.3);padding:8px;vertical-align:top">No</td><td style="border-bottom:1px solid rgba(127,127,127,.3);padding:8px;vertical-align:top">Confirm the meter number matches your home</td></tr>
+<tr><td style="border-bottom:1px solid rgba(127,127,127,.3);padding:8px;vertical-align:top">Gas cost or fuel adjustment</td><td style="border-bottom:1px solid rgba(127,127,127,.3);padding:8px;vertical-align:top">Changes month to month</td><td style="border-bottom:1px solid rgba(127,127,127,.3);padding:8px;vertical-align:top">No</td><td style="border-bottom:1px solid rgba(127,127,127,.3);padding:8px;vertical-align:top">How it's calculated and when it changes</td></tr>
+<tr><td style="border-bottom:1px solid rgba(127,127,127,.3);padding:8px;vertical-align:top">Estimated meter read</td><td style="border-bottom:1px solid rgba(127,127,127,.3);padding:8px;vertical-align:top">Not a fee, but can inflate the bill</td><td style="border-bottom:1px solid rgba(127,127,127,.3);padding:8px;vertical-align:top">Yes, corrected</td><td style="border-bottom:1px solid rgba(127,127,127,.3);padding:8px;vertical-align:top">An actual read and a rebilled statement</td></tr>
+<tr><td style="border-bottom:1px solid rgba(127,127,127,.3);padding:8px;vertical-align:top">Late fee</td><td style="border-bottom:1px solid rgba(127,127,127,.3);padding:8px;vertical-align:top">Varies by utility</td><td style="border-bottom:1px solid rgba(127,127,127,.3);padding:8px;vertical-align:top">Often waived once</td><td style="border-bottom:1px solid rgba(127,127,127,.3);padding:8px;vertical-align:top">A one-time courtesy waiver</td></tr>
+<tr><td style="border-bottom:1px solid rgba(127,127,127,.3);padding:8px;vertical-align:top">Deposit</td><td style="border-bottom:1px solid rgba(127,127,127,.3);padding:8px;vertical-align:top">Varies by state rules</td><td style="border-bottom:1px solid rgba(127,127,127,.3);padding:8px;vertical-align:top">Refundable when you qualify</td><td style="border-bottom:1px solid rgba(127,127,127,.3);padding:8px;vertical-align:top">Whether you now qualify for a refund</td></tr>
+</tbody>
+</table>
+</div>
+<h2>What to say: a call script</h2>
+<p>Most utilities don't have a "retention department," but the same polite, specific approach works.</p>
+<div class="callout"><b>You:</b> Hi, my bill this month is much higher than usual. Can you help me review it?</div>
+<div class="callout"><b>Rep:</b> Sure. What's your account number?</div>
+<div class="callout"><b>You:</b> [Account number]. First, was this bill based on an actual meter read or an estimate? I have a photo of my meter from [date] showing [reading].</div>
+<div class="callout"><b>Rep:</b> It looks like it was estimated.</div>
+<div class="callout"><b>You:</b> Then please rebill it using my actual reading, and credit any difference.</div>
+<div class="callout"><b>You:</b> Next, can you check that I'm on the lowest-cost rate plan I qualify for? And do you offer budget billing or levelized billing so my winter bills are spread out?</div>
+<div class="callout"><b>You:</b> Last thing: I see a late fee from [month]. I've paid on time otherwise. Could you waive it as a courtesy?</div>
+<div class="callout"><b>You:</b> Thank you. Can you note these changes on my account and tell me when the corrected bill will post?</div>
+<p>If you're in an energy-choice state and your plan has expired, ask your retail provider which fixed-rate plans you can switch to today. For phone and internet providers, use our <a href="https://www.feearmor.com/blog/retention-department-script">retention department script</a>.</p>
+<h2>Cut usage, too</h2>
+<p>The U.S. Department of Energy says you can save as much as 10% a year on heating and cooling by turning your thermostat back 7–10°F for 8 hours a day from its normal setting. A programmable or smart thermostat does this automatically while you sleep or are away.</p>
+<h2>Example + savings math</h2>
+<p><i>Example (hypothetical, round numbers):</i> A household finds two estimated reads in a row and is on an older rate plan. After a call, the utility rebills from an actual read, and the customer moves to a lower-rate plan they qualify for, saving about $15 a month.</p>
+<p><b>Savings math:</b> Save $15/mo = $180/yr. Our 40% fee is $72. You keep $108 in year one, and 100% after.</p>
+<p><a href="https://www.feearmor.com/intake"><b>Get my bill checked → feearmor.com/intake</b></a></p>
+<h2>FAQ</h2>
+<p><b>Will my heating bill go up this winter?</b> If you heat with electricity or heating oil, EIA's October forecast says probably yes, by about 4% and 21% on average. Gas and propane homes are expected to spend less on average, except gas homes in the West.</p>
+<p><b>Why didn't my gas bill drop when gas prices fell?</b> Retail gas prices lag wholesale prices, and part of your bill pays for delivery and utility operating costs that don't track the price of gas.</p>
+<p><b>What is budget billing?</b> The utility averages your yearly cost into similar monthly payments, so winter bills don't spike. You still pay for what you use; it just smooths the timing.</p>
+<p><b>Can I dispute an estimated bill?</b> Yes. Read your meter, take a dated photo and ask the utility to rebill from the actual reading.</p>
+<p><b>Are winter forecasts reliable?</b> They're a broad guide. EIA says weather could cause large differences from its forecast this year.</p>
+<h2>Bottom line</h2>
+<p>This winter's bill depends on your fuel and your region, but billing errors and the wrong plan cost money in every case. Check your reads, your rate plan and your fees before the coldest months hit.</p>
+<p><b>Send us your bill. No savings, no fee.</b> → <a href="https://www.feearmor.com/intake">feearmor.com/intake</a></p>
+<p><b>Related guides:</b> <a href="https://www.feearmor.com/blog/how-to-read-internet-bill">How to Read Your Internet Bill Line by Line</a> · <a href="https://www.feearmor.com/blog/internet-promo-ending">Your Internet Promo Is Ending</a> · <a href="https://www.feearmor.com/blog/retention-department-script">Retention Department Script</a></p>
+<h2>Sources</h2>
+<ul>
+<li>U.S. Energy Information Administration, "Winter Fuels Outlook 2026–27" (published Oct 6, 2026): <a href="https://www.eia.gov/outlooks/steo/report/perspectives/2026/10-winterfuels/article.php">https://www.eia.gov/outlooks/steo/report/perspectives/2026/10-winterfuels/article.php</a></li>
+<li>U.S. Department of Energy, Energy Saver: Thermostats: <a href="https://www.energy.gov/energysaver/thermostats">https://www.energy.gov/energysaver/thermostats</a></li>
+<li>NOAA Climate Prediction Center, ENSO status (cited by EIA): <a href="https://www.cpc.ncep.noaa.gov/products/analysis_monitoring/lanina/enso_evolution-status-fcsts-web.pdf">https://www.cpc.ncep.noaa.gov/products/analysis_monitoring/lanina/enso_evolution-status-fcsts-web.pdf</a></li>
+</ul>
+"""},
+  "es": {
+   "title": "Calefacción en invierno 2026-27: qué esperar y ahorrar",
+   "desc": "Invierno 2026-27: la EIA prevé que calentar con electricidad cueste 4% más y con gas 9% menos. Revise su factura y aprenda a pagar menos este año.",
+   "summary": "Invierno 2026-27: la EIA prevé que calentar con electricidad cueste 4% más y con gas 9% menos. Revise su factura y aprenda a pagar menos este año.",
+   "body": """
+<h2>Respuesta rápida</h2>
+<p>Depende de cómo calienta su casa. En su pronóstico de invierno de octubre de 2026, la Administración de Información Energética de EE. UU. (EIA) prevé que los hogares que se calientan principalmente con electricidad gasten cerca de 4% más que el invierno pasado, y que los que usan gas natural gasten cerca de 9% menos. Los hogares con aceite de calefacción podrían ver el mayor aumento, alrededor de 21%. Sin importar el combustible, lo que más rápido ayuda es lo mismo: revisar si le estimaron la lectura del medidor, si está en el plan equivocado y si tiene cargos que se pueden perdonar, y luego bajar el consumo con un horario en el termostato.</p>
+<p><b>¿Quiere que lo hagamos por usted? Si no ahorra, no paga.</b> → <a href="https://www.feearmor.com/intake">Envíenos su factura</a></p>
+<p>¿Ayuda a sus padres con la factura de la luz o del gas? Envíenos la de ellos; hacemos la llamada en español o en inglés.</p>
+<h2>Por qué las facturas de invierno van en direcciones distintas</h2>
+<p>El pronóstico de la EIA cubre de noviembre a marzo. Para la calefacción eléctrica, espera que el precio de la electricidad residencial suba cerca de 3% y, con un consumo un poco mayor, que las facturas suban cerca de 4%. El Oeste del país podría ver el mayor aumento, cerca de 9%, sobre todo porque la EIA supone un invierno mucho más frío allí que el año pasado. En promedio, la EIA calcula que los hogares con calefacción eléctrica gastarán unos $1,196 en electricidad este invierno.</p>
+<p>Para el gas natural la noticia es mejor: los precios más bajos reducen el gasto promedio de invierno cerca de 9% a nivel nacional, a unos $640. La excepción es el Oeste, con cerca de +7%, otra vez por el frío. Se pronostica que el gasto en propano baje cerca de 3% y que el de aceite de calefacción suba cerca de 21%.</p>
+<p>Un detalle: el clima manda. La EIA señala que la NOAA identificó un patrón fuerte de El Niño este invierno, lo que podría causar grandes diferencias con el pronóstico. Y un precio del gas más bajo no siempre se nota de inmediato en su factura: la EIA explica que los precios al consumidor tardan en reflejar los precios mayoristas, y que parte de lo que usted paga cubre costos de operación y de entrega de la compañía que no dependen del precio del gas.</p>
+<h2>Cómo revisar su factura de calefacción</h2>
+<ol>
+<li><b>Busque el periodo de facturación y los días de servicio.</b> Una factura de 34 días se verá más alta que una de 28 días aunque nada haya cambiado.</li>
+<li><b>Revise si dice "estimated" o "E" junto a la lectura del medidor.</b> Si la compañía calculó su consumo sin leer el medidor, el número puede salir alto. Lea su medidor, tome una foto con fecha y pida una factura corregida.</li>
+<li><b>Compare el consumo, no solo los dólares.</b> Busque los kWh (luz) o los therms/CCF (gas) y compárelos con el mismo mes del año pasado. Muchas facturas traen una gráfica de 13 meses.</li>
+<li><b>Ubique su plan o clase de tarifa.</b> Confirme que corresponda a su casa (por ejemplo, residencial y no comercial) y al plan que usted contrató.</li>
+<li><b>Lea los cargos fijos.</b> Busque el cargo mensual de cliente o cargo base y los cargos de entrega. Normalmente los fijan los reguladores y no cambian según su consumo.</li>
+<li><b>Busque cargos de una sola vez.</b> Recargos por pago tardío, reconexión o depósito son fáciles de pasar por alto.</li>
+<li><b>Si su estado permite elegir compañía de luz, revise cuándo vence su contrato.</b> Al vencer un plan de tarifa fija, algunos pasan a una tarifa variable más alta. (Es la misma idea que cuando <a href="https://www.feearmor.com/es/blog/se-acaba-mi-promocion">se acaba su promoción de internet</a>.)</li>
+</ol>
+<p>¿Es la primera vez que revisa una factura línea por línea? Empiece con la guía del lunes: <a href="https://www.feearmor.com/es/blog/como-leer-factura-de-internet">Cómo leer su factura de internet línea por línea</a>. El método sirve igual para la luz y el gas.</p>
+<h2>Tabla de cargos en la factura de luz y gas</h2>
+<div style="overflow-x:auto;margin:0 0 16px">
+<table style="width:100%;border-collapse:collapse;font-size:15px">
+<thead><tr><th style="text-align:left;border-bottom:2px solid var(--lime);padding:8px">Concepto</th><th style="text-align:left;border-bottom:2px solid var(--lime);padding:8px">Monto típico</th><th style="text-align:left;border-bottom:2px solid var(--lime);padding:8px">¿Se puede quitar?</th><th style="text-align:left;border-bottom:2px solid var(--lime);padding:8px">Qué pedir</th></tr></thead>
+<tbody>
+<tr><td style="border-bottom:1px solid rgba(127,127,127,.3);padding:8px;vertical-align:top">Cargo de cliente / cargo base</td><td style="border-bottom:1px solid rgba(127,127,127,.3);padding:8px;vertical-align:top">Monto fijo mensual, según las tarifas aprobadas de su compañía</td><td style="border-bottom:1px solid rgba(127,127,127,.3);padding:8px;vertical-align:top">No</td><td style="border-bottom:1px solid rgba(127,127,127,.3);padding:8px;vertical-align:top">Confirmar que esté en la clase de tarifa correcta</td></tr>
+<tr><td style="border-bottom:1px solid rgba(127,127,127,.3);padding:8px;vertical-align:top">Cargo por energía o suministro</td><td style="border-bottom:1px solid rgba(127,127,127,.3);padding:8px;vertical-align:top">La EIA prevé unos 18¢/kWh de promedio nacional este invierno</td><td style="border-bottom:1px solid rgba(127,127,127,.3);padding:8px;vertical-align:top">A veces, cambiando de plan (donde se puede elegir compañía)</td><td style="border-bottom:1px solid rgba(127,127,127,.3);padding:8px;vertical-align:top">Un plan de tarifa más baja para el que califique</td></tr>
+<tr><td style="border-bottom:1px solid rgba(127,127,127,.3);padding:8px;vertical-align:top">Cargo de entrega / distribución</td><td style="border-bottom:1px solid rgba(127,127,127,.3);padding:8px;vertical-align:top">Varía según la compañía</td><td style="border-bottom:1px solid rgba(127,127,127,.3);padding:8px;vertical-align:top">No</td><td style="border-bottom:1px solid rgba(127,127,127,.3);padding:8px;vertical-align:top">Confirmar que el número de medidor sea el de su casa</td></tr>
+<tr><td style="border-bottom:1px solid rgba(127,127,127,.3);padding:8px;vertical-align:top">Ajuste por costo del gas o combustible</td><td style="border-bottom:1px solid rgba(127,127,127,.3);padding:8px;vertical-align:top">Cambia cada mes</td><td style="border-bottom:1px solid rgba(127,127,127,.3);padding:8px;vertical-align:top">No</td><td style="border-bottom:1px solid rgba(127,127,127,.3);padding:8px;vertical-align:top">Cómo se calcula y cuándo cambia</td></tr>
+<tr><td style="border-bottom:1px solid rgba(127,127,127,.3);padding:8px;vertical-align:top">Lectura estimada</td><td style="border-bottom:1px solid rgba(127,127,127,.3);padding:8px;vertical-align:top">No es un cargo, pero puede inflar la factura</td><td style="border-bottom:1px solid rgba(127,127,127,.3);padding:8px;vertical-align:top">Sí, se corrige</td><td style="border-bottom:1px solid rgba(127,127,127,.3);padding:8px;vertical-align:top">Una lectura real y una factura corregida</td></tr>
+<tr><td style="border-bottom:1px solid rgba(127,127,127,.3);padding:8px;vertical-align:top">Recargo por pago tardío</td><td style="border-bottom:1px solid rgba(127,127,127,.3);padding:8px;vertical-align:top">Varía según la compañía</td><td style="border-bottom:1px solid rgba(127,127,127,.3);padding:8px;vertical-align:top">Muchas veces se perdona una vez</td><td style="border-bottom:1px solid rgba(127,127,127,.3);padding:8px;vertical-align:top">Una exención de cortesía</td></tr>
+<tr><td style="border-bottom:1px solid rgba(127,127,127,.3);padding:8px;vertical-align:top">Depósito</td><td style="border-bottom:1px solid rgba(127,127,127,.3);padding:8px;vertical-align:top">Varía según las reglas de su estado</td><td style="border-bottom:1px solid rgba(127,127,127,.3);padding:8px;vertical-align:top">Se devuelve cuando usted califica</td><td style="border-bottom:1px solid rgba(127,127,127,.3);padding:8px;vertical-align:top">Si ya califica para el reembolso</td></tr>
+</tbody>
+</table>
+</div>
+<h2>Qué decir: guion para la llamada</h2>
+<p>La mayoría de las compañías de luz y gas no tienen un "departamento de retención", pero funciona el mismo enfoque: amable y específico.</p>
+<div class="callout"><b>Usted:</b> Hola, mi factura de este mes salió mucho más alta de lo normal. ¿Me ayuda a revisarla? (Si prefiere, pida un agente que hable español.)</div>
+<div class="callout"><b>Agente:</b> Claro. ¿Su número de cuenta?</div>
+<div class="callout"><b>Usted:</b> [Número de cuenta]. Primero, ¿esta factura se hizo con una lectura real del medidor o con una estimada? Tengo una foto de mi medidor del [fecha] que marca [lectura].</div>
+<div class="callout"><b>Agente:</b> Parece que fue estimada.</div>
+<div class="callout"><b>Usted:</b> Entonces, por favor, corrijan la factura con mi lectura real y acrediten la diferencia.</div>
+<div class="callout"><b>Usted:</b> También, ¿pueden revisar que esté en el plan más barato para el que califico? ¿Y ofrecen facturación promediada (budget billing) para repartir el costo del invierno?</div>
+<div class="callout"><b>Usted:</b> Por último, veo un recargo por pago tardío de [mes]. Por lo demás siempre pago a tiempo. ¿Me lo pueden perdonar como cortesía?</div>
+<div class="callout"><b>Usted:</b> Gracias. ¿Pueden anotar estos cambios en mi cuenta y decirme cuándo saldrá la factura corregida?</div>
+<p>Si vive en un estado donde puede elegir compañía de luz y su plan ya venció, pregunte a su proveedor qué planes de tarifa fija puede contratar hoy. Para teléfono e internet, use nuestro <a href="https://www.feearmor.com/es/blog/guion-departamento-de-retencion">guion para el departamento de retención</a>.</p>
+<h2>Baje también el consumo</h2>
+<p>El Departamento de Energía de EE. UU. dice que puede ahorrar hasta 10% al año en calefacción y aire acondicionado si baja el termostato de 7 a 10 °F durante 8 horas al día respecto a su temperatura normal. Un termostato programable o inteligente lo hace solo mientras usted duerme o está fuera.</p>
+<h2>Ejemplo + cálculo de ahorro</h2>
+<p><i>Ejemplo (hipotético, con números redondos):</i> Una familia descubre dos lecturas estimadas seguidas y que sigue en un plan antiguo. Tras una llamada, la compañía corrige la factura con una lectura real y la familia cambia a un plan de tarifa más baja para el que califica, con un ahorro de unos $15 al mes.</p>
+<p><b>Cálculo:</b> Ahorro de $15 al mes = $180 al año. Nuestra tarifa del 40% es $72. Usted se queda con $108 el primer año y con el 100% después.</p>
+<p><a href="https://www.feearmor.com/intake"><b>Quiero que revisen mi factura → feearmor.com/intake</b></a></p>
+<h2>Preguntas frecuentes</h2>
+<p><b>¿Me va a subir la factura de calefacción este invierno?</b> Si calienta con electricidad o aceite de calefacción, el pronóstico de octubre de la EIA dice que probablemente sí: cerca de 4% y 21% en promedio. Se espera que los hogares con gas o propano gasten menos en promedio, salvo los hogares con gas en el Oeste.</p>
+<p><b>¿Por qué no bajó mi factura de gas si bajó el precio del gas?</b> Los precios al consumidor tardan en reflejar los precios mayoristas, y parte de su factura paga la entrega y los costos de operación de la compañía, que no siguen el precio del gas.</p>
+<p><b>¿Qué es la facturación promediada (budget billing)?</b> La compañía reparte su costo anual en pagos mensuales parecidos para que el invierno no se dispare. Usted sigue pagando lo que usa; solo cambia el momento del pago.</p>
+<p><b>¿Puedo reclamar una factura estimada?</b> Sí. Lea su medidor, tome una foto con fecha y pida que corrijan la factura con la lectura real.</p>
+<p><b>¿Son confiables los pronósticos de invierno?</b> Son una guía general. La EIA advierte que el clima podría causar grandes diferencias este año.</p>
+<h2>En resumen</h2>
+<p>Lo que pague este invierno depende de su combustible y de su región, pero los errores de facturación y el plan equivocado cuestan dinero en todos los casos. Revise sus lecturas, su plan y sus cargos antes de los meses más fríos.</p>
+<p><b>Envíenos su factura. Si no ahorra, no paga.</b> → <a href="https://www.feearmor.com/intake">feearmor.com/intake</a></p>
+<p><b>Guías relacionadas:</b> <a href="https://www.feearmor.com/es/blog/como-leer-factura-de-internet">Cómo leer su factura de internet línea por línea</a> · <a href="https://www.feearmor.com/es/blog/se-acaba-mi-promocion">Se acaba su promoción de internet</a> · <a href="https://www.feearmor.com/es/blog/guion-departamento-de-retencion">Guion para el departamento de retención</a></p>
+<h2>Fuentes</h2>
+<ul>
+<li>Administración de Información Energética de EE. UU. (EIA), "Winter Fuels Outlook 2026–27" (6 de octubre de 2026): <a href="https://www.eia.gov/outlooks/steo/report/perspectives/2026/10-winterfuels/article.php">https://www.eia.gov/outlooks/steo/report/perspectives/2026/10-winterfuels/article.php</a></li>
+<li>Departamento de Energía de EE. UU., Energy Saver (en español): <a href="https://www.energy.gov/es/energysaver/thermostats">https://www.energy.gov/es/energysaver/thermostats</a></li>
+<li>NOAA Climate Prediction Center, estado de ENSO (citado por la EIA): <a href="https://www.cpc.ncep.noaa.gov/products/analysis_monitoring/lanina/enso_evolution-status-fcsts-web.pdf">https://www.cpc.ncep.noaa.gov/products/analysis_monitoring/lanina/enso_evolution-status-fcsts-web.pdf</a></li>
+</ul>
+"""}},
+ {
   "slug": "how-to-read-internet-bill", "es_slug": "como-leer-factura-de-internet", "date": "2026-11-16",
   "en": {
    "title": "How to Read Your Internet Bill Line by Line in 2026",
