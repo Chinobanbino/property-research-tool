@@ -1,0 +1,26 @@
+# Render Blueprint for the FeeArmor website (feearmor-site/).
+# Render → New → Blueprint → pick this repo and branch. It creates the web service and its Postgres database.
+services:
+  - type: web
+    name: feearmor-web
+    runtime: node
+    plan: free
+    region: ohio
+    rootDir: feearmor-site
+    buildCommand: npm install
+    startCommand: npm start
+    healthCheckPath: /
+    envVars:
+      - key: DATABASE_URL
+        fromDatabase:
+          name: feearmor-db
+          property: connectionString
+      - key: ADMIN_TOKEN
+        generateValue: true
+      - key: CANONICAL_HOST
+        value: www.feearmor.com
+
+databases:
+  - name: feearmor-db
+    plan: free
+    region: ohio
