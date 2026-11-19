@@ -41,6 +41,16 @@
     <xhtml:link rel="alternate" hreflang="es" href="https://www.feearmor.com/es/blog"/>
   </url>
   <url>
+    <loc>https://www.feearmor.com/blog/how-to-read-internet-bill</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.feearmor.com/blog/how-to-read-internet-bill"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.feearmor.com/es/blog/como-leer-factura-de-internet"/>
+  </url>
+  <url>
+    <loc>https://www.feearmor.com/es/blog/como-leer-factura-de-internet</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.feearmor.com/blog/how-to-read-internet-bill"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.feearmor.com/es/blog/como-leer-factura-de-internet"/>
+  </url>
+  <url>
     <loc>https://www.feearmor.com/blog/verizon-economic-adjustment-charge</loc>
     <xhtml:link rel="alternate" hreflang="en" href="https://www.feearmor.com/blog/verizon-economic-adjustment-charge"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://www.feearmor.com/es/blog/verizon-cargo-ajuste-economico"/>

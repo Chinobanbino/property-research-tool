@@ -1,6 +1,149 @@
 # Blog post content (EN + ES). Body HTML only; the page shell is added by make_blog.py.
 POSTS = [
  {
+  "slug": "how-to-read-internet-bill", "es_slug": "como-leer-factura-de-internet", "date": "2026-11-16",
+  "en": {
+   "title": "How to Read Your Internet Bill Line by Line in 2026",
+   "desc": "Read your internet bill line by line in 2026. Spot expired promos, equipment rentals and add-on fees, then use our script to get them removed.",
+   "summary": "Read your internet bill line by line in 2026. Spot expired promos, equipment rentals and add-on fees, then use our script to get them removed.",
+   "body": """
+<h2>Quick answer</h2>
+<p>Your internet bill has four parts: your plan price, any promo or discount credits, equipment and add-on charges, and taxes and fees. Lay last month's bill next to this month's and compare each line. The money usually hides in three places: a promo credit that quietly disappeared, an equipment rental you may not need, and a discount (like autopay) you qualify for but aren't getting. Most of those can be fixed with one phone call.</p>
+<p><b>Want us to handle it? No savings, no fee.</b> → <a href="https://www.feearmor.com/intake">Send us your bill</a></p>
+<h2>Why internet bills are harder to read in 2026</h2>
+<p>Providers raise prices in two ways at once: the base rate goes up, and separate fees rise on their own schedule. Xfinity, for example, says some of its prices will increase starting in December 2026. It also notes that promotional and contract prices hold until the term ends, but taxes, fees and equipment charges can change during and after that term. That means a "locked" price does not always mean a locked bill.</p>
+<p>The tool that was supposed to help also got lighter. Under FCC rules that took effect September 14, 2026, providers may now show a link or icon to the broadband "nutrition label" instead of the full label, both at the point of sale and in your account. The label must still list prices, speeds, data allowances and contract terms. A separate change that would let providers show passthrough fees as one combined maximum amount was delayed indefinitely, so for now those fees must still be itemized.</p>
+<p>Bottom line: the information exists, but you have to go find it and compare it to your bill yourself.</p>
+<h2>How to check your bill, step by step</h2>
+<ol>
+<li><b>Get the full bill, not the summary.</b> Log in and download the PDF statement. The app's "amount due" screen often hides line items.</li>
+<li><b>Find the plan line.</b> It usually sits under "Monthly Services" or "Internet." Note the plan name and price.</li>
+<li><b>Look for credits.</b> Promo discounts show as negative amounts (for example, "-$20.00 Promotional Discount"). If last month had one and this month doesn't, your promo ended. See our guide on <a href="https://www.feearmor.com/blog/internet-promo-ending">what to do 60 days before your promo ends</a>.</li>
+<li><b>Find equipment charges.</b> Look for "Gateway," "Modem," "Router" or "Equipment." If you own a compatible modem, this charge may be removable. Our <a href="https://www.feearmor.com/blog/remove-modem-rental-fee">modem rental fee guide</a> walks through it.</li>
+<li><b>Check discounts you should have.</b> Autopay and paperless discounts can be large. Xfinity, for instance, lists a $10/month savings for internet customers who use both paperless billing and automatic payments from a bank account.</li>
+<li><b>Scan "Other Charges" and TV fees.</b> If you bundle TV, look for broadcast TV and regional sports fees. These sit outside promo pricing. See <a href="https://www.feearmor.com/blog/broadcast-tv-fee">what the Broadcast TV Fee is</a>.</li>
+<li><b>Check one-time charges.</b> Installation, late fees and "service visit" charges sometimes repeat by mistake.</li>
+<li><b>Compare with your broadband label.</b> Open the label link in your account. If your bill shows a fee the label doesn't list, ask about it.</li>
+</ol>
+<h2>Internet bill fee table</h2>
+<div style="overflow-x:auto;margin:0 0 16px">
+<table style="width:100%;border-collapse:collapse;font-size:15px">
+<thead><tr><th style="text-align:left;border-bottom:2px solid var(--lime);padding:8px">Line item</th><th style="text-align:left;border-bottom:2px solid var(--lime);padding:8px">Typical amount</th><th style="text-align:left;border-bottom:2px solid var(--lime);padding:8px">Can it be removed?</th><th style="text-align:left;border-bottom:2px solid var(--lime);padding:8px">What to ask for</th></tr></thead>
+<tbody>
+<tr><td style="border-bottom:1px solid rgba(127,127,127,.3);padding:8px;vertical-align:top">Plan / base price</td><td style="border-bottom:1px solid rgba(127,127,127,.3);padding:8px;vertical-align:top">Your plan rate; standard rates often run $20–$40/mo above promo rates</td><td style="border-bottom:1px solid rgba(127,127,127,.3);padding:8px;vertical-align:top">Can often be lowered</td><td style="border-bottom:1px solid rgba(127,127,127,.3);padding:8px;vertical-align:top">A current loyalty rate or price lock</td></tr>
+<tr><td style="border-bottom:1px solid rgba(127,127,127,.3);padding:8px;vertical-align:top">Promo credit (missing)</td><td style="border-bottom:1px solid rgba(127,127,127,.3);padding:8px;vertical-align:top">Varies by plan</td><td style="border-bottom:1px solid rgba(127,127,127,.3);padding:8px;vertical-align:top">Often re-applied or replaced</td><td style="border-bottom:1px solid rgba(127,127,127,.3);padding:8px;vertical-align:top">A new promo or matching credit</td></tr>
+<tr><td style="border-bottom:1px solid rgba(127,127,127,.3);padding:8px;vertical-align:top">Equipment / gateway rental</td><td style="border-bottom:1px solid rgba(127,127,127,.3);padding:8px;vertical-align:top">Varies by provider</td><td style="border-bottom:1px solid rgba(127,127,127,.3);padding:8px;vertical-align:top">Often, if you use your own compatible modem</td><td style="border-bottom:1px solid rgba(127,127,127,.3);padding:8px;vertical-align:top">Remove the charge; get return instructions</td></tr>
+<tr><td style="border-bottom:1px solid rgba(127,127,127,.3);padding:8px;vertical-align:top">Autopay + paperless discount</td><td style="border-bottom:1px solid rgba(127,127,127,.3);padding:8px;vertical-align:top">Example: $10/mo (Xfinity)</td><td style="border-bottom:1px solid rgba(127,127,127,.3);padding:8px;vertical-align:top">You gain it</td><td style="border-bottom:1px solid rgba(127,127,127,.3);padding:8px;vertical-align:top">Confirm it is applied, and credit missed months</td></tr>
+<tr><td style="border-bottom:1px solid rgba(127,127,127,.3);padding:8px;vertical-align:top">Broadcast TV / regional sports fees (bundles)</td><td style="border-bottom:1px solid rgba(127,127,127,.3);padding:8px;vertical-align:top">Varies; rising</td><td style="border-bottom:1px solid rgba(127,127,127,.3);padding:8px;vertical-align:top">Only by changing your TV package</td><td style="border-bottom:1px solid rgba(127,127,127,.3);padding:8px;vertical-align:top">Internet-only or a smaller TV tier</td></tr>
+<tr><td style="border-bottom:1px solid rgba(127,127,127,.3);padding:8px;vertical-align:top">Taxes and government surcharges</td><td style="border-bottom:1px solid rgba(127,127,127,.3);padding:8px;vertical-align:top">Varies by location</td><td style="border-bottom:1px solid rgba(127,127,127,.3);padding:8px;vertical-align:top">No</td><td style="border-bottom:1px solid rgba(127,127,127,.3);padding:8px;vertical-align:top">Confirm your service address is correct</td></tr>
+<tr><td style="border-bottom:1px solid rgba(127,127,127,.3);padding:8px;vertical-align:top">One-time charges (install, late fee)</td><td style="border-bottom:1px solid rgba(127,127,127,.3);padding:8px;vertical-align:top">Varies</td><td style="border-bottom:1px solid rgba(127,127,127,.3);padding:8px;vertical-align:top">Often waivable</td><td style="border-bottom:1px solid rgba(127,127,127,.3);padding:8px;vertical-align:top">A courtesy credit</td></tr>
+</tbody>
+</table>
+</div>
+<h2>What to say: a call script</h2>
+<div class="callout"><b>You:</b> Hi, I'm reviewing my bill and it went up. Can you connect me with the retention or loyalty team?</div>
+<div class="callout"><b>Rep:</b> Sure, one moment.</div>
+<div class="callout"><b>You:</b> Thanks. My bill went from [last month's total] to [this month's total]. I see my promotional discount ended and I'm also paying an equipment charge. What loyalty rates do you have for my plan?</div>
+<div class="callout"><b>Rep:</b> I can offer [offer].</div>
+<div class="callout"><b>You:</b> I've seen [competing provider] advertising [speed] for [price] at my address. I'd rather stay, but I need my bill closer to that. Can you match it or add a discount?</div>
+<div class="callout"><b>You:</b> Also, I use my own modem — please remove the equipment charge. And can you confirm my autopay discount is active? If it was missing, I'd like a credit back to the date it should have started.</div>
+<div class="callout"><b>You:</b> Great. Can you email me the new monthly total and how long it's locked in?</div>
+<p>For more lines and comebacks, use our <a href="https://www.feearmor.com/blog/retention-department-script">word-for-word retention script</a>.</p>
+<h2>Example + savings math</h2>
+<p><i>Example (hypothetical, round numbers):</i> A household's promo credit of $20/month ends and a $15/month equipment charge is still on the bill. After one call, the provider restores a $20 loyalty credit and removes the equipment charge after the customer returns the rented device.</p>
+<p><b>Savings math:</b> Save $35/mo = $420/yr. Our 40% fee is $168. You keep $252 in year one, and 100% after.</p>
+<p><a href="https://www.feearmor.com/intake"><b>Get my bill checked → feearmor.com/intake</b></a></p>
+<h2>FAQ</h2>
+<p><b>How do I find my broadband label?</b> Look in your online account or app near your plan details. Since September 14, 2026, providers can show it as a link or icon instead of the full label, so check for a "Broadband Facts" link.</p>
+<p><b>Why did my bill go up if I have a price lock?</b> A price lock often covers only the plan rate. Taxes, fees and equipment charges can still change, so read the fine print of the lock.</p>
+<p><b>Can I get credited for a discount I missed?</b> Often, yes. Ask for a credit back to the date the discount should have started. Get the credit amount in writing.</p>
+<p><b>Is the equipment fee required?</b> Not always. Many providers let you use your own compatible modem. Ask which models are approved before you buy one.</p>
+<p><b>Will calling hurt my service?</b> No. Asking for a better rate does not change your service unless you agree to a plan change.</p>
+<h2>Bottom line</h2>
+<p>Your internet bill tells you exactly where the extra money goes — if you compare it line by line each month. Fix the missing credit, the unneeded rental and the missing discount, and many households cut their bill without changing speed.</p>
+<p><b>Send us your bill. No savings, no fee.</b> → <a href="https://www.feearmor.com/intake">feearmor.com/intake</a></p>
+<p><b>Related guides:</b> <a href="https://www.feearmor.com/blog/internet-promo-ending">Your Internet Promo Is Ending</a> · <a href="https://www.feearmor.com/blog/remove-modem-rental-fee">Stop Paying a Modem Rental Fee</a> · <a href="https://www.feearmor.com/blog/retention-department-script">Retention Department Script</a></p>
+<h2>Sources</h2>
+<ul>
+<li>Xfinity, "Xfinity Bill Changes" (prices increasing starting December 2026; $10/mo paperless + autopay savings; promo prices vs. fees): <a href="https://www.xfinity.com/billchanges">https://www.xfinity.com/billchanges</a></li>
+<li>Broadband Breakfast, "FCC's Streamlined Broadband Label Rules Take Effect September 14" (Aug 27, 2026): <a href="https://broadbandbreakfast.com/fccs-streamlined-broadband-label-rules-take-effect-september-14/">https://broadbandbreakfast.com/fccs-streamlined-broadband-label-rules-take-effect-september-14/</a></li>
+<li>Federal Register notice on the label order (Aug 13, 2026): <a href="https://www.govinfo.gov/content/pkg/FR-2026-08-13/pdf/2026-16503.pdf">https://www.govinfo.gov/content/pkg/FR-2026-08-13/pdf/2026-16503.pdf</a></li>
+<li>CompareInternet, "Internet Price Increase 2026" (typical $20–$40 post-promo jump; updated Nov 2, 2026): <a href="https://www.compareinternet.com/blog/internet-price-increase-2026/">https://www.compareinternet.com/blog/internet-price-increase-2026/</a></li>
+<li>FCC, Broadband Labels: <a href="https://www.fcc.gov/broadbandlabels">https://www.fcc.gov/broadbandlabels</a></li>
+</ul>
+"""},
+  "es": {
+   "title": "Cómo leer su factura de internet línea por línea",
+   "desc": "Aprenda a leer su factura de internet línea por línea en 2026: detecte promociones vencidas, renta de equipo y cargos extra, y pida que se los quiten.",
+   "summary": "Aprenda a leer su factura de internet línea por línea en 2026: detecte promociones vencidas, renta de equipo y cargos extra, y pida que se los quiten.",
+   "body": """
+<h2>Respuesta rápida</h2>
+<p>Su factura de internet tiene cuatro partes: el precio del plan, los créditos de promoción o descuento, los cargos por equipo y extras, y los impuestos y cargos. Ponga la factura del mes pasado junto a la de este mes y compare cada línea. El dinero suele esconderse en tres lugares: un crédito de promoción que desapareció sin aviso, una renta de equipo que quizá no necesita y un descuento (como el de pago automático) que le corresponde pero no le están dando. Casi todo eso se arregla con una sola llamada.</p>
+<p><b>¿Quiere que lo hagamos por usted? Si no ahorra, no paga.</b> → <a href="https://www.feearmor.com/intake">Envíenos su factura</a></p>
+<p>¿Ayuda a sus padres con sus facturas? Envíenos la de ellos; hacemos la llamada en español o en inglés.</p>
+<h2>Por qué las facturas de internet son más difíciles de leer en 2026</h2>
+<p>Las compañías suben los precios de dos formas al mismo tiempo: sube la tarifa base y, aparte, suben los cargos adicionales. Xfinity, por ejemplo, informa que algunos de sus precios aumentarán a partir de diciembre de 2026. También aclara que los precios de promoción o de contrato se mantienen hasta que termina el plazo, pero los impuestos, cargos y la renta de equipo pueden cambiar durante y después de ese plazo. Es decir, un precio "fijo" no siempre significa una factura fija.</p>
+<p>La herramienta que debía ayudar también se volvió más ligera. Con las reglas de la FCC vigentes desde el 14 de septiembre de 2026, las compañías pueden mostrar un enlace o ícono a la "etiqueta" de internet (Broadband Facts) en lugar de la etiqueta completa, tanto al momento de la venta como en su cuenta. La etiqueta todavía debe incluir precios, velocidades, límites de datos y condiciones del contrato. Otro cambio, que permitiría mostrar ciertos cargos de terceros como un solo monto máximo, quedó aplazado sin fecha; por ahora esos cargos deben seguir apareciendo uno por uno.</p>
+<p>En resumen: la información existe, pero usted tiene que buscarla y compararla con su factura.</p>
+<h2>Cómo revisar su factura, paso a paso</h2>
+<ol>
+<li><b>Descargue la factura completa.</b> Entre a su cuenta y baje el PDF. La pantalla de "saldo a pagar" de la app suele esconder los detalles.</li>
+<li><b>Ubique la línea del plan.</b> Normalmente aparece bajo "Monthly Services" o "Internet". Anote el nombre y el precio del plan.</li>
+<li><b>Busque los créditos.</b> Los descuentos de promoción aparecen como montos negativos (por ejemplo, "-$20.00 Promotional Discount"). Si el mes pasado tenía uno y este mes no, su promoción terminó. Vea nuestra guía <a href="https://www.feearmor.com/es/blog/se-acaba-mi-promocion">Se acaba su promoción de internet</a>.</li>
+<li><b>Encuentre los cargos por equipo.</b> Busque "Gateway", "Modem", "Router" o "Equipment". Si tiene un módem propio compatible, quizá pueda quitar ese cargo. Nuestra guía sobre <a href="https://www.feearmor.com/es/blog/quitar-renta-de-modem">la renta del módem</a> le explica cómo.</li>
+<li><b>Revise los descuentos que le corresponden.</b> Los descuentos por pago automático y factura electrónica pueden ser importantes. Xfinity, por ejemplo, indica un ahorro de $10 al mes para clientes de internet que usan factura sin papel y pago automático desde una cuenta bancaria.</li>
+<li><b>Mire "Other Charges" y los cargos de TV.</b> Si tiene TV en paquete, busque los cargos de TV local y de deportes regionales. Estos no entran en el precio de promoción. Lea <a href="https://www.feearmor.com/es/blog/cargo-tv-local">qué es el cargo de TV local</a>.</li>
+<li><b>Revise los cargos de una sola vez.</b> Instalación, recargos por pago tardío o visitas técnicas a veces se cobran dos veces por error.</li>
+<li><b>Compare con su etiqueta de internet.</b> Abra el enlace de la etiqueta en su cuenta. Si la factura muestra un cargo que la etiqueta no menciona, pregunte.</li>
+</ol>
+<h2>Tabla de cargos en la factura de internet</h2>
+<div style="overflow-x:auto;margin:0 0 16px">
+<table style="width:100%;border-collapse:collapse;font-size:15px">
+<thead><tr><th style="text-align:left;border-bottom:2px solid var(--lime);padding:8px">Concepto</th><th style="text-align:left;border-bottom:2px solid var(--lime);padding:8px">Monto típico</th><th style="text-align:left;border-bottom:2px solid var(--lime);padding:8px">¿Se puede quitar?</th><th style="text-align:left;border-bottom:2px solid var(--lime);padding:8px">Qué pedir</th></tr></thead>
+<tbody>
+<tr><td style="border-bottom:1px solid rgba(127,127,127,.3);padding:8px;vertical-align:top">Precio del plan</td><td style="border-bottom:1px solid rgba(127,127,127,.3);padding:8px;vertical-align:top">Su tarifa; la tarifa normal suele ser $20–$40 al mes más alta que la de promoción</td><td style="border-bottom:1px solid rgba(127,127,127,.3);padding:8px;vertical-align:top">Muchas veces se puede bajar</td><td style="border-bottom:1px solid rgba(127,127,127,.3);padding:8px;vertical-align:top">Una tarifa de lealtad o precio garantizado</td></tr>
+<tr><td style="border-bottom:1px solid rgba(127,127,127,.3);padding:8px;vertical-align:top">Crédito de promoción (que falta)</td><td style="border-bottom:1px solid rgba(127,127,127,.3);padding:8px;vertical-align:top">Varía según el plan</td><td style="border-bottom:1px solid rgba(127,127,127,.3);padding:8px;vertical-align:top">Muchas veces se repone</td><td style="border-bottom:1px solid rgba(127,127,127,.3);padding:8px;vertical-align:top">Una nueva promoción o un crédito igual</td></tr>
+<tr><td style="border-bottom:1px solid rgba(127,127,127,.3);padding:8px;vertical-align:top">Renta de equipo / gateway</td><td style="border-bottom:1px solid rgba(127,127,127,.3);padding:8px;vertical-align:top">Varía según la compañía</td><td style="border-bottom:1px solid rgba(127,127,127,.3);padding:8px;vertical-align:top">Muchas veces, si usa su propio módem compatible</td><td style="border-bottom:1px solid rgba(127,127,127,.3);padding:8px;vertical-align:top">Quitar el cargo e instrucciones para devolver el equipo</td></tr>
+<tr><td style="border-bottom:1px solid rgba(127,127,127,.3);padding:8px;vertical-align:top">Descuento por pago automático + factura sin papel</td><td style="border-bottom:1px solid rgba(127,127,127,.3);padding:8px;vertical-align:top">Ejemplo: $10 al mes (Xfinity)</td><td style="border-bottom:1px solid rgba(127,127,127,.3);padding:8px;vertical-align:top">Usted lo gana</td><td style="border-bottom:1px solid rgba(127,127,127,.3);padding:8px;vertical-align:top">Confirmar que esté aplicado y pedir crédito por meses perdidos</td></tr>
+<tr><td style="border-bottom:1px solid rgba(127,127,127,.3);padding:8px;vertical-align:top">Cargos de TV local / deportes (paquetes)</td><td style="border-bottom:1px solid rgba(127,127,127,.3);padding:8px;vertical-align:top">Varía; van en aumento</td><td style="border-bottom:1px solid rgba(127,127,127,.3);padding:8px;vertical-align:top">Solo cambiando el paquete de TV</td><td style="border-bottom:1px solid rgba(127,127,127,.3);padding:8px;vertical-align:top">Solo internet o un paquete de TV más pequeño</td></tr>
+<tr><td style="border-bottom:1px solid rgba(127,127,127,.3);padding:8px;vertical-align:top">Impuestos y recargos del gobierno</td><td style="border-bottom:1px solid rgba(127,127,127,.3);padding:8px;vertical-align:top">Varía según la zona</td><td style="border-bottom:1px solid rgba(127,127,127,.3);padding:8px;vertical-align:top">No</td><td style="border-bottom:1px solid rgba(127,127,127,.3);padding:8px;vertical-align:top">Confirmar que su dirección de servicio sea correcta</td></tr>
+<tr><td style="border-bottom:1px solid rgba(127,127,127,.3);padding:8px;vertical-align:top">Cargos de una sola vez (instalación, pago tardío)</td><td style="border-bottom:1px solid rgba(127,127,127,.3);padding:8px;vertical-align:top">Varía</td><td style="border-bottom:1px solid rgba(127,127,127,.3);padding:8px;vertical-align:top">Muchas veces se perdonan</td><td style="border-bottom:1px solid rgba(127,127,127,.3);padding:8px;vertical-align:top">Un crédito de cortesía</td></tr>
+</tbody>
+</table>
+</div>
+<h2>Qué decir: guion para la llamada</h2>
+<div class="callout"><b>Usted:</b> Hola, estoy revisando mi factura y subió. ¿Me puede comunicar con el departamento de retención o de lealtad? (Si prefiere, pida un agente que hable español.)</div>
+<div class="callout"><b>Agente:</b> Claro, un momento.</div>
+<div class="callout"><b>Usted:</b> Gracias. Mi factura pasó de [total del mes pasado] a [total de este mes]. Veo que terminó mi descuento de promoción y además pago una renta de equipo. ¿Qué tarifas de lealtad tienen para mi plan?</div>
+<div class="callout"><b>Agente:</b> Le puedo ofrecer [oferta].</div>
+<div class="callout"><b>Usted:</b> He visto que [otra compañía] ofrece [velocidad] por [precio] en mi dirección. Prefiero quedarme, pero necesito que mi factura se acerque a ese precio. ¿Me lo pueden igualar o darme un descuento?</div>
+<div class="callout"><b>Usted:</b> También uso mi propio módem; por favor quiten el cargo por equipo. ¿Y me confirma si tengo activo el descuento por pago automático? Si no estaba aplicado, quisiera un crédito desde la fecha en que debió empezar.</div>
+<div class="callout"><b>Usted:</b> Perfecto. ¿Me puede enviar por correo el nuevo total mensual y por cuánto tiempo está garantizado?</div>
+<p>Para más frases y respuestas, use nuestro <a href="https://www.feearmor.com/es/blog/guion-departamento-de-retencion">guion para el departamento de retención</a>.</p>
+<h2>Ejemplo + cálculo de ahorro</h2>
+<p><i>Ejemplo (hipotético, con números redondos):</i> A una familia se le termina un crédito de promoción de $20 al mes y todavía paga $15 al mes por renta de equipo. Tras una llamada, la compañía le da un crédito de lealtad de $20 y quita la renta del equipo cuando la familia lo devuelve.</p>
+<p><b>Cálculo:</b> Ahorro de $35 al mes = $420 al año. Nuestra tarifa del 40% es $168. Usted se queda con $252 el primer año y con el 100% después.</p>
+<p><a href="https://www.feearmor.com/intake"><b>Quiero que revisen mi factura → feearmor.com/intake</b></a></p>
+<h2>Preguntas frecuentes</h2>
+<p><b>¿Dónde encuentro la etiqueta de mi internet?</b> En su cuenta en línea o en la app, cerca de los detalles de su plan. Desde el 14 de septiembre de 2026, las compañías pueden mostrarla como un enlace o ícono; busque "Broadband Facts".</p>
+<p><b>¿Por qué subió mi factura si tengo precio garantizado?</b> La garantía muchas veces cubre solo la tarifa del plan. Los impuestos, cargos y la renta de equipo pueden cambiar. Lea la letra pequeña.</p>
+<p><b>¿Me pueden devolver un descuento que no me aplicaron?</b> Muchas veces sí. Pida un crédito desde la fecha en que debió empezar y pida el monto por escrito.</p>
+<p><b>¿Es obligatorio pagar renta de equipo?</b> No siempre. Muchas compañías permiten usar su propio módem compatible. Pregunte qué modelos aceptan antes de comprar uno.</p>
+<p><b>¿Llamar puede afectar mi servicio?</b> No. Pedir una mejor tarifa no cambia su servicio, a menos que usted acepte un cambio de plan.</p>
+<h2>En resumen</h2>
+<p>Su factura de internet le dice exactamente a dónde se va el dinero extra, si la compara línea por línea cada mes. Recupere el crédito perdido, quite la renta que no necesita y active el descuento que le falta: muchas familias pagan menos sin cambiar de velocidad.</p>
+<p><b>Envíenos su factura. Si no ahorra, no paga.</b> → <a href="https://www.feearmor.com/intake">feearmor.com/intake</a></p>
+<p><b>Guías relacionadas:</b> <a href="https://www.feearmor.com/es/blog/se-acaba-mi-promocion">Se acaba su promoción de internet</a> · <a href="https://www.feearmor.com/es/blog/quitar-renta-de-modem">Cómo dejar de pagar la renta del módem</a> · <a href="https://www.feearmor.com/es/blog/guion-departamento-de-retencion">Guion para el departamento de retención</a></p>
+<h2>Fuentes</h2>
+<ul>
+<li>Xfinity, "Xfinity Bill Changes": <a href="https://www.xfinity.com/billchanges">https://www.xfinity.com/billchanges</a></li>
+<li>Broadband Breakfast, reglas de etiquetas de la FCC vigentes el 14 de septiembre de 2026 (27 de agosto de 2026): <a href="https://broadbandbreakfast.com/fccs-streamlined-broadband-label-rules-take-effect-september-14/">https://broadbandbreakfast.com/fccs-streamlined-broadband-label-rules-take-effect-september-14/</a></li>
+<li>Aviso en el Federal Register (13 de agosto de 2026): <a href="https://www.govinfo.gov/content/pkg/FR-2026-08-13/pdf/2026-16503.pdf">https://www.govinfo.gov/content/pkg/FR-2026-08-13/pdf/2026-16503.pdf</a></li>
+<li>CompareInternet, "Internet Price Increase 2026": <a href="https://www.compareinternet.com/blog/internet-price-increase-2026/">https://www.compareinternet.com/blog/internet-price-increase-2026/</a></li>
+<li>FCC, Broadband Labels: <a href="https://www.fcc.gov/broadbandlabels">https://www.fcc.gov/broadbandlabels</a></li>
+</ul>
+"""}},
+ {
   "slug": "verizon-economic-adjustment-charge", "es_slug": "verizon-cargo-ajuste-economico", "date": "2026-11-13",
   "en": {
    "title": "Verizon Economic Adjustment Charge: How to Reduce It",
