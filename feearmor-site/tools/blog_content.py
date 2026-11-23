@@ -1,6 +1,167 @@
 # Blog post content (EN + ES). Body HTML only; the page shell is added by make_blog.py.
 POSTS = [
  {
+  "slug": "bill-charges-to-question-2027", "es_slug": "cargos-a-revisar-antes-de-2027", "date": "2026-11-23",
+  "en": {
+   "title": "10 Bill Charges to Question Before 2027 Arrives",
+   "desc": "Before 2027, check your internet, phone, TV and utility bills for these 10 charges: expired promos, recovery fees, late fees and more, plus what to say.",
+   "summary": "Before 2027, check your internet, phone, TV and utility bills for these 10 charges: expired promos, recovery fees, late fees and more, plus what to say.",
+   "body": """
+<h2>Quick answer</h2>
+<p>Thanksgiving week is a good time to pull out every monthly bill and look for ten charges: an expired promo credit, equipment rentals, a missing autopay discount, carrier "recovery" fees, broadcast TV and regional sports fees, late fees, repeated one-time charges, data overages, and estimated meter reads on utility bills. Some can be removed, some can be offset with a credit, and a few can only be avoided by changing plans. One call per bill is usually enough to find out which is which.</p>
+<p><b>Want us to handle it? No savings, no fee.</b> → <a href="https://www.feearmor.com/intake">Send us your bill</a></p>
+<h2>Why these charges keep growing</h2>
+<p>Many providers now raise your bill without touching your plan price. They do it through separate line items that sit outside the advertised rate. T-Mobile is a clear 2026 example: its Regulatory Programs &amp; Telco Recovery Fee went from $3.99 to $4.49 per voice line in January 2026, then to $5.49 on October 12, 2026. On plans that bill fees separately, that increase applies even with a price-lock guarantee, because the lock covers the plan rate, not the fee.</p>
+<p>TV bills work the same way. Since December 2024, FCC rules require cable and satellite companies to show an "all-in" price for video service on bills and in ads. That makes the total easier to see, but it does not cap or remove the programming fees inside it.</p>
+<p>The takeaway: the charges are legal and disclosed, but nobody is going to point them out to you. You have to look.</p>
+<h2>How to check your bills, step by step</h2>
+<ol>
+<li><b>Gather two months of every bill.</b> Internet, phone, TV, electric and gas. Download the full PDF, not the app summary.</li>
+<li><b>Put them side by side.</b> Circle any line that is new, bigger, or missing compared with last month.</li>
+<li><b>Check credits first.</b> A promo or loyalty credit shows as a negative number. If it disappeared, your promo likely ended. See <a href="https://www.feearmor.com/blog/internet-promo-ending">what to do before your internet promo ends</a>.</li>
+<li><b>Find equipment lines.</b> Look for "Gateway," "Modem," "Router" or "Equipment." Our <a href="https://www.feearmor.com/blog/remove-modem-rental-fee">modem rental guide</a> explains when you can drop it.</li>
+<li><b>Read the "Fees" or "Surcharges" section.</b> On phone bills, this is where recovery fees live. On TV bills, look for broadcast TV and regional sports fees.</li>
+<li><b>Scan one-time charges.</b> Installation, service visits and late fees should not repeat. If they do, ask for a credit.</li>
+<li><b>On utility bills, check the meter read type.</b> If it says "estimated" (often marked "E"), compare it with your actual meter.</li>
+<li><b>Write down your questions</b> before you call, so you ask about every line in one call.</li>
+</ol>
+<h2>The 10 charges, at a glance</h2>
+<div style="overflow-x:auto;margin:0 0 16px">
+<table style="width:100%;border-collapse:collapse;font-size:15px">
+<thead><tr><th style="text-align:left;border-bottom:2px solid var(--lime);padding:8px">#</th><th style="text-align:left;border-bottom:2px solid var(--lime);padding:8px">Line item</th><th style="text-align:left;border-bottom:2px solid var(--lime);padding:8px">Typical amount</th><th style="text-align:left;border-bottom:2px solid var(--lime);padding:8px">Can it be removed?</th><th style="text-align:left;border-bottom:2px solid var(--lime);padding:8px">What to ask for</th></tr></thead>
+<tbody>
+<tr><td style="border-bottom:1px solid rgba(127,127,127,.3);padding:8px;vertical-align:top">1</td><td style="border-bottom:1px solid rgba(127,127,127,.3);padding:8px;vertical-align:top">Expired promo credit</td><td style="border-bottom:1px solid rgba(127,127,127,.3);padding:8px;vertical-align:top">Standard internet rates often run $20–$40/mo above promo</td><td style="border-bottom:1px solid rgba(127,127,127,.3);padding:8px;vertical-align:top">Often replaced</td><td style="border-bottom:1px solid rgba(127,127,127,.3);padding:8px;vertical-align:top">A loyalty rate or new promo</td></tr>
+<tr><td style="border-bottom:1px solid rgba(127,127,127,.3);padding:8px;vertical-align:top">2</td><td style="border-bottom:1px solid rgba(127,127,127,.3);padding:8px;vertical-align:top">Equipment / modem rental</td><td style="border-bottom:1px solid rgba(127,127,127,.3);padding:8px;vertical-align:top">Varies by provider</td><td style="border-bottom:1px solid rgba(127,127,127,.3);padding:8px;vertical-align:top">Often, if you own a compatible modem</td><td style="border-bottom:1px solid rgba(127,127,127,.3);padding:8px;vertical-align:top">Remove the charge; return instructions</td></tr>
+<tr><td style="border-bottom:1px solid rgba(127,127,127,.3);padding:8px;vertical-align:top">3</td><td style="border-bottom:1px solid rgba(127,127,127,.3);padding:8px;vertical-align:top">Missing autopay/paperless discount</td><td style="border-bottom:1px solid rgba(127,127,127,.3);padding:8px;vertical-align:top">Example: $10/mo (Xfinity, with bank-account autopay)</td><td style="border-bottom:1px solid rgba(127,127,127,.3);padding:8px;vertical-align:top">You gain it</td><td style="border-bottom:1px solid rgba(127,127,127,.3);padding:8px;vertical-align:top">Apply it, plus credit for missed months</td></tr>
+<tr><td style="border-bottom:1px solid rgba(127,127,127,.3);padding:8px;vertical-align:top">4</td><td style="border-bottom:1px solid rgba(127,127,127,.3);padding:8px;vertical-align:top">Carrier recovery fee</td><td style="border-bottom:1px solid rgba(127,127,127,.3);padding:8px;vertical-align:top">T-Mobile: $5.49 per voice line since Oct 12, 2026</td><td style="border-bottom:1px solid rgba(127,127,127,.3);padding:8px;vertical-align:top">Not on plans that charge it</td><td style="border-bottom:1px solid rgba(127,127,127,.3);padding:8px;vertical-align:top">A plan with taxes and fees included, or an offsetting credit</td></tr>
+<tr><td style="border-bottom:1px solid rgba(127,127,127,.3);padding:8px;vertical-align:top">5</td><td style="border-bottom:1px solid rgba(127,127,127,.3);padding:8px;vertical-align:top">Broadcast TV fee</td><td style="border-bottom:1px solid rgba(127,127,127,.3);padding:8px;vertical-align:top">Varies; rising</td><td style="border-bottom:1px solid rgba(127,127,127,.3);padding:8px;vertical-align:top">Only by changing TV package</td><td style="border-bottom:1px solid rgba(127,127,127,.3);padding:8px;vertical-align:top">Internet-only or a smaller TV tier</td></tr>
+<tr><td style="border-bottom:1px solid rgba(127,127,127,.3);padding:8px;vertical-align:top">6</td><td style="border-bottom:1px solid rgba(127,127,127,.3);padding:8px;vertical-align:top">Regional sports fee</td><td style="border-bottom:1px solid rgba(127,127,127,.3);padding:8px;vertical-align:top">Varies by area</td><td style="border-bottom:1px solid rgba(127,127,127,.3);padding:8px;vertical-align:top">Only by changing TV package</td><td style="border-bottom:1px solid rgba(127,127,127,.3);padding:8px;vertical-align:top">A package without it</td></tr>
+<tr><td style="border-bottom:1px solid rgba(127,127,127,.3);padding:8px;vertical-align:top">7</td><td style="border-bottom:1px solid rgba(127,127,127,.3);padding:8px;vertical-align:top">Late fee</td><td style="border-bottom:1px solid rgba(127,127,127,.3);padding:8px;vertical-align:top">T-Mobile: greater of $10 or 5% since Nov 1, 2025 (state caps may apply)</td><td style="border-bottom:1px solid rgba(127,127,127,.3);padding:8px;vertical-align:top">Often as a one-time courtesy</td><td style="border-bottom:1px solid rgba(127,127,127,.3);padding:8px;vertical-align:top">A courtesy waiver; set up autopay</td></tr>
+<tr><td style="border-bottom:1px solid rgba(127,127,127,.3);padding:8px;vertical-align:top">8</td><td style="border-bottom:1px solid rgba(127,127,127,.3);padding:8px;vertical-align:top">Repeated one-time charge</td><td style="border-bottom:1px solid rgba(127,127,127,.3);padding:8px;vertical-align:top">Varies</td><td style="border-bottom:1px solid rgba(127,127,127,.3);padding:8px;vertical-align:top">Yes, if it's an error</td><td style="border-bottom:1px solid rgba(127,127,127,.3);padding:8px;vertical-align:top">A credit back to the error date</td></tr>
+<tr><td style="border-bottom:1px solid rgba(127,127,127,.3);padding:8px;vertical-align:top">9</td><td style="border-bottom:1px solid rgba(127,127,127,.3);padding:8px;vertical-align:top">Data overage</td><td style="border-bottom:1px solid rgba(127,127,127,.3);padding:8px;vertical-align:top">Listed on your broadband label</td><td style="border-bottom:1px solid rgba(127,127,127,.3);padding:8px;vertical-align:top">Often for a first time</td><td style="border-bottom:1px solid rgba(127,127,127,.3);padding:8px;vertical-align:top">A courtesy credit or unlimited plan</td></tr>
+<tr><td style="border-bottom:1px solid rgba(127,127,127,.3);padding:8px;vertical-align:top">10</td><td style="border-bottom:1px solid rgba(127,127,127,.3);padding:8px;vertical-align:top">Estimated meter read</td><td style="border-bottom:1px solid rgba(127,127,127,.3);padding:8px;vertical-align:top">Varies</td><td style="border-bottom:1px solid rgba(127,127,127,.3);padding:8px;vertical-align:top">Corrected on an actual read</td><td style="border-bottom:1px solid rgba(127,127,127,.3);padding:8px;vertical-align:top">A re-bill using an actual reading</td></tr>
+</tbody>
+</table>
+</div>
+<p>A few notes. For <b>#4 and #5–6</b>, read our explainers on the <a href="https://www.feearmor.com/blog/t-mobile-telco-recovery-fee">T-Mobile Telco Recovery Fee</a>, the <a href="https://www.feearmor.com/blog/broadcast-tv-fee">Broadcast TV Fee</a> and the <a href="https://www.feearmor.com/blog/comcast-regional-sports-fee">Comcast Regional Sports Fee</a>. For <b>#10</b>, it matters more this winter: the EIA expects households that heat with electricity to spend about 4% more this winter than last, so an estimated read on a high-use month can sting. See our <a href="https://www.feearmor.com/blog/winter-heating-bills-2026">winter heating bills guide</a>.</p>
+<h2>What to say: a call script</h2>
+<div class="callout"><b>You:</b> Hi, I'm reviewing my bill before the new year and I have a few questions. Can you connect me with the retention or loyalty team?</div>
+<div class="callout"><b>Rep:</b> Sure, one moment.</div>
+<div class="callout"><b>You:</b> Thanks. My bill went from [last month] to [this month]. I see three things: my promo credit is gone, there's an equipment charge, and a [fee name] went up. Can we go through each one?</div>
+<div class="callout"><b>Rep:</b> The promo ended on [date].</div>
+<div class="callout"><b>You:</b> I understand. I've seen [competing provider] offer [service] for [price] at my address. I'd rather stay. What loyalty rate or credit can you apply so my total is closer to that?</div>
+<div class="callout"><b>You:</b> I also see a [late fee / repeated charge] from [date]. I'd like that credited. And can you confirm my autopay discount is active? If it wasn't, please credit it back to when it should have started.</div>
+<div class="callout"><b>You:</b> Great. Please email me the new monthly total and how long it lasts.</div>
+<p>For more lines and comebacks, use our <a href="https://www.feearmor.com/blog/retention-department-script">word-for-word retention script</a>.</p>
+<h2>Example + savings math</h2>
+<p><i>Example (hypothetical, round numbers):</i> A household finds a $20/month promo credit gone from its internet bill and a $10/month autopay discount that was never applied. One call restores a $20 loyalty credit and turns on the autopay discount.</p>
+<p><b>Savings math:</b> Save $30/mo = $360/yr. Our 40% fee is $144. You keep $216 in year one, and 100% after.</p>
+<p><a href="https://www.feearmor.com/intake"><b>Get my bills checked → feearmor.com/intake</b></a></p>
+<h2>FAQ</h2>
+<p><b>Are recovery fees taxes?</b> No. T-Mobile itself describes its fee as a company charge to recover its own costs, not a government tax. Taxes are listed separately.</p>
+<p><b>Does a price lock stop these increases?</b> Usually not. Price locks typically cover the plan rate only. Separately billed fees can still go up.</p>
+<p><b>Can I get a late fee waived?</b> Often, especially if it's your first. Ask politely for a one-time courtesy credit, and set up autopay so it doesn't happen again.</p>
+<p><b>How do I know if my meter read was estimated?</b> Your utility bill usually labels the read as actual or estimated. If it's estimated, you can ask the utility how to submit your own reading.</p>
+<p><b>Is it worth calling for small amounts?</b> Yes. A few dollars a month on several bills adds up to hundreds a year.</p>
+<h2>Bottom line</h2>
+<p>Most of the money leaking out of your bills hides in a handful of line items. Check these ten before 2027 and you start the year paying only for what you actually use.</p>
+<p><b>Send us your bill. No savings, no fee.</b> → <a href="https://www.feearmor.com/intake">feearmor.com/intake</a></p>
+<p><b>Related guides:</b> <a href="https://www.feearmor.com/blog/retention-department-script">Retention Department Script</a> · <a href="https://www.feearmor.com/blog/t-mobile-telco-recovery-fee">T-Mobile Telco Recovery Fee</a> · <a href="https://www.feearmor.com/blog/internet-promo-ending">Your Internet Promo Is Ending</a></p>
+<h2>Sources</h2>
+<ul>
+<li>Droid Life, "T-Mobile fees increasing on your bill for 2nd time this year" (Sept 28, 2026; $4.49 → $5.49 per voice line, effective Oct 12, 2026): <a href="https://www.droid-life.com/2026/09/28/t-mobile-fees-increasing-on-your-bill-for-2nd-time-this-year/">https://www.droid-life.com/2026/09/28/t-mobile-fees-increasing-on-your-bill-for-2nd-time-this-year/</a></li>
+<li>Android Authority, T-Mobile telco fee hike (increase applies even with five-year price lock): <a href="https://androidauthority.com/t-mobile-telco-fee-price-hike-3716436">https://androidauthority.com/t-mobile-telco-fee-price-hike-3716436</a></li>
+<li>SlashGear, T-Mobile 2026 changes (fee is a company cost-recovery charge, not a government tax): <a href="https://www.slashgear.com/2071225/t-mobile-changes-2026-every-customer-needs-know-about">https://www.slashgear.com/2071225/t-mobile-changes-2026-every-customer-needs-know-about</a></li>
+<li>CNET via AOL, T-Mobile late fee raised from $7 to $10 or 5%, starting Nov 1 (2025): <a href="https://www.aol.com/articles/t-mobile-hikes-payment-charge-182500387.html">https://www.aol.com/articles/t-mobile-hikes-payment-charge-182500387.html</a></li>
+<li>Cooley, FCC all-in pricing rule for cable and satellite TV (effective Dec 19, 2024): <a href="https://www.cooley.com/news/insight/2024/2024-04-04-fcc-requires-all-in-pricing-for-video-service-bills-and-marketing">https://www.cooley.com/news/insight/2024/2024-04-04-fcc-requires-all-in-pricing-for-video-service-bills-and-marketing</a></li>
+<li>Federal Register, All-In Pricing for Cable and Satellite Television Service (Apr 19, 2024): <a href="https://www.govinfo.gov/content/pkg/FR-2024-04-19/html/2024-07404.htm">https://www.govinfo.gov/content/pkg/FR-2024-04-19/html/2024-07404.htm</a></li>
+<li>Xfinity, "Xfinity Bill Changes" ($10/mo paperless + bank-account autopay savings): <a href="https://www.xfinity.com/billchanges">https://www.xfinity.com/billchanges</a></li>
+<li>CompareInternet, "Internet Price Increase 2026" ($20–$40 post-promo jump): <a href="https://www.compareinternet.com/blog/internet-price-increase-2026/">https://www.compareinternet.com/blog/internet-price-increase-2026/</a></li>
+<li>EIA, Winter Fuels Outlook 2026-27 (electric heat about +4%): <a href="https://www.eia.gov/outlooks/steo/report/perspectives/2026/10-winterfuels/article.php">https://www.eia.gov/outlooks/steo/report/perspectives/2026/10-winterfuels/article.php</a></li>
+<li>FCC, Broadband label glossary (data overage charges and one-time fees on labels): <a href="https://www.fcc.gov/broadbandlabels-glossary">https://www.fcc.gov/broadbandlabels-glossary</a></li>
+</ul>
+"""},
+  "es": {
+   "title": "10 cargos que debe revisar en sus facturas antes de 2027",
+   "desc": "Antes de 2027, revise sus facturas de internet, celular, TV y luz: promociones vencidas, cargos de recuperación, recargos por atraso y qué decir al llamar.",
+   "summary": "Antes de 2027, revise sus facturas de internet, celular, TV y luz: promociones vencidas, cargos de recuperación, recargos por atraso y qué decir al llamar.",
+   "body": """
+<h2>Respuesta rápida</h2>
+<p>La semana de Acción de Gracias es buen momento para sacar todas sus facturas y buscar diez cargos: un crédito de promoción que se venció, la renta de equipo, un descuento por pago automático que no le aplicaron, cargos de "recuperación" del celular, cargos de TV local y de deportes regionales, recargos por pago tardío, cargos de una sola vez que se repiten, exceso de datos y lecturas estimadas del medidor en la factura de luz o gas. Algunos se pueden quitar, otros se compensan con un crédito y unos pocos solo se evitan cambiando de plan. Casi siempre basta una llamada por factura para saberlo.</p>
+<p><b>¿Quiere que lo hagamos por usted? Si no ahorra, no paga.</b> → <a href="https://www.feearmor.com/intake">Envíenos su factura</a></p>
+<p>¿Ayuda a sus padres con sus facturas? Envíenos las de ellos; hacemos la llamada en español o en inglés.</p>
+<h2>Por qué estos cargos siguen subiendo</h2>
+<p>Muchas compañías ahora suben su factura sin tocar el precio del plan. Lo hacen con cargos aparte que no forman parte de la tarifa anunciada. T-Mobile es un buen ejemplo de 2026: su cargo "Regulatory Programs &amp; Telco Recovery Fee" pasó de $3.99 a $4.49 por línea de voz en enero de 2026, y a $5.49 el 12 de octubre de 2026. En los planes que cobran los cargos por separado, el aumento aplica aunque tenga precio garantizado, porque la garantía cubre la tarifa del plan, no el cargo.</p>
+<p>Con la TV pasa lo mismo. Desde diciembre de 2024, las reglas de la FCC obligan a las compañías de cable y satélite a mostrar un precio "total" del servicio de video en la factura y en los anuncios. Así el total es más fácil de ver, pero eso no limita ni elimina los cargos de programación que van incluidos.</p>
+<p>En pocas palabras: los cargos son legales y aparecen en la factura, pero nadie se los va a señalar. Tiene que buscarlos usted.</p>
+<h2>Cómo revisar sus facturas, paso a paso</h2>
+<ol>
+<li><b>Junte dos meses de cada factura.</b> Internet, celular, TV, luz y gas. Descargue el PDF completo, no el resumen de la app.</li>
+<li><b>Póngalas lado a lado.</b> Marque toda línea nueva, más alta o que ya no aparece.</li>
+<li><b>Revise primero los créditos.</b> Un crédito de promoción aparece como número negativo. Si desapareció, probablemente terminó su promoción. Vea <a href="https://www.feearmor.com/es/blog/se-acaba-mi-promocion">qué hacer cuando se acaba su promoción</a>.</li>
+<li><b>Busque los cargos por equipo.</b> "Gateway", "Modem", "Router" o "Equipment". Nuestra guía sobre <a href="https://www.feearmor.com/es/blog/quitar-renta-de-modem">la renta del módem</a> explica cuándo puede quitarlo.</li>
+<li><b>Lea la sección de "Fees" o "Surcharges".</b> En la factura del celular ahí están los cargos de recuperación; en la de TV, los cargos de TV local y deportes regionales.</li>
+<li><b>Revise los cargos de una sola vez.</b> Instalación, visitas técnicas y recargos no deben repetirse. Si se repiten, pida un crédito.</li>
+<li><b>En la factura de luz o gas, vea el tipo de lectura.</b> Si dice "estimated" (a veces con una "E"), compárela con su medidor.</li>
+<li><b>Anote sus preguntas</b> antes de llamar, para resolver todo en una sola llamada.</li>
+</ol>
+<h2>Los 10 cargos de un vistazo</h2>
+<div style="overflow-x:auto;margin:0 0 16px">
+<table style="width:100%;border-collapse:collapse;font-size:15px">
+<thead><tr><th style="text-align:left;border-bottom:2px solid var(--lime);padding:8px">#</th><th style="text-align:left;border-bottom:2px solid var(--lime);padding:8px">Concepto</th><th style="text-align:left;border-bottom:2px solid var(--lime);padding:8px">Monto típico</th><th style="text-align:left;border-bottom:2px solid var(--lime);padding:8px">¿Se puede quitar?</th><th style="text-align:left;border-bottom:2px solid var(--lime);padding:8px">Qué pedir</th></tr></thead>
+<tbody>
+<tr><td style="border-bottom:1px solid rgba(127,127,127,.3);padding:8px;vertical-align:top">1</td><td style="border-bottom:1px solid rgba(127,127,127,.3);padding:8px;vertical-align:top">Crédito de promoción vencido</td><td style="border-bottom:1px solid rgba(127,127,127,.3);padding:8px;vertical-align:top">La tarifa normal de internet suele ser $20–$40 al mes más alta</td><td style="border-bottom:1px solid rgba(127,127,127,.3);padding:8px;vertical-align:top">Muchas veces se repone</td><td style="border-bottom:1px solid rgba(127,127,127,.3);padding:8px;vertical-align:top">Una tarifa de lealtad o nueva promoción</td></tr>
+<tr><td style="border-bottom:1px solid rgba(127,127,127,.3);padding:8px;vertical-align:top">2</td><td style="border-bottom:1px solid rgba(127,127,127,.3);padding:8px;vertical-align:top">Renta de equipo / módem</td><td style="border-bottom:1px solid rgba(127,127,127,.3);padding:8px;vertical-align:top">Varía según la compañía</td><td style="border-bottom:1px solid rgba(127,127,127,.3);padding:8px;vertical-align:top">Muchas veces, si tiene módem propio compatible</td><td style="border-bottom:1px solid rgba(127,127,127,.3);padding:8px;vertical-align:top">Quitar el cargo e instrucciones de devolución</td></tr>
+<tr><td style="border-bottom:1px solid rgba(127,127,127,.3);padding:8px;vertical-align:top">3</td><td style="border-bottom:1px solid rgba(127,127,127,.3);padding:8px;vertical-align:top">Descuento por pago automático que falta</td><td style="border-bottom:1px solid rgba(127,127,127,.3);padding:8px;vertical-align:top">Ejemplo: $10 al mes (Xfinity, con pago automático desde cuenta bancaria)</td><td style="border-bottom:1px solid rgba(127,127,127,.3);padding:8px;vertical-align:top">Usted lo gana</td><td style="border-bottom:1px solid rgba(127,127,127,.3);padding:8px;vertical-align:top">Aplicarlo y crédito por meses perdidos</td></tr>
+<tr><td style="border-bottom:1px solid rgba(127,127,127,.3);padding:8px;vertical-align:top">4</td><td style="border-bottom:1px solid rgba(127,127,127,.3);padding:8px;vertical-align:top">Cargo de recuperación del celular</td><td style="border-bottom:1px solid rgba(127,127,127,.3);padding:8px;vertical-align:top">T-Mobile: $5.49 por línea de voz desde el 12 de oct. de 2026</td><td style="border-bottom:1px solid rgba(127,127,127,.3);padding:8px;vertical-align:top">No, en planes que lo cobran</td><td style="border-bottom:1px solid rgba(127,127,127,.3);padding:8px;vertical-align:top">Un plan con impuestos y cargos incluidos, o un crédito</td></tr>
+<tr><td style="border-bottom:1px solid rgba(127,127,127,.3);padding:8px;vertical-align:top">5</td><td style="border-bottom:1px solid rgba(127,127,127,.3);padding:8px;vertical-align:top">Cargo de TV local</td><td style="border-bottom:1px solid rgba(127,127,127,.3);padding:8px;vertical-align:top">Varía; va en aumento</td><td style="border-bottom:1px solid rgba(127,127,127,.3);padding:8px;vertical-align:top">Solo cambiando de paquete</td><td style="border-bottom:1px solid rgba(127,127,127,.3);padding:8px;vertical-align:top">Solo internet o un paquete más pequeño</td></tr>
+<tr><td style="border-bottom:1px solid rgba(127,127,127,.3);padding:8px;vertical-align:top">6</td><td style="border-bottom:1px solid rgba(127,127,127,.3);padding:8px;vertical-align:top">Cargo de deportes regionales</td><td style="border-bottom:1px solid rgba(127,127,127,.3);padding:8px;vertical-align:top">Varía según la zona</td><td style="border-bottom:1px solid rgba(127,127,127,.3);padding:8px;vertical-align:top">Solo cambiando de paquete</td><td style="border-bottom:1px solid rgba(127,127,127,.3);padding:8px;vertical-align:top">Un paquete sin ese cargo</td></tr>
+<tr><td style="border-bottom:1px solid rgba(127,127,127,.3);padding:8px;vertical-align:top">7</td><td style="border-bottom:1px solid rgba(127,127,127,.3);padding:8px;vertical-align:top">Recargo por pago tardío</td><td style="border-bottom:1px solid rgba(127,127,127,.3);padding:8px;vertical-align:top">T-Mobile: $10 o 5%, lo que sea mayor, desde el 1 de nov. de 2025 (hay límites estatales)</td><td style="border-bottom:1px solid rgba(127,127,127,.3);padding:8px;vertical-align:top">Muchas veces, por cortesía</td><td style="border-bottom:1px solid rgba(127,127,127,.3);padding:8px;vertical-align:top">Que lo perdonen; activar pago automático</td></tr>
+<tr><td style="border-bottom:1px solid rgba(127,127,127,.3);padding:8px;vertical-align:top">8</td><td style="border-bottom:1px solid rgba(127,127,127,.3);padding:8px;vertical-align:top">Cargo de una sola vez repetido</td><td style="border-bottom:1px solid rgba(127,127,127,.3);padding:8px;vertical-align:top">Varía</td><td style="border-bottom:1px solid rgba(127,127,127,.3);padding:8px;vertical-align:top">Sí, si es un error</td><td style="border-bottom:1px solid rgba(127,127,127,.3);padding:8px;vertical-align:top">Crédito desde la fecha del error</td></tr>
+<tr><td style="border-bottom:1px solid rgba(127,127,127,.3);padding:8px;vertical-align:top">9</td><td style="border-bottom:1px solid rgba(127,127,127,.3);padding:8px;vertical-align:top">Exceso de datos</td><td style="border-bottom:1px solid rgba(127,127,127,.3);padding:8px;vertical-align:top">Aparece en la etiqueta de internet</td><td style="border-bottom:1px solid rgba(127,127,127,.3);padding:8px;vertical-align:top">Muchas veces la primera vez</td><td style="border-bottom:1px solid rgba(127,127,127,.3);padding:8px;vertical-align:top">Crédito de cortesía o plan ilimitado</td></tr>
+<tr><td style="border-bottom:1px solid rgba(127,127,127,.3);padding:8px;vertical-align:top">10</td><td style="border-bottom:1px solid rgba(127,127,127,.3);padding:8px;vertical-align:top">Lectura estimada del medidor</td><td style="border-bottom:1px solid rgba(127,127,127,.3);padding:8px;vertical-align:top">Varía</td><td style="border-bottom:1px solid rgba(127,127,127,.3);padding:8px;vertical-align:top">Se corrige con lectura real</td><td style="border-bottom:1px solid rgba(127,127,127,.3);padding:8px;vertical-align:top">Refacturar con lectura real</td></tr>
+</tbody>
+</table>
+</div>
+<p>Algunas notas. Sobre los cargos <b>#5 y #6</b>, lea <a href="https://www.feearmor.com/es/blog/cargo-tv-local">qué es el cargo de TV local</a>. El <b>#10</b> importa más este invierno: la EIA calcula que los hogares que se calientan con electricidad gastarán cerca de 4% más que el invierno pasado, así que una lectura estimada en un mes de mucho uso puede salir cara.</p>
+<h2>Qué decir: guion para la llamada</h2>
+<div class="callout"><b>Usted:</b> Hola, estoy revisando mi factura antes de fin de año y tengo unas preguntas. ¿Me comunica con el departamento de retención o de lealtad? (Si prefiere, pida un agente que hable español.)</div>
+<div class="callout"><b>Agente:</b> Claro, un momento.</div>
+<div class="callout"><b>Usted:</b> Gracias. Mi factura pasó de [mes pasado] a [este mes]. Veo tres cosas: ya no tengo el crédito de promoción, hay un cargo por equipo y subió el [nombre del cargo]. ¿Podemos revisar cada uno?</div>
+<div class="callout"><b>Agente:</b> La promoción terminó el [fecha].</div>
+<div class="callout"><b>Usted:</b> Entiendo. He visto que [otra compañía] ofrece [servicio] por [precio] en mi dirección. Prefiero quedarme. ¿Qué tarifa de lealtad o crédito me pueden dar para que mi total se acerque a eso?</div>
+<div class="callout"><b>Usted:</b> También veo un [recargo / cargo repetido] del [fecha]. Quisiera que me lo acrediten. ¿Y me confirma si tengo activo el descuento por pago automático? Si no estaba, por favor acredítenlo desde la fecha en que debió empezar.</div>
+<div class="callout"><b>Usted:</b> Perfecto. ¿Me envía por correo el nuevo total mensual y cuánto tiempo dura?</div>
+<p>Para más frases, use nuestro <a href="https://www.feearmor.com/es/blog/guion-departamento-de-retencion">guion para el departamento de retención</a>.</p>
+<h2>Ejemplo + cálculo de ahorro</h2>
+<p><i>Ejemplo (hipotético, con números redondos):</i> Una familia descubre que ya no tiene un crédito de promoción de $20 al mes en internet y que nunca le aplicaron un descuento de $10 por pago automático. Con una llamada recupera un crédito de lealtad de $20 y le activan el descuento.</p>
+<p><b>Cálculo:</b> Ahorro de $30 al mes = $360 al año. Nuestra tarifa del 40% es $144. Usted se queda con $216 el primer año y con el 100% después.</p>
+<p><a href="https://www.feearmor.com/intake"><b>Quiero que revisen mis facturas → feearmor.com/intake</b></a></p>
+<h2>Preguntas frecuentes</h2>
+<p><b>¿Los cargos de recuperación son impuestos?</b> No. T-Mobile describe su cargo como un cobro de la compañía para recuperar sus propios costos, no como un impuesto del gobierno. Los impuestos aparecen aparte.</p>
+<p><b>¿El precio garantizado evita estos aumentos?</b> Normalmente no. La garantía suele cubrir solo la tarifa del plan; los cargos aparte pueden subir.</p>
+<p><b>¿Me pueden perdonar un recargo por atraso?</b> Muchas veces sí, sobre todo si es el primero. Pida con amabilidad un crédito de cortesía y active el pago automático.</p>
+<p><b>¿Cómo sé si la lectura del medidor fue estimada?</b> La factura de luz o gas suele indicar si la lectura es real o estimada. Si es estimada, pregunte a la compañía cómo enviar su propia lectura.</p>
+<p><b>¿Vale la pena llamar por poco dinero?</b> Sí. Unos dólares al mes en varias facturas suman cientos al año.</p>
+<h2>En resumen</h2>
+<p>La mayor parte del dinero que se le escapa está en unos pocos cargos. Revise estos diez antes de 2027 y empiece el año pagando solo por lo que usa.</p>
+<p><b>Envíenos su factura. Si no ahorra, no paga.</b> → <a href="https://www.feearmor.com/intake">feearmor.com/intake</a></p>
+<p><b>Guías relacionadas:</b> <a href="https://www.feearmor.com/es/blog/guion-departamento-de-retencion">Guion para el departamento de retención</a> · <a href="https://www.feearmor.com/es/blog/se-acaba-mi-promocion">Se acaba su promoción de internet</a> · <a href="https://www.feearmor.com/es/blog/quitar-renta-de-modem">Cómo dejar de pagar la renta del módem</a></p>
+<h2>Fuentes</h2>
+<ul>
+<li>Droid Life, aumento del cargo de T-Mobile a $5.49 por línea de voz (28 de sept. de 2026): <a href="https://www.droid-life.com/2026/09/28/t-mobile-fees-increasing-on-your-bill-for-2nd-time-this-year/">https://www.droid-life.com/2026/09/28/t-mobile-fees-increasing-on-your-bill-for-2nd-time-this-year/</a></li>
+<li>Android Authority, el aumento aplica aun con garantía de precio: <a href="https://androidauthority.com/t-mobile-telco-fee-price-hike-3716436">https://androidauthority.com/t-mobile-telco-fee-price-hike-3716436</a></li>
+<li>SlashGear, el cargo no es un impuesto del gobierno: <a href="https://www.slashgear.com/2071225/t-mobile-changes-2026-every-customer-needs-know-about">https://www.slashgear.com/2071225/t-mobile-changes-2026-every-customer-needs-know-about</a></li>
+<li>CNET vía AOL, recargo por atraso de T-Mobile de $7 a $10 o 5%: <a href="https://www.aol.com/articles/t-mobile-hikes-payment-charge-182500387.html">https://www.aol.com/articles/t-mobile-hikes-payment-charge-182500387.html</a></li>
+<li>Cooley, regla de precio total de la FCC para cable y satélite (vigente desde el 19 de dic. de 2024): <a href="https://www.cooley.com/news/insight/2024/2024-04-04-fcc-requires-all-in-pricing-for-video-service-bills-and-marketing">https://www.cooley.com/news/insight/2024/2024-04-04-fcc-requires-all-in-pricing-for-video-service-bills-and-marketing</a></li>
+<li>Xfinity, "Xfinity Bill Changes": <a href="https://www.xfinity.com/billchanges">https://www.xfinity.com/billchanges</a></li>
+<li>CompareInternet, "Internet Price Increase 2026": <a href="https://www.compareinternet.com/blog/internet-price-increase-2026/">https://www.compareinternet.com/blog/internet-price-increase-2026/</a></li>
+<li>EIA, perspectiva de combustibles para el invierno 2026-27: <a href="https://www.eia.gov/outlooks/steo/report/perspectives/2026/10-winterfuels/article.php">https://www.eia.gov/outlooks/steo/report/perspectives/2026/10-winterfuels/article.php</a></li>
+<li>FCC, glosario de etiquetas de internet: <a href="https://www.fcc.gov/broadbandlabels-glossary">https://www.fcc.gov/broadbandlabels-glossary</a></li>
+</ul>
+"""},
+ },
+ {
   "slug": "utility-deposit-refund", "es_slug": "reembolso-deposito-de-luz", "date": "2026-11-20",
   "en": {
    "title": "Utility Deposit Refund: How to Get Your Money Back",

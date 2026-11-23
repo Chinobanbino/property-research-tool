@@ -41,6 +41,16 @@
     <xhtml:link rel="alternate" hreflang="es" href="https://www.feearmor.com/es/blog"/>
   </url>
   <url>
+    <loc>https://www.feearmor.com/blog/bill-charges-to-question-2027</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.feearmor.com/blog/bill-charges-to-question-2027"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.feearmor.com/es/blog/cargos-a-revisar-antes-de-2027"/>
+  </url>
+  <url>
+    <loc>https://www.feearmor.com/es/blog/cargos-a-revisar-antes-de-2027</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.feearmor.com/blog/bill-charges-to-question-2027"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.feearmor.com/es/blog/cargos-a-revisar-antes-de-2027"/>
+  </url>
+  <url>
     <loc>https://www.feearmor.com/blog/utility-deposit-refund</loc>
     <xhtml:link rel="alternate" hreflang="en" href="https://www.feearmor.com/blog/utility-deposit-refund"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://www.feearmor.com/es/blog/reembolso-deposito-de-luz"/>
