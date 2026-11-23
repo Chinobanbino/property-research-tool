@@ -1,6 +1,148 @@
 # Blog post content (EN + ES). Body HTML only; the page shell is added by make_blog.py.
 POSTS = [
  {
+  "slug": "utility-deposit-refund", "es_slug": "reembolso-deposito-de-luz", "date": "2026-11-20",
+  "en": {
+   "title": "Utility Deposit Refund: How to Get Your Money Back",
+   "desc": "Paid a utility deposit? Learn when you're owed a refund with interest, how to check your account, and the exact words to ask for it back this month.",
+   "summary": "Paid a utility deposit? Learn when you're owed a refund with interest, how to check your account, and the exact words to ask for it back this month.",
+   "body": """
+<h2>Quick answer</h2>
+<p>If you paid a deposit to start electric or gas service, it isn't a fee — it's your money, and in many cases you can get it back once you've paid on time for a set period. Rules are set by each state's utility commission. In Texas, for example, a retail electric provider must refund a residential deposit after 12 consecutive bills paid with no late payments, and it must pay interest if it kept the deposit longer than 30 days. Check your bill for a "deposit held" line, then call and ask.</p>
+<p><b>Want us to handle the rest of your bill? No savings, no fee.</b> → <a href="https://www.feearmor.com/intake">Send us your bill</a></p>
+<h2>Why utilities charge deposits</h2>
+<p>A deposit protects the company if a new customer doesn't pay. It's usually requested when you start service without a payment history the company accepts, or after late payments or a disconnection.</p>
+<p>Because deposits are regulated, companies can't keep them forever. In Texas, the Public Utility Commission (PUC) rules for retail electric providers say the deposit must be refunded after 12 consecutive residential billings with no late payments, and the refund can be applied as a credit on your bill. The same rules cap the deposit for residential customers at the greater of one-fifth of your estimated annual bill or the estimated bills for your next two months. Texas utilities outside the competitive market follow a separate rule with a lower cap, one-sixth of the estimated annual billing.</p>
+<p>The problem: a refund doesn't always happen on its own, and many people forget they paid one. That's money sitting on someone else's books.</p>
+<h2>How to check whether you're owed a refund</h2>
+<ol>
+<li><b>Find the deposit on your bill or account.</b> Look for "Deposit," "Deposit held," "Security deposit" or "Deposit on file." Some providers show it only in the online account under billing details.</li>
+<li><b>Note the date and amount.</b> Your receipt or first bill should show both. In Texas, providers must keep records of each deposit, including the amount and date.</li>
+<li><b>Count your on-time payments since then.</b> Use your payment history. One late payment can restart the clock under some rules.</li>
+<li><b>Check for interest.</b> In Texas, if a provider holds a deposit more than 30 days, interest is owed from the date of the deposit, at a rate the PUC sets each year. Interest is paid when the deposit is returned or credited, or yearly if you ask.</li>
+<li><b>If you moved or switched providers, check your final bill.</b> In Texas, when you leave a retail electric provider, it must either transfer your deposit plus interest to your new provider or refund it, minus anything you still owe.</li>
+<li><b>If you're 65 or older, ask about exemptions.</b> Texas rules let residential applicants 65 or older who aren't currently behind on any electric account establish credit without a deposit. Victims of family violence with a certification letter can also qualify.</li>
+</ol>
+<h2>Deposit and fee table</h2>
+<div style="overflow-x:auto;margin:0 0 16px">
+<table style="width:100%;border-collapse:collapse;font-size:15px">
+<thead><tr><th style="text-align:left;border-bottom:2px solid var(--lime);padding:8px">Line item</th><th style="text-align:left;border-bottom:2px solid var(--lime);padding:8px">Typical amount</th><th style="text-align:left;border-bottom:2px solid var(--lime);padding:8px">Can it be removed or refunded?</th><th style="text-align:left;border-bottom:2px solid var(--lime);padding:8px">What to ask for</th></tr></thead>
+<tbody>
+<tr><td style="border-bottom:1px solid rgba(127,127,127,.3);padding:8px;vertical-align:top">Deposit held (Texas retail electric)</td><td style="border-bottom:1px solid rgba(127,127,127,.3);padding:8px;vertical-align:top">Up to the greater of 1/5 of estimated annual billing or next 2 months' estimated bills</td><td style="border-bottom:1px solid rgba(127,127,127,.3);padding:8px;vertical-align:top">Refunded after 12 on-time residential bills</td><td style="border-bottom:1px solid rgba(127,127,127,.3);padding:8px;vertical-align:top">Refund or bill credit</td></tr>
+<tr><td style="border-bottom:1px solid rgba(127,127,127,.3);padding:8px;vertical-align:top">Deposit held (Texas regulated utility)</td><td style="border-bottom:1px solid rgba(127,127,127,.3);padding:8px;vertical-align:top">Up to 1/6 of estimated annual billing</td><td style="border-bottom:1px solid rgba(127,127,127,.3);padding:8px;vertical-align:top">Refunded after 12 residential bills with no disconnection and no more than two late</td><td style="border-bottom:1px solid rgba(127,127,127,.3);padding:8px;vertical-align:top">Refund with interest</td></tr>
+<tr><td style="border-bottom:1px solid rgba(127,127,127,.3);padding:8px;vertical-align:top">Interest on deposit</td><td style="border-bottom:1px solid rgba(127,127,127,.3);padding:8px;vertical-align:top">Rate set yearly by the Texas PUC</td><td style="border-bottom:1px solid rgba(127,127,127,.3);padding:8px;vertical-align:top">Owed if held more than 30 days</td><td style="border-bottom:1px solid rgba(127,127,127,.3);padding:8px;vertical-align:top">Confirm interest is included</td></tr>
+<tr><td style="border-bottom:1px solid rgba(127,127,127,.3);padding:8px;vertical-align:top">Deposit after switching providers</td><td style="border-bottom:1px solid rgba(127,127,127,.3);padding:8px;vertical-align:top">Same as your deposit</td><td style="border-bottom:1px solid rgba(127,127,127,.3);padding:8px;vertical-align:top">Transferred or refunded (Texas REPs)</td><td style="border-bottom:1px solid rgba(127,127,127,.3);padding:8px;vertical-align:top">Which one, and when</td></tr>
+<tr><td style="border-bottom:1px solid rgba(127,127,127,.3);padding:8px;vertical-align:top">New deposit request mid-service</td><td style="border-bottom:1px solid rgba(127,127,127,.3);padding:8px;vertical-align:top">Varies</td><td style="border-bottom:1px solid rgba(127,127,127,.3);padding:8px;vertical-align:top">In Texas, only if late more than once in 12 months or disconnected for nonpayment</td><td style="border-bottom:1px solid rgba(127,127,127,.3);padding:8px;vertical-align:top">The reason in writing</td></tr>
+<tr><td style="border-bottom:1px solid rgba(127,127,127,.3);padding:8px;vertical-align:top">Late fee</td><td style="border-bottom:1px solid rgba(127,127,127,.3);padding:8px;vertical-align:top">Varies</td><td style="border-bottom:1px solid rgba(127,127,127,.3);padding:8px;vertical-align:top">Often waived once</td><td style="border-bottom:1px solid rgba(127,127,127,.3);padding:8px;vertical-align:top">A courtesy waiver</td></tr>
+</tbody>
+</table>
+</div>
+<p>Other states have their own rules. Search your state public utility commission's website for "deposit" before you call.</p>
+<h2>What to say: a call script</h2>
+<div class="callout"><b>You:</b> Hi, I'd like to check on the deposit on my account.</div>
+<div class="callout"><b>Rep:</b> Sure, what's your account number?</div>
+<div class="callout"><b>You:</b> [Account number]. I paid a deposit of [amount] on [date]. Since then I've paid [number] bills on time. Do I qualify for a refund?</div>
+<div class="callout"><b>Rep:</b> Let me check.</div>
+<div class="callout"><b>You:</b> My understanding is that the rules require a refund after 12 on-time bills, with interest if you've held it more than 30 days. Can you apply it to my account or send it to me?</div>
+<div class="callout"><b>Rep:</b> We can credit it to your next bill.</div>
+<div class="callout"><b>You:</b> That works. Please confirm the amount, including interest, and the date it will post. Can you also note it on my account?</div>
+<p><b>If they say you don't qualify:</b> "Can you tell me which payment disqualified me and on what date? And when will I qualify?"</p>
+<p><b>If you moved or switched:</b> "My service ended on [date]. Was my deposit refunded or transferred, and where did it go?"</p>
+<p>For phone and internet providers, use our <a href="https://www.feearmor.com/blog/retention-department-script">retention department script</a>.</p>
+<h2>Example + savings math</h2>
+<p><i>Example (hypothetical, round numbers):</i> A renter paid a $200 electric deposit when moving in and has paid 12 bills on time. They call, confirm they qualify, and get $200 plus interest credited to their next bill. That's their own money back — no service needed to claim it.</p>
+<p>While they're on the phone, they find their rate plan expired and rolled to a higher rate. Fixing recurring charges like that is where FeeArmor helps:</p>
+<p><b>Savings math (recurring bill savings):</b> Save $20/mo = $240/yr. Our 40% fee is $96. You keep $144 in year one, and 100% after.</p>
+<p><a href="https://www.feearmor.com/intake"><b>Get my bill checked → feearmor.com/intake</b></a></p>
+<h2>FAQ</h2>
+<p><b>Will my deposit be refunded automatically?</b> Sometimes, but don't count on it. Check your bill after 12 on-time payments and call if you don't see a credit.</p>
+<p><b>Do I get interest on my deposit?</b> In Texas, yes, if the company kept it more than 30 days. Other states set their own rules.</p>
+<p><b>What happens to my deposit when I move?</b> In Texas, moving to a new address with the same regulated utility isn't treated as a disconnection, so no additional deposit can be required. If you leave a retail electric provider, it must transfer or refund your deposit, minus any balance owed.</p>
+<p><b>Can they ask for a new deposit later?</b> In Texas, a retail electric provider can't require an initial deposit from an existing customer unless that customer paid late more than once in the last 12 months or was disconnected for nonpayment.</p>
+<p><b>I forgot about an old deposit. Is it gone?</b> Not necessarily. Texas providers must keep records of unclaimed deposits for at least four years and make a reasonable effort to return them. Call your old provider first.</p>
+<h2>Bottom line</h2>
+<p>A utility deposit is a refund waiting to happen. Find it on your bill, count your on-time payments and ask for it back with interest.</p>
+<p><b>Send us your bill. No savings, no fee.</b> → <a href="https://www.feearmor.com/intake">feearmor.com/intake</a></p>
+<p><b>Related guides:</b> <a href="https://www.feearmor.com/blog/winter-heating-bills-2026">Winter Heating Bills 2026-27</a> · <a href="https://www.feearmor.com/blog/how-to-read-internet-bill">How to Read Your Internet Bill Line by Line</a> · <a href="https://www.feearmor.com/blog/retention-department-script">Retention Department Script</a></p>
+<h2>Sources</h2>
+<ul>
+<li>16 Tex. Admin. Code § 25.478, Credit Requirements and Deposits (retail electric providers): <a href="https://www.law.cornell.edu/regulations/texas/16-Tex-Admin-Code-SS-25-478">https://www.law.cornell.edu/regulations/texas/16-Tex-Admin-Code-SS-25-478</a></li>
+<li>16 Tex. Admin. Code § 25.24, Credit Requirements and Deposits (electric utilities): <a href="https://www.law.cornell.edu/regulations/texas/16-Tex-Admin-Code-SS-25-24">https://www.law.cornell.edu/regulations/texas/16-Tex-Admin-Code-SS-25-24</a></li>
+<li>Public Utility Commission of Texas: <a href="https://www.puc.texas.gov">https://www.puc.texas.gov</a></li>
+</ul>
+"""},
+  "es": {
+   "title": "Reembolso del depósito de luz: cómo recuperarlo",
+   "desc": "¿Pagó un depósito de luz o gas? Sepa cuándo le deben el reembolso con intereses, cómo revisar su cuenta y qué decir para pedirlo este mismo mes.",
+   "summary": "¿Pagó un depósito de luz o gas? Sepa cuándo le deben el reembolso con intereses, cómo revisar su cuenta y qué decir para pedirlo este mismo mes.",
+   "body": """
+<h2>Respuesta rápida</h2>
+<p>Si pagó un depósito para abrir su servicio de luz o gas, no es un cargo: es su dinero, y en muchos casos se lo deben devolver cuando cumple cierto tiempo pagando a tiempo. Las reglas las pone la comisión de servicios públicos de cada estado. En Texas, por ejemplo, el proveedor de electricidad debe devolver el depósito residencial después de 12 facturas seguidas pagadas sin ningún atraso, y debe pagar intereses si guardó el depósito más de 30 días. Busque en su factura una línea de "deposit held" y llame para pedirlo.</p>
+<p><b>¿Quiere que revisemos el resto de su factura? Si no ahorra, no paga.</b> → <a href="https://www.feearmor.com/intake">Envíenos su factura</a></p>
+<p>¿Ayuda a sus padres con sus facturas? Revise también si ellos pagaron un depósito; hacemos la llamada en español o en inglés.</p>
+<h2>Por qué las compañías cobran depósito</h2>
+<p>El depósito protege a la compañía si un cliente nuevo no paga. Normalmente lo piden cuando usted abre el servicio sin un historial de pagos que la compañía acepte, o después de pagos tardíos o de un corte por falta de pago.</p>
+<p>Como los depósitos están regulados, la compañía no puede quedárselos para siempre. En Texas, las reglas de la Comisión de Servicios Públicos (PUC) para los proveedores de electricidad dicen que el depósito se debe devolver después de 12 facturas residenciales seguidas sin pagos tardíos, y que el reembolso puede aplicarse como crédito en su factura. Las mismas reglas limitan el depósito residencial a lo que sea mayor entre una quinta parte de su factura anual estimada o lo estimado de sus próximos dos meses. Las compañías eléctricas de Texas fuera del mercado competitivo siguen otra regla con un límite menor: una sexta parte de la facturación anual estimada.</p>
+<p>El problema: el reembolso no siempre llega solo, y mucha gente olvida que pagó un depósito. Es dinero suyo en los libros de otra empresa.</p>
+<h2>Cómo saber si le deben un reembolso</h2>
+<ol>
+<li><b>Busque el depósito en su factura o cuenta.</b> Busque "Deposit", "Deposit held", "Security deposit" o "Deposit on file". Algunas compañías solo lo muestran en la cuenta en línea, en los detalles de facturación.</li>
+<li><b>Anote la fecha y el monto.</b> Su recibo o primera factura debe mostrar ambos. En Texas, la compañía debe guardar registro de cada depósito, con monto y fecha.</li>
+<li><b>Cuente sus pagos a tiempo desde entonces.</b> Use su historial de pagos. Bajo algunas reglas, un solo pago tardío puede reiniciar la cuenta.</li>
+<li><b>Revise los intereses.</b> En Texas, si la compañía guarda el depósito más de 30 días, debe intereses desde la fecha del depósito, a una tasa que la PUC fija cada año. Los intereses se pagan al devolver o acreditar el depósito, o cada año si usted lo pide.</li>
+<li><b>Si se mudó o cambió de compañía, revise su última factura.</b> En Texas, cuando usted deja a un proveedor de electricidad, este debe transferir su depósito con intereses a su nuevo proveedor o devolvérselo, descontando lo que usted deba.</li>
+<li><b>Si tiene 65 años o más, pregunte por las exenciones.</b> Las reglas de Texas permiten que los solicitantes residenciales de 65 años o más que no estén atrasados en ninguna cuenta de luz establezcan crédito sin depósito. Las víctimas de violencia familiar con una carta de certificación también pueden calificar.</li>
+</ol>
+<h2>Tabla de depósitos y cargos</h2>
+<div style="overflow-x:auto;margin:0 0 16px">
+<table style="width:100%;border-collapse:collapse;font-size:15px">
+<thead><tr><th style="text-align:left;border-bottom:2px solid var(--lime);padding:8px">Concepto</th><th style="text-align:left;border-bottom:2px solid var(--lime);padding:8px">Monto típico</th><th style="text-align:left;border-bottom:2px solid var(--lime);padding:8px">¿Se puede quitar o devolver?</th><th style="text-align:left;border-bottom:2px solid var(--lime);padding:8px">Qué pedir</th></tr></thead>
+<tbody>
+<tr><td style="border-bottom:1px solid rgba(127,127,127,.3);padding:8px;vertical-align:top">Depósito (proveedor de electricidad en Texas)</td><td style="border-bottom:1px solid rgba(127,127,127,.3);padding:8px;vertical-align:top">Hasta lo mayor entre 1/5 de la factura anual estimada o lo estimado de los próximos 2 meses</td><td style="border-bottom:1px solid rgba(127,127,127,.3);padding:8px;vertical-align:top">Se devuelve tras 12 facturas residenciales a tiempo</td><td style="border-bottom:1px solid rgba(127,127,127,.3);padding:8px;vertical-align:top">Reembolso o crédito en la factura</td></tr>
+<tr><td style="border-bottom:1px solid rgba(127,127,127,.3);padding:8px;vertical-align:top">Depósito (compañía eléctrica regulada en Texas)</td><td style="border-bottom:1px solid rgba(127,127,127,.3);padding:8px;vertical-align:top">Hasta 1/6 de la facturación anual estimada</td><td style="border-bottom:1px solid rgba(127,127,127,.3);padding:8px;vertical-align:top">Se devuelve tras 12 facturas sin corte y con no más de dos atrasos</td><td style="border-bottom:1px solid rgba(127,127,127,.3);padding:8px;vertical-align:top">Reembolso con intereses</td></tr>
+<tr><td style="border-bottom:1px solid rgba(127,127,127,.3);padding:8px;vertical-align:top">Intereses del depósito</td><td style="border-bottom:1px solid rgba(127,127,127,.3);padding:8px;vertical-align:top">Tasa que fija la PUC de Texas cada año</td><td style="border-bottom:1px solid rgba(127,127,127,.3);padding:8px;vertical-align:top">Se deben si lo guardan más de 30 días</td><td style="border-bottom:1px solid rgba(127,127,127,.3);padding:8px;vertical-align:top">Confirmar que incluyan los intereses</td></tr>
+<tr><td style="border-bottom:1px solid rgba(127,127,127,.3);padding:8px;vertical-align:top">Depósito al cambiar de proveedor</td><td style="border-bottom:1px solid rgba(127,127,127,.3);padding:8px;vertical-align:top">Igual a su depósito</td><td style="border-bottom:1px solid rgba(127,127,127,.3);padding:8px;vertical-align:top">Se transfiere o se devuelve (proveedores en Texas)</td><td style="border-bottom:1px solid rgba(127,127,127,.3);padding:8px;vertical-align:top">Cuál de las dos y cuándo</td></tr>
+<tr><td style="border-bottom:1px solid rgba(127,127,127,.3);padding:8px;vertical-align:top">Nuevo depósito a mitad del servicio</td><td style="border-bottom:1px solid rgba(127,127,127,.3);padding:8px;vertical-align:top">Varía</td><td style="border-bottom:1px solid rgba(127,127,127,.3);padding:8px;vertical-align:top">En Texas, solo si pagó tarde más de una vez en 12 meses o tuvo corte por falta de pago</td><td style="border-bottom:1px solid rgba(127,127,127,.3);padding:8px;vertical-align:top">El motivo por escrito</td></tr>
+<tr><td style="border-bottom:1px solid rgba(127,127,127,.3);padding:8px;vertical-align:top">Recargo por pago tardío</td><td style="border-bottom:1px solid rgba(127,127,127,.3);padding:8px;vertical-align:top">Varía</td><td style="border-bottom:1px solid rgba(127,127,127,.3);padding:8px;vertical-align:top">Muchas veces se perdona una vez</td><td style="border-bottom:1px solid rgba(127,127,127,.3);padding:8px;vertical-align:top">Una exención de cortesía</td></tr>
+</tbody>
+</table>
+</div>
+<p>Cada estado tiene sus propias reglas. Antes de llamar, busque "deposit" en el sitio web de la comisión de servicios públicos de su estado.</p>
+<h2>Qué decir: guion para la llamada</h2>
+<div class="callout"><b>Usted:</b> Hola, quisiera revisar el depósito de mi cuenta. (Si prefiere, pida un agente que hable español.)</div>
+<div class="callout"><b>Agente:</b> Claro, ¿su número de cuenta?</div>
+<div class="callout"><b>Usted:</b> [Número de cuenta]. Pagué un depósito de [monto] el [fecha]. Desde entonces he pagado [número] facturas a tiempo. ¿Ya califico para el reembolso?</div>
+<div class="callout"><b>Agente:</b> Déjeme revisar.</div>
+<div class="callout"><b>Usted:</b> Tengo entendido que las reglas exigen devolverlo después de 12 facturas a tiempo, con intereses si lo tienen guardado más de 30 días. ¿Me lo pueden aplicar a la cuenta o enviármelo?</div>
+<div class="callout"><b>Agente:</b> Se lo podemos acreditar en su próxima factura.</div>
+<div class="callout"><b>Usted:</b> Está bien. Por favor, confírmeme el monto con intereses y la fecha en que se aplicará. ¿Lo puede anotar en mi cuenta?</div>
+<p><b>Si le dicen que no califica:</b> "¿Me puede decir qué pago me descalificó y en qué fecha? ¿Y cuándo voy a calificar?"</p>
+<p><b>Si se mudó o cambió de compañía:</b> "Mi servicio terminó el [fecha]. ¿Me devolvieron el depósito o lo transfirieron? ¿A dónde se fue?"</p>
+<p>Para teléfono e internet, use nuestro <a href="https://www.feearmor.com/es/blog/guion-departamento-de-retencion">guion para el departamento de retención</a>.</p>
+<h2>Ejemplo + cálculo de ahorro</h2>
+<p><i>Ejemplo (hipotético, con números redondos):</i> Una persona que renta pagó un depósito de luz de $200 al mudarse y ya pagó 12 facturas a tiempo. Llama, confirma que califica y le acreditan $200 más intereses en su próxima factura. Es su propio dinero: no necesita ningún servicio para reclamarlo.</p>
+<p>Durante la llamada descubre que su plan venció y pasó a una tarifa más alta. Arreglar cargos mensuales como ese es donde FeeArmor ayuda:</p>
+<p><b>Cálculo (ahorro mensual recurrente):</b> Ahorro de $20 al mes = $240 al año. Nuestra tarifa del 40% es $96. Usted se queda con $144 el primer año y con el 100% después.</p>
+<p><a href="https://www.feearmor.com/intake"><b>Quiero que revisen mi factura → feearmor.com/intake</b></a></p>
+<h2>Preguntas frecuentes</h2>
+<p><b>¿Me devuelven el depósito automáticamente?</b> A veces, pero no cuente con eso. Revise su factura después de 12 pagos a tiempo y llame si no ve el crédito.</p>
+<p><b>¿Me pagan intereses por el depósito?</b> En Texas, sí, si la compañía lo guardó más de 30 días. Otros estados tienen sus propias reglas.</p>
+<p><b>¿Qué pasa con mi depósito si me mudo?</b> En Texas, mudarse a otra dirección con la misma compañía eléctrica regulada no cuenta como corte, así que no le pueden pedir un depósito adicional. Si deja a un proveedor de electricidad, este debe transferir o devolver su depósito, menos lo que usted deba.</p>
+<p><b>¿Me pueden pedir un depósito nuevo después?</b> En Texas, un proveedor de electricidad no puede exigir un depósito inicial a un cliente actual, a menos que haya pagado tarde más de una vez en los últimos 12 meses o le hayan cortado el servicio por falta de pago.</p>
+<p><b>Me olvidé de un depósito viejo. ¿Ya lo perdí?</b> No necesariamente. En Texas, las compañías deben guardar registro de los depósitos no reclamados por al menos cuatro años y hacer un esfuerzo razonable por devolverlos. Llame primero a su compañía anterior.</p>
+<h2>En resumen</h2>
+<p>Un depósito de luz es un reembolso que está esperando. Encuéntrelo en su factura, cuente sus pagos a tiempo y pida que se lo devuelvan con intereses.</p>
+<p><b>Envíenos su factura. Si no ahorra, no paga.</b> → <a href="https://www.feearmor.com/intake">feearmor.com/intake</a></p>
+<p><b>Guías relacionadas:</b> <a href="https://www.feearmor.com/es/blog/factura-calefaccion-invierno-2026">Calefacción en invierno 2026-27</a> · <a href="https://www.feearmor.com/es/blog/como-leer-factura-de-internet">Cómo leer su factura de internet línea por línea</a> · <a href="https://www.feearmor.com/es/blog/guion-departamento-de-retencion">Guion para el departamento de retención</a></p>
+<h2>Fuentes</h2>
+<ul>
+<li>16 Tex. Admin. Code § 25.478 (proveedores de electricidad): <a href="https://www.law.cornell.edu/regulations/texas/16-Tex-Admin-Code-SS-25-478">https://www.law.cornell.edu/regulations/texas/16-Tex-Admin-Code-SS-25-478</a></li>
+<li>16 Tex. Admin. Code § 25.24 (compañías eléctricas): <a href="https://www.law.cornell.edu/regulations/texas/16-Tex-Admin-Code-SS-25-24">https://www.law.cornell.edu/regulations/texas/16-Tex-Admin-Code-SS-25-24</a></li>
+<li>Comisión de Servicios Públicos de Texas: <a href="https://www.puc.texas.gov">https://www.puc.texas.gov</a></li>
+</ul>
+"""},
+ },
+ {
   "slug": "winter-heating-bills-2026", "es_slug": "factura-calefaccion-invierno-2026", "date": "2026-11-18",
   "en": {
    "title": "Winter Heating Bills 2026-27: What to Expect and Cut",

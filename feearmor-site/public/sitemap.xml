@@ -41,6 +41,16 @@
     <xhtml:link rel="alternate" hreflang="es" href="https://www.feearmor.com/es/blog"/>
   </url>
   <url>
+    <loc>https://www.feearmor.com/blog/utility-deposit-refund</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.feearmor.com/blog/utility-deposit-refund"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.feearmor.com/es/blog/reembolso-deposito-de-luz"/>
+  </url>
+  <url>
+    <loc>https://www.feearmor.com/es/blog/reembolso-deposito-de-luz</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.feearmor.com/blog/utility-deposit-refund"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.feearmor.com/es/blog/reembolso-deposito-de-luz"/>
+  </url>
+  <url>
     <loc>https://www.feearmor.com/blog/winter-heating-bills-2026</loc>
     <xhtml:link rel="alternate" hreflang="en" href="https://www.feearmor.com/blog/winter-heating-bills-2026"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://www.feearmor.com/es/blog/factura-calefaccion-invierno-2026"/>
